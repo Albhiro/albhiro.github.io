@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis Alberto Oraa García - Portfolio Técnico</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .badges {
+            margin: 20px 0;
+        }
+        .badge {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .project-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-title {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .project-title .emoji {
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+        .project-desc {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        .tech-tag {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+        }
+        .project-link {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .project-link:hover {
+            background: #c0392b;
+        }
+        .contact {
+            text-align: center;
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        .contact a {
+            color: #3498db;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Luis Alberto Oraa García</h1>
+            <div class="subtitle">Systems and Processes Accounting Analyst II</div>
+            <div class="badges">
+                <span class="badge">16 años experiencia</span>
+                <span class="badge">Santander Digital Services</span>
+                <span class="badge">IA Research</span>
+                <span class="badge">Full-Stack Developer</span>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">11</div>
+                    <div class="stat-label">Proyectos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Tecnologías</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">16</div>
+                    <div class="stat-label">Años Exp.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-title">
+                    <span class="emoji">💼</span>
+                    CV Portfolio
+                </div>
+                <div class="project-desc">
+                    CV profesional como repositorio con versionado completo y toda mi experiencia en Santander Digital Services.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Markdown</span>
+                    <span class="tech-tag">Git</span>
+                    <span class="tech-tag">GitHub Pages</span>
+                </div>
+                <a href="./cv-portfolio/" class="project-link">Ver CV →</a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">
+                    <span class="emoji">📊</span>
+                    FastAPI Dashboard
+                </div>
+                <div class="project-desc">
+                    Dashboard moderno con FastAPI + frontend para métricas y KPIs, inspirado en mis dashboards de Santander.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">FastAPI</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Chart.js</span>
+                    <span class="tech-tag">Docker</span>
+                </div>
+                <a href="./fastapi-dashboard/" class="project-link">Ver Proyecto →</a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">
+                    <span class="emoji">📧</span>
+                    Email Processor
+                </div>
+                <div class="project-desc">
+                    Automatización de procesamiento de 130+ emails diarios. Migración real Access→Python desarrollada en Santander.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">pandas</span>
+                    <span class="tech-tag">IMAP</span>
+                    <span class="tech-tag">Excel</span>
+                </div>
+                <a href="./python-email-processor/" class="project-link">Ver Proyecto →</a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">
+                    <span class="emoji">🧠</span>
+                    NLP Spanish Basics
+                </div>
+                <div class="project-desc">
+                    Herramientas de NLP para castellano, basadas en mi investigación personal de motores conversacionales.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">NLTK</span>
+                    <span class="tech-tag">spaCy</span>
+                    <span class="tech-tag">NLP</span>
+                </div>
+                <a href="./nlp-spanish-basics/" class="project-link">Ver Proyecto →</a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">
+                    <span class="emoji">🐳</span>
+                    Docker Templates
+                </div>
+                <div class="project-desc">
+                    Templates de despliegue Docker basados en mi experiencia con RHEL8, nginx y Openshift en Santander.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">nginx</span>
+                    <span class="tech-tag">RHEL8</span>
+                    <span class="tech-tag">Openshift</span>
+                </div>
+                <a href="./docker-deployment-template/" class="project-link">Ver Proyecto →</a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">
+                    <span class="emoji">📊</span>
+                    Data Analysis Toolkit
+                </div>
+                <div class="project-desc">
+                    Herramientas de análisis de datos para tareas recurrentes, automatización de reportes y visualización.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">pandas</span>
+                    <span class="tech-tag">matplotlib</span>
+                    <span class="tech-tag">Excel</span>
+                </div>
+                <a href="./data-analysis-toolkit/" class="project-link">Ver Proyecto →</a>
+            </div>
+        </div>
+
+        <div class="contact">
+            <h3>📞 Contacto</h3>
+            <a href="mailto:luaoraa@gmail.com">📧 luaoraa@gmail.com</a>
+            <a href="https://www.linkedin.com/in/luaoraa/" target="_blank">💼 LinkedIn</a>
+            <a href="https://github.com/Albhiro" target="_blank">🔗 GitHub</a>
+            <br><br>
+            <p><strong>📱 695 10 15 88</strong></p>
+            <p><em>"16 años en la misma empresa reflejan mi capacidad de adaptación constante y mi compromiso con el crecimiento profesional continuo."</em></p>
+        </div>
+    </div>
+</body>
+</html>
