@@ -3,25 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYRULE - Avent                        <div class="shrine-glow"></div>
-                        <div class="shrine-label">Analytics Dashboard</div>
-                    </div>
-                    
-                    <div class="shrine" data-project="cloud-platform" style="top: 60%; left: 40%;" title="Plataforma Cloud Empresarial">
-                        <div class="shrine-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <div class="shrine-glow"></div>
-                        <div class="shrine-label">Cloud Platform</div>
-                    </div>
-                    
-                    <div class="shrine" data-project="microservices-arch" style="top: 40%; left: 70%;" title="Arquitectura Microservicios">
-                        <div class="shrine-icon">
-                            <i class="fas fa-cubes"></i>
-                        </div>
-                        <div class="shrine-glow"></div>
-                        <div class="shrine-label">Microservices</div>
-                    </div> | Luis Alberto Portfolio</title>
+    <title>HYRULE - Aventuras & Proyectos | Luis Alberto Portfolio</title>
     
     <!-- Meta tags -->
     <meta name="description" content="Explora los proyectos y aventuras de Luis Alberto a través del mundo de Hyrule">
@@ -34,8 +16,80 @@
     
     <!-- Zelda Styles -->
     <link href="./assets/css/zelda-hyrule.css" rel="stylesheet">
+    
+    <style>
+        /* Animación de aparición desde negro */
+        .world-entrance {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000000;
+            z-index: 10000;
+            opacity: 1;
+            animation: worldFadeIn 4s ease-out forwards;
+        }
+        
+        @keyframes worldFadeIn {
+            0% {
+                opacity: 1;
+                background: #000000;
+            }
+            25% {
+                opacity: 0.8;
+                background: #0a0a0a;
+            }
+            50% {
+                opacity: 0.6;
+                background: #1a1a1a;
+            }
+            75% {
+                opacity: 0.3;
+                background: #2a2a2a;
+            }
+            100% {
+                opacity: 0;
+                background: transparent;
+                pointer-events: none;
+            }
+        }
+
+        /* Animación del contenido */
+        body {
+            opacity: 0;
+            animation: contentAppear 4s ease-out 1s forwards;
+        }
+        
+        @keyframes contentAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+    
+    <script>
+        // Marcar que estamos en un mundo para detectar navegación de vuelta
+        document.addEventListener('DOMContentLoaded', () => {
+            // Si hay links de vuelta, añadir el flag
+            const backLinks = document.querySelectorAll('a[href="index.html"], a[href="../index.html"], a[href="./index.html"]');
+            backLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    sessionStorage.setItem('fromWorld', 'true');
+                });
+            });
+        });
+    </script>
 </head>
 <body>
+    <!-- Overlay de entrada desde negro -->
+    <div class="world-entrance"></div>
+    
     <!-- Wind Effects Background -->
     <div class="hyrule-background">
         <canvas id="windCanvas"></canvas>

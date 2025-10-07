@@ -16,8 +16,87 @@
     
     <!-- Retro Styles -->
     <link href="./assets/css/retro-arcade.css" rel="stylesheet">
+    
+    <style>
+        /* Animación de aparición desde negro */
+        .world-entrance {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000000;
+            z-index: 10000;
+            opacity: 1;
+            animation: worldFadeIn 4s ease-out forwards;
+        }
+        
+        @keyframes worldFadeIn {
+            0% {
+                opacity: 1;
+                background: #000000;
+            }
+            25% {
+                opacity: 0.8;
+                background: #0a0a0a;
+            }
+            50% {
+                opacity: 0.6;
+                background: #1a1a1a;
+            }
+            75% {
+                opacity: 0.3;
+                background: #2a2a2a;
+            }
+            100% {
+                opacity: 0;
+                background: transparent;
+                pointer-events: none;
+            }
+        }
+
+        /* Animación del contenido con tema Arcade */
+        body {
+            opacity: 0;
+            animation: arcadeAppear 4s ease-out 1s forwards;
+        }
+        
+        @keyframes arcadeAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+                filter: brightness(0.2) contrast(2) saturate(0);
+            }
+            25% {
+                filter: brightness(0.5) contrast(1.5) saturate(0.5);
+            }
+            50% {
+                filter: brightness(0.8) contrast(1.2) saturate(1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                filter: none;
+            }
+        }
+    </style>
+    
+    <script>
+        // Marcar que estamos en un mundo para detectar navegación de vuelta
+        document.addEventListener('DOMContentLoaded', () => {
+            const backLinks = document.querySelectorAll('a[href="index.html"], a[href="../index.html"], a[href="./index.html"]');
+            backLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    sessionStorage.setItem('fromWorld', 'true');
+                });
+            });
+        });
+    </script>
 </head>
 <body>
+    <!-- Overlay de entrada desde negro -->
+    <div class="world-entrance"></div>
+    
     <!-- CRT Background -->
     <div class="arcade-background">
         <canvas id="pixelCanvas"></canvas>

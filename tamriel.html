@@ -16,8 +16,79 @@
     
     <!-- Skyrim Styles -->
     <link href="./assets/css/skyrim-tamriel.css" rel="stylesheet">
+    
+    <style>
+        /* Animación de aparición desde negro */
+        .world-entrance {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000000;
+            z-index: 10000;
+            opacity: 1;
+            animation: worldFadeIn 4s ease-out forwards;
+        }
+        
+        @keyframes worldFadeIn {
+            0% {
+                opacity: 1;
+                background: #000000;
+            }
+            25% {
+                opacity: 0.8;
+                background: #0a0a0a;
+            }
+            50% {
+                opacity: 0.6;
+                background: #1a1a1a;
+            }
+            75% {
+                opacity: 0.3;
+                background: #2a2a2a;
+            }
+            100% {
+                opacity: 0;
+                background: transparent;
+                pointer-events: none;
+            }
+        }
+
+        /* Animación del contenido */
+        body {
+            opacity: 0;
+            animation: contentAppear 4s ease-out 1s forwards;
+        }
+        
+        @keyframes contentAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+    
+    <script>
+        // Marcar que estamos en un mundo para detectar navegación de vuelta
+        document.addEventListener('DOMContentLoaded', () => {
+            const backLinks = document.querySelectorAll('a[href="index.html"], a[href="../index.html"], a[href="./index.html"]');
+            backLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    sessionStorage.setItem('fromWorld', 'true');
+                });
+            });
+        });
+    </script>
 </head>
 <body>
+    <!-- Overlay de entrada desde negro -->
+    <div class="world-entrance"></div>
+    
     <!-- Nordic Background -->
     <div class="tamriel-background">
         <canvas id="snowCanvas"></canvas>

@@ -1164,6 +1164,20 @@ body {
     justify-content: center;
     min-height: 250px;
     background: rgba(11, 13, 23, 0.8);
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Transición suave al hacer click */
+.world-section.world-transition {
+    transition: all 0.2s ease-out;
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+
+.world-section.world-transition .world-circle {
+    transform: scale(0.95);
+    box-shadow: 0 0 50px rgba(0, 212, 255, 0.8);
 }
 
 /* Removed ::before pseudo-element that was interfering with background images */
@@ -1175,7 +1189,7 @@ body {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.1);
-    transition: background 0.5s ease;
+    transition: background 0.3s ease-out;
     z-index: 2;
 }
 
@@ -1189,13 +1203,13 @@ body {
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
-    border: 8px solid rgba(0, 212, 255, 0.3);
+    border: 5px solid rgba(0, 212, 255, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     z-index: 3;
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.3s ease-out;
     box-shadow: 0 0 30px rgba(0, 212, 255, 0.2),
                 inset 0 0 30px rgba(0, 212, 255, 0.1);
 }
@@ -1204,42 +1218,33 @@ body {
 .world-circle::before {
     content: '';
     position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
+    top: -100px;
+    left: -100px;
+    right: -100px;
+    bottom: -100px;
     border-radius: 50%;
-    border: 8px solid transparent;
-    border-top: 8px solid rgba(0, 212, 255, 0.6);
-    border-right: 8px solid rgba(0, 212, 255, 0.3);
-    animation: circleRotate 4s linear infinite;
+    border: 20px solid transparent;
+    border-top: 100px solid rgba(0, 212, 255, 0.6);
+    border-right: 20px solid rgba(0, 212, 255, 0.3);
     z-index: -1;
 }
 
 .world-section:hover .world-circle {
-    width: 800px;
-    height: 800px;
-    border-width: 15px;
+    width: 120px;
+    height: 120px;
     border-color: var(--primary-color);
-    box-shadow: 0 0 80px rgba(0, 212, 255, 0.6),
-                inset 0 0 50px rgba(0, 212, 255, 0.2);
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.4),
+                inset 0 0 20px rgba(0, 212, 255, 0.1);
     background: rgba(0, 0, 0, 0.9);
 }
 
 .world-section:hover .world-circle::before {
-    top: -15px;
-    left: -15px;
-    right: -15px;
-    bottom: -15px;
-    border-width: 15px;
-    border-top: 15px solid var(--primary-color);
-    border-right: 15px solid rgba(0, 212, 255, 0.3);
-    animation: circleRotateFast 2s linear infinite;
+    animation: circleRotate 2s linear infinite;
 }
 
 .world-content {
     text-align: center;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease-out;
     padding: 20px;
     position: relative;
     z-index: 4;
@@ -1258,8 +1263,8 @@ body {
 }
 
 .world-section:hover .world-name {
-    font-size: 2.2rem;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9), 0 0 30px currentColor;
+    font-size: 1.9rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 20px currentColor;
 }
 
 .world-description {
@@ -1271,8 +1276,6 @@ body {
 }
 
 .world-section:hover .world-description {
-    font-size: 1.1rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
     color: var(--text-primary);
 }
 
@@ -1466,24 +1469,85 @@ body {
     100% { transform: rotate(360deg); }
 }
 
+@keyframes ringPulse {
+    0% { 
+        border-width: 100px;
+        opacity: 0.8;
+    }
+    50% { 
+        border-width: 105px;
+        opacity: 1;
+    }
+    100% { 
+        border-width: 100px;
+        opacity: 0.8;
+    }
+}
+
+/* Animaciones complejas removidas para evitar conflictos */
+
+/* ===== TRANSICIONES SIMPLIFICADAS ===== */
+.back-from-world {
+    animation: simpleBackFade 1.5s ease-out forwards;
+}
+
+@keyframes simpleBackFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ===== PARTICLE SYSTEM ===== */
 .world-circle::after {
     content: '';
     position: absolute;
-    width: 6px;
-    height: 6px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    opacity: 0;
     top: 50%;
     left: 50%;
+    width: 4px;
+    height: 4px;
     transform: translate(-50%, -50%);
+    opacity: 0;
     pointer-events: none;
     z-index: 10;
+    background: rgba(0, 212, 255, 1);
+    border-radius: 50%;
+    box-shadow: 
+        /* Rayos principales - 8 direcciones */
+        0 -80px 0 0 rgba(0, 212, 255, 0.8),
+        57px -57px 0 0 rgba(0, 255, 127, 0.8),
+        80px 0 0 0 rgba(0, 212, 255, 0.8),
+        57px 57px 0 0 rgba(0, 255, 127, 0.8),
+        0 80px 0 0 rgba(0, 212, 255, 0.8),
+        -57px 57px 0 0 rgba(0, 255, 127, 0.8),
+        -80px 0 0 0 rgba(0, 212, 255, 0.8),
+        -57px -57px 0 0 rgba(0, 255, 127, 0.8),
+        /* Rayos secundarios - más largos */
+        0 -120px 0 0 rgba(0, 212, 255, 0.6),
+        85px -85px 0 0 rgba(0, 255, 127, 0.6),
+        120px 0 0 0 rgba(0, 212, 255, 0.6),
+        85px 85px 0 0 rgba(0, 255, 127, 0.6),
+        0 120px 0 0 rgba(0, 212, 255, 0.6),
+        -85px 85px 0 0 rgba(0, 255, 127, 0.6),
+        -120px 0 0 0 rgba(0, 212, 255, 0.6),
+        -85px -85px 0 0 rgba(0, 255, 127, 0.6),
+        /* Rayos más distantes */
+        0 -160px 0 0 rgba(0, 212, 255, 0.4),
+        113px -113px 0 0 rgba(0, 255, 127, 0.4),
+        160px 0 0 0 rgba(0, 212, 255, 0.4),
+        113px 113px 0 0 rgba(0, 255, 127, 0.4),
+        0 160px 0 0 rgba(0, 212, 255, 0.4),
+        -113px 113px 0 0 rgba(0, 255, 127, 0.4),
+        -160px 0 0 0 rgba(0, 212, 255, 0.4),
+        -113px -113px 0 0 rgba(0, 255, 127, 0.4);
 }
 
 .world-section:hover .world-circle::after {
-    animation: particleExplosion 1.5s ease-out infinite;
+    animation: sciFiIris 2.5s ease-out infinite;
     opacity: 1;
 }
 
@@ -1511,6 +1575,29 @@ body {
         /* Particle 8 - Top Left */
         -56px -56px 0 0 currentColor;
     animation: particleExplosionRadial 2s ease-out infinite;
+}
+
+@keyframes sciFiIris {
+    0% {
+        transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+        opacity: 0;
+    }
+    25% {
+        transform: translate(-50%, -50%) scale(0.6) rotate(90deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
+        opacity: 0.8;
+    }
+    75% {
+        transform: translate(-50%, -50%) scale(2.0) rotate(270deg);
+        opacity: 0.4;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(3.0) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 @keyframes particleExplosionRadial {

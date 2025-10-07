@@ -98,17 +98,17 @@ class HyruleWorld {
         // Initialize wind canvas
         this.initializeWindCanvas();
 
-        // Create wind particles
-        for (let i = 0; i < 30; i++) {
+        // Create wind particles (reduced for better performance)
+        for (let i = 0; i < 8; i++) {
             setTimeout(() => {
                 this.createWindParticle();
-            }, i * 150);
+            }, i * 300);
         }
 
-        // Continuous wind particle creation
+        // Reduced wind particle creation for performance
         setInterval(() => {
             this.createWindParticle();
-        }, 600);
+        }, 2000);
 
         // Initialize magic orbs
         this.initializeMagicOrbs();
@@ -152,6 +152,15 @@ class HyruleWorld {
     }
 
     animateWindCanvas(ctx, canvas) {
+        // Limit animation to 30fps instead of 60fps for performance
+        if (!this.lastCanvasUpdate) this.lastCanvasUpdate = 0;
+        const now = Date.now();
+        if (now - this.lastCanvasUpdate < 33) { // ~30fps
+            requestAnimationFrame(() => this.animateWindCanvas(ctx, canvas));
+            return;
+        }
+        this.lastCanvasUpdate = now;
+        
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         this.windParticles.forEach(particle => {
@@ -195,10 +204,10 @@ class HyruleWorld {
             }, i * 1000);
         }
 
-        // Continuous orb creation
+        // Reduced orb creation for performance
         setInterval(() => {
             this.createMagicOrb(magicOrbs);
-        }, 4000);
+        }, 8000);
     }
 
     createMagicOrb(container) {
@@ -237,17 +246,17 @@ class HyruleWorld {
         particleContainer.className = 'mystical-particles';
         document.body.appendChild(particleContainer);
 
-        // Create mystical particles
-        for (let i = 0; i < 15; i++) {
+        // Create mystical particles (reduced for better performance)
+        for (let i = 0; i < 5; i++) {
             setTimeout(() => {
                 this.createMysticalParticle(particleContainer);
-            }, i * 400);
+            }, i * 800);
         }
 
-        // Continuous particle creation
+        // Reduced particle creation for performance
         setInterval(() => {
             this.createMysticalParticle(particleContainer);
-        }, 3000);
+        }, 6000);
     }
 
     createMysticalParticle(container) {

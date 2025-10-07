@@ -12,20 +12,36 @@ class PortfolioApp {
         this.setupSmoothScrolling();
         this.setupSonicRings();
         this.initializeWorldEffects();
+        this.setupEpicTransitions();
     }
 
     setupSimpleLoading() {
         const loadingScreen = document.getElementById('loading-screen');
         
-        // Hide loading screen after 2 seconds
-        setTimeout(() => {
+        // Verificar si venimos de un mundo
+        const isBackNavigation = document.referrer.includes('zelda.html') ||
+                                document.referrer.includes('tamriel.html') ||
+                                document.referrer.includes('cyberpunk.html') ||
+                                document.referrer.includes('retro.html');
+        
+        if (isBackNavigation) {
+            // Si venimos de un mundo, ocultar el loading screen inmediatamente
             if (loadingScreen) {
-                loadingScreen.classList.add('hidden');
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 500);
+                loadingScreen.style.display = 'none';
             }
-        }, 2000);
+            // Aplicar transición suave
+            document.body.classList.add('back-from-world');
+        } else {
+            // Carga inicial normal
+            setTimeout(() => {
+                if (loadingScreen) {
+                    loadingScreen.classList.add('hidden');
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }
+            }, 1500);
+        }
     }
 
     // Loading Screen
@@ -781,6 +797,28 @@ class Utils {
             rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
             rect.right <= (window.innerWidth || document.documentElement.clientWidth)
         );
+    }
+
+    // Clean Navigation System
+    setupEpicTransitions() {
+        const worldSections = document.querySelectorAll('.world-section');
+        
+        worldSections.forEach(section => {
+            section.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Añadir clase de transición suave
+                section.classList.add('world-transition');
+                
+                // Obtener la URL de destino
+                const targetUrl = section.getAttribute('href');
+                
+                // Navegación suave
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 200);
+            });
+        });
     }
 }
 
