@@ -1590,13 +1590,15 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    animation: circleRotateFast 2s linear infinite;
 }
 
-.world-section[data-world="hyrule"]:hover .world-circle::before,
+.world-section[data-world="hyrule"]:hover .world-circle::before {
+    border-top-color: #00ff41;
+    border-right-color: rgba(0, 255, 65, 0.3);
+}
+
 .world-section[data-world="hyrule"]:hover .world-circle::after {
-    background: #00ff41;
-    box-shadow: 0 0 10px #00ff41;
+    color: #00ff41;
 }
 
 .world-section[data-world="hyrule"]:hover .world-name {
@@ -1615,13 +1617,15 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    animation: circleRotateFast 2s linear infinite;
 }
 
-.world-section[data-world="tamriel"]:hover .world-circle::before,
+.world-section[data-world="tamriel"]:hover .world-circle::before {
+    border-top-color: #ffd700;
+    border-right-color: rgba(255, 215, 0, 0.3);
+}
+
 .world-section[data-world="tamriel"]:hover .world-circle::after {
-    background: #ffd700;
-    box-shadow: 0 0 10px #ffd700;
+    color: #ffd700;
 }
 
 .world-section[data-world="tamriel"]:hover .world-name {
@@ -1640,13 +1644,15 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    animation: circleRotateFast 2s linear infinite;
 }
 
-.world-section[data-world="night-city"]:hover .world-circle::before,
+.world-section[data-world="night-city"]:hover .world-circle::before {
+    border-top-color: #ff0080;
+    border-right-color: rgba(255, 0, 128, 0.3);
+}
+
 .world-section[data-world="night-city"]:hover .world-circle::after {
-    background: #ff0080;
-    box-shadow: 0 0 10px #ff0080;
+    color: #ff0080;
 }
 
 .world-section[data-world="night-city"]:hover .world-name {
@@ -1665,13 +1671,15 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    animation: circleRotateFast 2s linear infinite;
 }
 
-.world-section[data-world="arcade"]:hover .world-circle::before,
+.world-section[data-world="arcade"]:hover .world-circle::before {
+    border-top-color: #ff8000;
+    border-right-color: rgba(255, 128, 0, 0.3);
+}
+
 .world-section[data-world="arcade"]:hover .world-circle::after {
-    background: #ff8000;
-    box-shadow: 0 0 10px #ff8000;
+    color: #ff8000;
 }
 
 .world-section[data-world="arcade"]:hover .world-name {
