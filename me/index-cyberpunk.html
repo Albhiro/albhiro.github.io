@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIGHT CITY - Tech & Código | Luis Alberto Portfolio</title>
+    
+    <!-- Meta tags -->
+    <meta name="description" content="Explora el stack tecnológico y repositorios de código de Luis Alberto en Night City">
+    <meta name="keywords" content="Cyberpunk, Tech Stack, GitHub, Código, FastAPI, Python, Angular, Docker, Night City">
+    <meta name="author" content="Luis Alberto Oraa García"
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="ALBHIRO.SYSTEM - Night City Portfolio">
+    <meta property="og:description" content="Welcome to my digital Night City - 16 años transformando Santander Digital Services">
+    <meta property="og:type" content="website">
+    
+    <!-- Cyberpunk Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Cyberpunk Styles -->
+    <link href="./assets/css/cyberpunk-gui.css" rel="stylesheet">
+    
+    <!-- Audio -->
+    <audio id="hoverSound" preload="auto">
+        <source src="./assets/audio/hover.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="clickSound" preload="auto">
+        <source src="./assets/audio/click.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="ambientMusic" preload="auto" loop>
+        <source src="./assets/audio/night-city-ambient.mp3" type="audio/mpeg">
+    </audio>
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="cyberpunk-bg">
+        <canvas id="matrixRain"></canvas>
+        <div class="city-lights"></div>
+        <div class="neon-grid"></div>
+        <div class="data-stream"></div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-container">
+            <div class="loading-logo">
+                <span class="glitch" data-text="ALBHIRO.SYSTEM">ALBHIRO.SYSTEM</span>
+            </div>
+            <div class="loading-text">
+                <p>Connecting to Night City...</p>
+                <p>Loading neural implants...</p>
+                <p>Synchronizing with corporate mainframe...</p>
+                <p>Establishing encrypted connection...</p>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress" id="loadingProgress"></div>
+            </div>
+            <div class="loading-percentage">0%</div>
+        </div>
+        <div class="scan-lines"></div>
+    </div>
+
+    <!-- Main HUD -->
+    <div id="mainHUD" class="main-hud hidden">
+        <!-- Top HUD Bar -->
+        <div class="hud-top">
+            <div class="hud-left">
+                <div class="user-info">
+                    <div class="avatar-container">
+                        <img src="./assets/images/me.jfif" alt="Albhiro Avatar" class="avatar">
+                        <div class="avatar-frame"></div>
+                        <div class="status-indicator online"></div>
+                    </div>
+                    <div class="user-details">
+                        <div class="username">ALBHIRO</div>
+                        <div class="user-title">Tech Architect</div>
+                        <div class="location">Madrid, Spain</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hud-center">
+                <div class="system-title">
+                    <h1 class="glitch" data-text="NIGHT CITY PORTFOLIO">NIGHT CITY PORTFOLIO</h1>
+                    <div class="subtitle">Santander Digital Services Division</div>
+                </div>
+            </div>
+            
+            <div class="hud-right">
+                <div class="system-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">EXP</span>
+                        <div class="stat-bar">
+                            <div class="stat-fill" data-value="16" style="width: 100%"></div>
+                        </div>
+                        <span class="stat-value">16 años</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">PROJECTS</span>
+                        <div class="stat-bar">
+                            <div class="stat-fill" data-value="25" style="width: 100%"></div>
+                        </div>
+                        <span class="stat-value">25/25</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">AUTOMATION</span>
+                        <div class="stat-bar">
+                            <div class="stat-fill" data-value="130" style="width: 100%"></div>
+                        </div>
+                        <span class="stat-value">130+/day</span>
+                    </div>
+                </div>
+                
+                <div class="system-controls">
+                    <button class="control-btn" id="audioToggle" title="Toggle Audio">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    <button class="control-btn" id="fullscreenToggle" title="Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                    <button class="control-btn" id="terminalToggle" title="Return to Terminal">
+                        <i class="fas fa-terminal"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="cyberpunk-nav">
+            <div class="nav-container">
+                <div class="nav-item active" data-district="overview">
+                    <div class="nav-icon"><i class="fas fa-city"></i></div>
+                    <div class="nav-label">OVERVIEW</div>
+                    <div class="nav-description">City Center</div>
+                </div>
+                <div class="nav-item" data-district="experience">
+                    <div class="nav-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="nav-label">EXPERIENCE</div>
+                    <div class="nav-description">Corporate Plaza</div>
+                </div>
+                <div class="nav-item" data-district="skills">
+                    <div class="nav-icon"><i class="fas fa-microchip"></i></div>
+                    <div class="nav-label">CYBERNETICS</div>
+                    <div class="nav-description">Tech District</div>
+                </div>
+                <div class="nav-item" data-district="projects">
+                    <div class="nav-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="nav-label">PROJECTS</div>
+                    <div class="nav-description">Innovation Hub</div>
+                </div>
+                <div class="nav-item" data-district="research">
+                    <div class="nav-icon"><i class="fas fa-brain"></i></div>
+                    <div class="nav-label">AI RESEARCH</div>
+                    <div class="nav-description">Neural Labs</div>
+                </div>
+                <div class="nav-item" data-district="contact">
+                    <div class="nav-icon"><i class="fas fa-satellite-dish"></i></div>
+                    <div class="nav-label">CONTACT</div>
+                    <div class="nav-description">Comms Center</div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Overview District -->
+            <section id="overview" class="district active">
+                <div class="district-header">
+                    <h2 class="district-title">CITY CENTER - OVERVIEW</h2>
+                    <div class="district-subtitle">Welcome to my digital Night City</div>
+                </div>
+                
+                <div class="overview-grid">
+                    <div class="overview-card primary">
+                        <div class="card-header">
+                            <div class="card-icon"><i class="fas fa-user-astronaut"></i></div>
+                            <h3>IDENTITY PROFILE</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="profile-data">
+                                <div class="data-line">
+                                    <span class="label">Handle:</span>
+                                    <span class="value glitch" data-text="ALBHIRO">ALBHIRO</span>
+                                </div>
+                                <div class="data-line">
+                                    <span class="label">Real Name:</span>
+                                    <span class="value">Luis Alberto Oraa García</span>
+                                </div>
+                                <div class="data-line">
+                                    <span class="label">Role:</span>
+                                    <span class="value">Technical Architect</span>
+                                </div>
+                                <div class="data-line">
+                                    <span class="label">Corp:</span>
+                                    <span class="value">Santander Digital Services</span>
+                                </div>
+                                <div class="data-line">
+                                    <span class="label">Years Active:</span>
+                                    <span class="value">16 Years</span>
+                                </div>
+                                <div class="data-line">
+                                    <span class="label">Specialization:</span>
+                                    <span class="value">Full-Stack • AI Research • Automation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-header">
+                            <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                            <h3>PERFORMANCE METRICS</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="metrics-grid">
+                                <div class="metric">
+                                    <div class="metric-value">25</div>
+                                    <div class="metric-label">Projects Completed</div>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">130+</div>
+                                    <div class="metric-label">Daily Automations</div>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">16</div>
+                                    <div class="metric-label">Years Experience</div>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">∞</div>
+                                    <div class="metric-label">Lines of Code</div>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill infinite-bar" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-header">
+                            <div class="card-icon"><i class="fas fa-quote-right"></i></div>
+                            <h3>PHILOSOPHY</h3>
+                        </div>
+                        <div class="card-content">
+                            <blockquote class="cyber-quote">
+                                "There is no spoon, only code"
+                            </blockquote>
+                            <p class="quote-description">
+                                16 años transformando Santander Digital Services<br>
+                                De programador a arquitecto técnico • Investigador IA secreto • Creador de soluciones que impactan
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="achievements-section">
+                    <h3 class="section-title">RECENT ACHIEVEMENTS</h3>
+                    <div class="achievements-grid">
+                        <div class="achievement unlocked">
+                            <div class="achievement-icon">💻</div>
+                            <div class="achievement-title">Code Architect</div>
+                            <div class="achievement-desc">Master of Clean Architecture</div>
+                        </div>
+                        <div class="achievement unlocked">
+                            <div class="achievement-icon">🐛</div>
+                            <div class="achievement-title">Bug Whisperer</div>
+                            <div class="achievement-desc">It's not a bug, it's a feature</div>
+                        </div>
+                        <div class="achievement unlocked">
+                            <div class="achievement-icon">🔄</div>
+                            <div class="achievement-title">IT Crowd Survivor</div>
+                            <div class="achievement-desc">Have you tried turning it off and on again?</div>
+                        </div>
+                        <div class="achievement unlocked">
+                            <div class="achievement-icon">🌍</div>
+                            <div class="achievement-title">World Greeter</div>
+                            <div class="achievement-desc">Hello World! Master</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other districts will be loaded dynamically -->
+            <section id="experience" class="district hidden">
+                <div class="district-header">
+                    <h2 class="district-title">CORPORATE PLAZA - EXPERIENCE</h2>
+                    <div class="district-subtitle">Professional journey through the corporate world</div>
+                </div>
+                <!-- Experience content will be loaded here -->
+            </section>
+
+            <section id="skills" class="district hidden">
+                <div class="district-header">
+                    <h2 class="district-title">TECH DISTRICT - CYBERNETICS</h2>
+                    <div class="district-subtitle">Neural implants and technical augmentations</div>
+                </div>
+                
+                <div class="cybernetics-grid">
+                    <!-- Programming Implants -->
+                    <div class="cyberware-category">
+                        <div class="category-header">
+                            <i class="fas fa-brain"></i>
+                            <h3>NEURAL PROGRAMMING INTERFACE</h3>
+                        </div>
+                        <div class="implants-list">
+                            <div class="implant" data-quality="legendary">
+                                <div class="implant-icon"><i class="fab fa-python"></i></div>
+                                <div class="implant-details">
+                                    <div class="implant-name">Python Neural Core</div>
+                                    <div class="implant-level">Level 100 • Legendary</div>
+                                    <div class="implant-description">Advanced AI, ML, automation protocols</div>
+                                </div>
+                                <div class="implant-stats">
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="implant" data-quality="epic">
+                                <div class="implant-icon"><i class="fab fa-js-square"></i></div>
+                                <div class="implant-details">
+                                    <div class="implant-name">JavaScript Enhancement</div>
+                                    <div class="implant-level">Level 95 • Epic</div>
+                                    <div class="implant-description">Frontend/Backend integration matrix</div>
+                                </div>
+                                <div class="implant-stats">
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="implant" data-quality="epic">
+                                <div class="implant-icon"><i class="fas fa-hashtag"></i></div>
+                                <div class="implant-details">
+                                    <div class="implant-name">C# Enterprise Module</div>
+                                    <div class="implant-level">Level 90 • Epic</div>
+                                    <div class="implant-description">Corporate-grade development suite</div>
+                                </div>
+                                <div class="implant-stats">
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="implant" data-quality="rare">
+                                <div class="implant-icon"><i class="fas fa-database"></i></div>
+                                <div class="implant-details">
+                                    <div class="implant-name">SQL Database Interface</div>
+                                    <div class="implant-level">Level 85 • Rare</div>
+                                    <div class="implant-description">Advanced query optimization engine</div>
+                                </div>
+                                <div class="implant-stats">
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Architecture Implants -->
+                    <div class="cyberware-category">
+                        <div class="category-header">
+                            <i class="fas fa-sitemap"></i>
+                            <h3>SYSTEM ARCHITECTURE MATRIX</h3>
+                        </div>
+                        <div class="implants-list">
+                            <div class="implant" data-quality="legendary">
+                                <div class="implant-icon"><i class="fas fa-cubes"></i></div>
+                                <div class="implant-details">
+                                    <div class="implant-name">Microservices Core</div>
+                                    <div class="implant-level">Level 100 • Legendary</div>
+                                    <div class="implant-description">Distributed system mastery protocol</div>
+                                </div>
+                                <div class="implant-stats">
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="implant" data-quality="epic">
+                                <div class="implant-icon"><i class="fas fa-cloud"></i></div>
+                                <div class="implant-details">
+                                    <div class="implant-name">Cloud Architecture Suite</div>
+                                    <div class="implant-level">Level 95 • Epic</div>
+                                    <div class="implant-description">AWS, Azure, serverless frameworks</div>
+                                </div>
+                                <div class="implant-stats">
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="implant" data-quality="rare">
+                                <div class="implant-icon"><i class="fab fa-docker"></i></div>
+                                <div class="implant-details">
+                                    <div class="implant-name">Container Orchestration</div>
+                                    <div class="implant-level">Level 80 • Rare</div>
+                                    <div class="implant-description">Docker, Kubernetes deployment</div>
+                                </div>
+                                <div class="implant-stats">
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Research Implants -->
+                    <div class="cyberware-category">
+                        <div class="category-header">
+                            <i class="fas fa-robot"></i>
+                            <h3>ARTIFICIAL INTELLIGENCE CORE</h3>
+                        </div>
+                        <div class="implants-list">
+                            <div class="implant" data-quality="legendary">
+                                <div class="implant-icon"><i class="fas fa-language"></i></div>
+                                <div class="implant-details">
+                                    <div class="implant-name">NLP Processing Unit</div>
+                                    <div class="implant-level">Level 100 • Legendary</div>
+                                    <div class="implant-description">Natural language understanding matrix</div>
+                                </div>
+                                <div class="implant-stats">
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="implant" data-quality="epic">
+                                <div class="implant-icon"><i class="fas fa-network-wired"></i></div>
+                                <div class="implant-details">
+                                    <div class="implant-name">TensorFlow Neural Net</div>
+                                    <div class="implant-level">Level 90 • Epic</div>
+                                    <div class="implant-description">Deep learning framework integration</div>
+                                </div>
+                                <div class="implant-stats">
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="implant" data-quality="rare">
+                                <div class="implant-icon"><i class="fas fa-eye"></i></div>
+                                <div class="implant-details">
+                                    <div class="implant-name">Computer Vision Module</div>
+                                    <div class="implant-level">Level 75 • Rare</div>
+                                    <div class="implant-description">Image recognition and analysis</div>
+                                </div>
+                                <div class="implant-stats">
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="district hidden">
+                <div class="district-header">
+                    <h2 class="district-title">INNOVATION HUB - PROJECTS</h2>
+                    <div class="district-subtitle">Live demos and functional prototypes</div>
+                </div>
+                
+                <div class="projects-grid">
+                    <!-- Featured Projects -->
+                    <div class="project-card featured">
+                        <div class="project-header">
+                            <div class="project-status">
+                                <span class="status-indicator active"></span>
+                                <span class="status-text">LIVE DEPLOYMENT</span>
+                            </div>
+                            <div class="project-category">AI/ML PLATFORM</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Intelligent Process Automation Suite</h3>
+                            <div class="project-description">
+                                Advanced AI system processing 130+ daily automations with natural language processing 
+                                and predictive analytics for Santander Digital Services.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">Azure ML</span>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">130+</span>
+                                    <span class="metric-label">Daily Automations</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">99.7%</span>
+                                    <span class="metric-label">Uptime</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">85%</span>
+                                    <span class="metric-label">Time Saved</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-status">
+                                <span class="status-indicator development"></span>
+                                <span class="status-text">IN DEVELOPMENT</span>
+                            </div>
+                            <div class="project-category">MICROSERVICES</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Cloud-Native Banking Platform</h3>
+                            <div class="project-description">
+                                Scalable microservices architecture handling millions of financial transactions 
+                                with real-time fraud detection and compliance monitoring.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">C#</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">Kubernetes</span>
+                                <span class="tech-tag">RabbitMQ</span>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">2M+</span>
+                                    <span class="metric-label">Transactions/Day</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">15ms</span>
+                                    <span class="metric-label">Avg Response</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-status">
+                                <span class="status-indicator prototype"></span>
+                                <span class="status-text">PROTOTYPE</span>
+                            </div>
+                            <div class="project-category">WEB PLATFORM</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Interactive Dashboard Suite</h3>
+                            <div class="project-description">
+                                Real-time data visualization platform with customizable widgets, 
+                                predictive analytics, and multi-tenant architecture.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">D3.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">50+</span>
+                                    <span class="metric-label">Custom Widgets</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">Real-time</span>
+                                    <span class="metric-label">Data Updates</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-status">
+                                <span class="status-indicator research"></span>
+                                <span class="status-text">RESEARCH</span>
+                            </div>
+                            <div class="project-category">BLOCKCHAIN</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Decentralized Identity System</h3>
+                            <div class="project-description">
+                                Blockchain-based identity verification system with zero-knowledge proofs 
+                                for enhanced privacy and security in financial services.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Solidity</span>
+                                <span class="tech-tag">Web3.js</span>
+                                <span class="tech-tag">IPFS</span>
+                                <span class="tech-tag">Ethereum</span>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">256-bit</span>
+                                    <span class="metric-label">Encryption</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">Zero</span>
+                                    <span class="metric-label">Data Leakage</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="research" class="district hidden">
+                <div class="district-header">
+                    <h2 class="district-title">NEURAL LABS - AI RESEARCH</h2>
+                    <div class="district-subtitle">Cutting-edge artificial intelligence experiments</div>
+                </div>
+                
+                <div class="research-grid">
+                    <!-- Active Research Projects -->
+                    <div class="research-category">
+                        <div class="category-header">
+                            <i class="fas fa-brain"></i>
+                            <h3>ACTIVE NEURAL NETWORKS</h3>
+                        </div>
+                        <div class="research-projects">
+                            <div class="research-item">
+                                <div class="research-icon">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div class="research-content">
+                                    <h4>Conversational AI Assistant</h4>
+                                    <p>Advanced NLP system for financial customer service with contextual understanding and emotional intelligence.</p>
+                                    <div class="research-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 85%"></div>
+                                        </div>
+                                        <span class="progress-text">85% Complete</span>
+                                    </div>
+                                    <div class="research-tags">
+                                        <span class="tag">GPT-4</span>
+                                        <span class="tag">BERT</span>
+                                        <span class="tag">Transformer</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="research-item">
+                                <div class="research-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="research-content">
+                                    <h4>Fraud Detection ML Model</h4>
+                                    <p>Real-time anomaly detection system using ensemble learning and deep neural networks for transaction monitoring.</p>
+                                    <div class="research-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 92%"></div>
+                                        </div>
+                                        <span class="progress-text">92% Complete</span>
+                                    </div>
+                                    <div class="research-tags">
+                                        <span class="tag">XGBoost</span>
+                                        <span class="tag">LSTM</span>
+                                        <span class="tag">Isolation Forest</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="research-item">
+                                <div class="research-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="research-content">
+                                    <h4>Predictive Analytics Engine</h4>
+                                    <p>Time series forecasting for market trends and customer behavior using advanced statistical models.</p>
+                                    <div class="research-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 78%"></div>
+                                        </div>
+                                        <span class="progress-text">78% Complete</span>
+                                    </div>
+                                    <div class="research-tags">
+                                        <span class="tag">Prophet</span>
+                                        <span class="tag">ARIMA</span>
+                                        <span class="tag">Neural Prophet</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Research Publications -->
+                    <div class="research-category">
+                        <div class="category-header">
+                            <i class="fas fa-file-alt"></i>
+                            <h3>RESEARCH PUBLICATIONS</h3>
+                        </div>
+                        <div class="publications-list">
+                            <div class="publication-item">
+                                <div class="publication-date">2024</div>
+                                <div class="publication-content">
+                                    <h4>"Automated Process Mining in Financial Services"</h4>
+                                    <p>Internal Santander Technical Report on AI-driven process optimization and automation strategies.</p>
+                                    <div class="publication-metrics">
+                                        <span class="metric">130+ processes analyzed</span>
+                                        <span class="metric">85% efficiency gain</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="publication-item">
+                                <div class="publication-date">2023</div>
+                                <div class="publication-content">
+                                    <h4>"Microservices Architecture Patterns for Banking"</h4>
+                                    <p>Comprehensive analysis of scalable architectures for high-volume financial transaction processing.</p>
+                                    <div class="publication-metrics">
+                                        <span class="metric">2M+ transactions/day</span>
+                                        <span class="metric">99.9% uptime</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Experimental Lab -->
+                    <div class="research-category">
+                        <div class="category-header">
+                            <i class="fas fa-flask"></i>
+                            <h3>EXPERIMENTAL LAB</h3>
+                        </div>
+                        <div class="experiments-grid">
+                            <div class="experiment-card">
+                                <div class="experiment-status active"></div>
+                                <h4>Quantum ML Algorithms</h4>
+                                <p>Exploring quantum computing applications in machine learning for financial modeling.</p>
+                                <div class="experiment-tech">
+                                    <span class="tech">Qiskit</span>
+                                    <span class="tech">Cirq</span>
+                                </div>
+                            </div>
+                            
+                            <div class="experiment-card">
+                                <div class="experiment-status development"></div>
+                                <h4>Federated Learning</h4>
+                                <p>Privacy-preserving ML training across distributed banking networks.</p>
+                                <div class="experiment-tech">
+                                    <span class="tech">TensorFlow Federated</span>
+                                    <span class="tech">PySyft</span>
+                                </div>
+                            </div>
+                            
+                            <div class="experiment-card">
+                                <div class="experiment-status prototype"></div>
+                                <h4>Edge AI Computing</h4>
+                                <p>Real-time inference on mobile and IoT devices for instant decision making.</p>
+                                <div class="experiment-tech">
+                                    <span class="tech">TensorFlow Lite</span>
+                                    <span class="tech">ONNX</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="district hidden">
+                <div class="district-header">
+                    <h2 class="district-title">COMMS CENTER - CONTACT</h2>
+                    <div class="district-subtitle">Establish connection protocols</div>
+                </div>
+                <!-- Contact content will be loaded here -->
+            </section>
+        </main>
+
+        <!-- Bottom HUD -->
+        <div class="hud-bottom">
+            <div class="system-info">
+                <div class="info-item">
+                    <span class="info-label">SYSTEM:</span>
+                    <span class="info-value">ALBHIRO.GUI v2.025</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">STATUS:</span>
+                    <span class="info-value online">ONLINE</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">LOCATION:</span>
+                    <span class="info-value">Night City, Madrid Sector</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">UPTIME:</span>
+                    <span class="info-value" id="uptime">16 years, 247 days</span>
+                </div>
+            </div>
+            
+            <div class="quick-actions">
+                <button class="action-btn" id="downloadCV">
+                    <i class="fas fa-download"></i>
+                    <span>Download Neural Profile</span>
+                </button>
+                <button class="action-btn" id="viewProjects">
+                    <i class="fas fa-rocket"></i>
+                    <span>Launch Projects</span>
+                </button>
+                <button class="action-btn" id="contactForm">
+                    <i class="fas fa-satellite-dish"></i>
+                    <span>Establish Contact</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle Effects -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Glitch Overlay -->
+    <div class="glitch-overlay" id="glitchOverlay"></div>
+
+    <!-- Scripts -->
+    <script src="./assets/js/cyberpunk-gui.js"></script>
+    <script src="./assets/js/cyberpunk-effects.js"></script>
+    <script src="./assets/js/cyberpunk-navigation.js"></script>
+    <script src="./assets/js/cyberpunk-audio.js"></script>
+</body>
+</html>

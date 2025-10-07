@@ -1,0 +1,192 @@
+/* ===========================================
+   SONIC RINGS ADDITIONAL EFFECTS
+   =========================================== */
+
+/* Floating animation for rings */
+.sonic-ring {
+    animation: float 6s ease-in-out infinite;
+}
+
+.sonic-ring:nth-child(1) { animation-delay: 0s; }
+.sonic-ring:nth-child(2) { animation-delay: 1.5s; }
+.sonic-ring:nth-child(3) { animation-delay: 3s; }
+.sonic-ring:nth-child(4) { animation-delay: 4.5s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Ring collection sound wave effect */
+.sonic-ring.collecting::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    animation: soundWave 0.6s ease-out;
+    z-index: -1;
+}
+
+@keyframes soundWave {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
+}
+
+/* Enhanced particle effects */
+.ring-particle {
+    animation: particleBurst 0.8s ease-out forwards;
+}
+
+@keyframes particleBurst {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Speed boost effect when hovering */
+.sonic-ring:hover .ring-outer {
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Glitch effect for the world images */
+.world-image {
+    position: relative;
+}
+
+.sonic-ring:hover .world-image {
+    animation: imageGlitch 0.3s ease-in-out;
+}
+
+@keyframes imageGlitch {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-2px); }
+    40% { transform: translateX(2px); }
+    60% { transform: translateX(-1px); }
+    80% { transform: translateX(1px); }
+}
+
+/* Power up effect */
+.sonic-ring::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, transparent 70%, rgba(255, 184, 0, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.sonic-ring:hover::after {
+    opacity: 1;
+    animation: powerUp 2s ease-in-out infinite;
+}
+
+@keyframes powerUp {
+    0%, 100% { transform: scale(1); opacity: 0.1; }
+    50% { transform: scale(1.1); opacity: 0.3; }
+}
+
+/* Ring trail effect */
+.rings-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="20" fill="none" stroke="%2300D4FF" stroke-width="2" opacity="0.1"/></svg>') repeat;
+    background-size: 100px 100px;
+    animation: trailMove 10s linear infinite;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+@keyframes trailMove {
+    0% { transform: translateX(0) translateY(0); }
+    25% { transform: translateX(-50px) translateY(-25px); }
+    50% { transform: translateX(-100px) translateY(0); }
+    75% { transform: translateX(-50px) translateY(25px); }
+    100% { transform: translateX(0) translateY(0); }
+}
+
+/* Ring magnetism effect - rings attract to cursor */
+@media (hover: hover) {
+    .sonic-ring {
+        transition: transform 0.2s ease;
+    }
+}
+
+/* Boost pad effect under rings */
+.sonic-ring::before {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 20px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.sonic-ring:hover::before {
+    opacity: 0.5;
+    animation: boostPad 1s ease-in-out infinite;
+}
+
+@keyframes boostPad {
+    0%, 100% { transform: translateX(-50%) scaleX(1); }
+    50% { transform: translateX(-50%) scaleX(1.2); }
+}
+
+/* Chaos emerald shine effect */
+.world-glow::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: chaosShine 3s ease-in-out infinite;
+    opacity: 0;
+}
+
+.sonic-ring:hover .world-glow::after {
+    opacity: 1;
+}
+
+@keyframes chaosShine {
+    0%, 100% { transform: scale(0.8) rotate(0deg); opacity: 0; }
+    50% { transform: scale(1.2) rotate(180deg); opacity: 0.6; }
+}

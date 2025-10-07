@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis Toolkit - Demo Interactivo</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #ecf0f1;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .tool-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .tool-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+        }
+        
+        .tool-title {
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+        
+        .input-group {
+            margin: 15px 0;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #bdc3c7;
+            font-weight: 500;
+        }
+        
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            color: #ecf0f1;
+            font-size: 14px;
+        }
+        
+        .input-group input::placeholder, .input-group textarea::placeholder {
+            color: rgba(236, 240, 241, 0.6);
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db 0%, #2ecc71 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(149, 165, 166, 0.2);
+            color: #95a5a6;
+            border: 1px solid #95a5a6;
+        }
+        
+        .result-area {
+            background: rgba(44, 62, 80, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .data-table th, .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .data-table th {
+            background: rgba(52, 152, 219, 0.3);
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-item {
+            background: rgba(46, 204, 113, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(46, 204, 113, 0.4);
+        }
+        
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2ecc71;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        .file-upload {
+            border: 2px dashed rgba(52, 152, 219, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .file-upload:hover {
+            border-color: #3498db;
+            background: rgba(52, 152, 219, 0.1);
+        }
+        
+        .file-upload.dragover {
+            border-color: #2ecc71;
+            background: rgba(46, 204, 113, 0.1);
+        }
+        
+        .code-output {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .alert {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .alert-info {
+            background: rgba(52, 152, 219, 0.2);
+            border: 1px solid rgba(52, 152, 219, 0.4);
+            color: #3498db;
+        }
+        
+        .alert-success {
+            background: rgba(46, 204, 113, 0.2);
+            border: 1px solid rgba(46, 204, 113, 0.4);
+            color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Data Analysis Toolkit</h1>
+            <p>Herramientas desarrolladas para optimizar análisis de datos en Santander Digital Services</p>
+        </div>
+        
+        <div class="tools-grid">
+            <!-- Excel Data Processor -->
+            <div class="tool-card">
+                <span class="tool-icon">📈</span>
+                <h3 class="tool-title">Excel Data Processor</h3>
+                
+                <div class="file-upload" id="excelUpload" onclick="document.getElementById('excelFile').click()">
+                    <p>📁 Arrastra tu archivo Excel aquí</p>
+                    <p style="font-size: 0.9em; opacity: 0.7;">o haz clic para seleccionar</p>
+                    <input type="file" id="excelFile" accept=".xlsx,.xls" style="display: none;" onchange="processExcelFile(this)">
+                </div>
+                
+                <button class="btn btn-secondary" onclick="loadSampleData()">
+                    📊 Usar Datos de Ejemplo (Horas/Proyecto)
+                </button>
+                
+                <div class="result-area" id="excelResults" style="display: none;">
+                    <h4>📋 Resumen de Datos</h4>
+                    <div class="stats-grid" id="excelStats"></div>
+                    <div class="chart-container">
+                        <canvas id="excelChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Cleaner -->
+            <div class="tool-card">
+                <span class="tool-icon">🧹</span>
+                <h3 class="tool-title">Data Cleaner</h3>
+                
+                <div class="input-group">
+                    <label>Pega tus datos (CSV format):</label>
+                    <textarea id="rawData" rows="6" placeholder="Empleado,Proyecto,Horas,Fecha
+Luis Alberto,FastAPI Migration,8.5,2024-10-06
+María González,Dashboard Update,6.2,2024-10-06"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label>Operaciones de limpieza:</label>
+                    <label><input type="checkbox" id="removeDuplicates" checked> Eliminar duplicados</label><br>
+                    <label><input type="checkbox" id="removeEmpty" checked> Eliminar filas vacías</label><br>
+                    <label><input type="checkbox" id="standardizeText" checked> Estandarizar texto</label>
+                </div>
+                
+                <button class="btn btn-primary" onclick="cleanData()">
+                    🧹 Limpiar Datos
+                </button>
+                
+                <div class="result-area" id="cleanResults" style="display: none;">
+                    <h4>✨ Datos Limpiados</h4>
+                    <div class="stats-grid" id="cleanStats"></div>
+                    <div class="code-output" id="cleanedData"></div>
+                </div>
+            </div>
+            
+            <!-- Chart Generator -->
+            <div class="tool-card">
+                <span class="tool-icon">📊</span>
+                <h3 class="tool-title">Chart Generator</h3>
+                
+                <div class="input-group">
+                    <label>Tipo de gráfico:</label>
+                    <select id="chartType">
+                        <option value="bar">Barras</option>
+                        <option value="line">Líneas</option>
+                        <option value="pie">Circular</option>
+                        <option value="doughnut">Donut</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label>Datos (formato: label:value):</label>
+                    <textarea id="chartData" rows="5" placeholder="FastAPI Migration:45.5
+Dashboard Update:32.8
+Email Automation:28.3
+SSIS Maintenance:19.2"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label>Título del gráfico:</label>
+                    <input type="text" id="chartTitle" value="Horas por Proyecto - Octubre 2024">
+                </div>
+                
+                <button class="btn btn-primary" onclick="generateChart()">
+                    📊 Generar Gráfico
+                </button>
+                
+                <div class="result-area" id="chartResults" style="display: none;">
+                    <div class="chart-container">
+                        <canvas id="customChart"></canvas>
+                    </div>
+                    <button class="btn btn-secondary" onclick="downloadChart()">
+                        💾 Descargar Gráfico
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Statistics Calculator -->
+            <div class="tool-card">
+                <span class="tool-icon">🔢</span>
+                <h3 class="tool-title">Statistics Calculator</h3>
+                
+                <div class="input-group">
+                    <label>Números (separados por coma):</label>
+                    <textarea id="numbers" rows="4" placeholder="8.5, 6.2, 7.8, 9.1, 5.5, 8.0, 7.3, 6.9, 8.2, 7.5"></textarea>
+                </div>
+                
+                <button class="btn btn-primary" onclick="calculateStats()">
+                    🔢 Calcular Estadísticas
+                </button>
+                
+                <div class="result-area" id="statsResults" style="display: none;">
+                    <h4>📈 Estadísticas Descriptivas</h4>
+                    <div class="stats-grid" id="descriptiveStats"></div>
+                    
+                    <div class="chart-container">
+                        <canvas id="statsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Datos de ejemplo en tiempo real -->
+        <div class="alert alert-info">
+            <h4>💡 Casos de Uso Reales en Santander:</h4>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li><strong>Análisis de horas/proyecto:</strong> Identificación de proyectos con mayor consumo de recursos</li>
+                <li><strong>Reportes de cierre mensual:</strong> Consolidación automática de datos de múltiples fuentes</li>
+                <li><strong>Detección de anomalías:</strong> Identificación de outliers en métricas de productividad</li>
+                <li><strong>Dashboards ejecutivos:</strong> Visualizaciones para presentaciones a management</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Variables globales
+        let excelChart, customChart, statsChart;
+        
+        // Datos de ejemplo realistas
+        const sampleProjectData = {
+            labels: ['FastAPI Migration', 'Dashboard Update', 'Email Automation', 'SSIS Maintenance', 'DB2 Scripts', 'Angular Frontend'],
+            hours: [45.5, 32.8, 28.3, 19.2, 15.7, 22.1],
+            employees: ['Luis Alberto', 'María González', 'Carlos Rodríguez', 'Ana Martín', 'David López', 'Elena Fernández']
+        };
+        
+        // Excel File Processing
+        function processExcelFile(input) {
+            const file = input.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, {type: 'array'});
+                    const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const jsonData = XLSX.utils.sheet_to_json(firstSheet);
+                    
+                    displayExcelData(jsonData);
+                } catch (error) {
+                    alert('Error procesando archivo Excel: ' + error.message);
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+        
+        function loadSampleData() {
+            const sampleData = [
+                {Empleado: 'Luis Alberto', Proyecto: 'FastAPI Migration', Horas: 8.5, Fecha: '2024-10-01'},
+                {Empleado: 'María González', Proyecto: 'Dashboard Update', Horas: 6.2, Fecha: '2024-10-01'},
+                {Empleado: 'Carlos Rodríguez', Proyecto: 'Email Automation', Horas: 7.8, Fecha: '2024-10-01'},
+                {Empleado: 'Ana Martín', Proyecto: 'SSIS Maintenance', Horas: 5.5, Fecha: '2024-10-01'},
+                {Empleado: 'David López', Proyecto: 'DB2 Scripts', Horas: 6.9, Fecha: '2024-10-01'},
+                {Empleado: 'Elena Fernández', Proyecto: 'Angular Frontend', Horas: 7.3, Fecha: '2024-10-01'}
+            ];
+            
+            displayExcelData(sampleData);
+        }
+        
+        function displayExcelData(data) {
+            const resultsDiv = document.getElementById('excelResults');
+            const statsDiv = document.getElementById('excelStats');
+            
+            // Calcular estadísticas
+            const totalHours = data.reduce((sum, row) => sum + (parseFloat(row.Horas) || 0), 0);
+            const avgHours = totalHours / data.length;
+            const uniqueProjects = [...new Set(data.map(row => row.Proyecto))].length;
+            const uniqueEmployees = [...new Set(data.map(row => row.Empleado))].length;
+            
+            // Mostrar estadísticas
+            statsDiv.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value">${totalHours.toFixed(1)}</div>
+                    <div class="stat-label">Horas Totales</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${avgHours.toFixed(1)}</div>
+                    <div class="stat-label">Promedio/Empleado</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${uniqueProjects}</div>
+                    <div class="stat-label">Proyectos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${uniqueEmployees}</div>
+                    <div class="stat-label">Empleados</div>
+                </div>
+            `;
+            
+            // Crear gráfico
+            createExcelChart(data);
+            resultsDiv.style.display = 'block';
+        }
+        
+        function createExcelChart(data) {
+            const ctx = document.getElementById('excelChart').getContext('2d');
+            
+            if (excelChart) {
+                excelChart.destroy();
+            }
+            
+            // Agrupar datos por proyecto
+            const projectHours = {};
+            data.forEach(row => {
+                const project = row.Proyecto;
+                const hours = parseFloat(row.Horas) || 0;
+                projectHours[project] = (projectHours[project] || 0) + hours;
+            });
+            
+            excelChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(projectHours),
+                    datasets: [{
+                        label: 'Horas por Proyecto',
+                        data: Object.values(projectHours),
+                        backgroundColor: [
+                            '#3498db', '#2ecc71', '#e74c3c', '#f39c12', 
+                            '#9b59b6', '#1abc9c', '#34495e', '#e67e22'
+                        ],
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Distribución de Horas por Proyecto',
+                            color: '#ecf0f1'
+                        },
+                        legend: {
+                            labels: { color: '#ecf0f1' }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { color: '#ecf0f1' },
+                            grid: { color: 'rgba(255,255,255,0.1)' }
+                        },
+                        x: {
+                            ticks: { color: '#ecf0f1' },
+                            grid: { color: 'rgba(255,255,255,0.1)' }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Data Cleaner
+        function cleanData() {
+            const rawData = document.getElementById('rawData').value;
+            const removeDuplicates = document.getElementById('removeDuplicates').checked;
+            const removeEmpty = document.getElementById('removeEmpty').checked;
+            const standardizeText = document.getElementById('standardizeText').checked;
+            
+            if (!rawData.trim()) {
+                alert('Por favor, ingresa algunos datos para limpiar');
+                return;
+            }
+            
+            let lines = rawData.split('\n');
+            const originalCount = lines.length;
+            let processed = 0;
+            let duplicatesRemoved = 0;
+            let emptyRemoved = 0;
+            
+            // Eliminar filas vacías
+            if (removeEmpty) {
+                const beforeCount = lines.length;
+                lines = lines.filter(line => line.trim() !== '');
+                emptyRemoved = beforeCount - lines.length;
+            }
+            
+            // Eliminar duplicados
+            if (removeDuplicates) {
+                const beforeCount = lines.length;
+                lines = [...new Set(lines)];
+                duplicatesRemoved = beforeCount - lines.length;
+            }
+            
+            // Estandarizar texto
+            if (standardizeText) {
+                lines = lines.map(line => {
+                    return line.split(',').map(cell => cell.trim()).join(',');
+                });
+            }
+            
+            processed = lines.length;
+            
+            // Mostrar resultados
+            const resultsDiv = document.getElementById('cleanResults');
+            const statsDiv = document.getElementById('cleanStats');
+            const cleanedDataDiv = document.getElementById('cleanedData');
+            
+            statsDiv.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value">${originalCount}</div>
+                    <div class="stat-label">Filas Originales</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${processed}</div>
+                    <div class="stat-label">Filas Procesadas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${duplicatesRemoved}</div>
+                    <div class="stat-label">Duplicados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${emptyRemoved}</div>
+                    <div class="stat-label">Vacías</div>
+                </div>
+            `;
+            
+            cleanedDataDiv.textContent = lines.join('\n');
+            resultsDiv.style.display = 'block';
+        }
+        
+        // Chart Generator
+        function generateChart() {
+            const chartType = document.getElementById('chartType').value;
+            const chartData = document.getElementById('chartData').value;
+            const chartTitle = document.getElementById('chartTitle').value;
+            
+            if (!chartData.trim()) {
+                alert('Por favor, ingresa algunos datos para el gráfico');
+                return;
+            }
+            
+            const dataLines = chartData.split('\n').filter(line => line.trim());
+            const labels = [];
+            const values = [];
+            
+            dataLines.forEach(line => {
+                const [label, value] = line.split(':');
+                if (label && value) {
+                    labels.push(label.trim());
+                    values.push(parseFloat(value.trim()) || 0);
+                }
+            });
+            
+            createCustomChart(chartType, labels, values, chartTitle);
+            document.getElementById('chartResults').style.display = 'block';
+        }
+        
+        function createCustomChart(type, labels, data, title) {
+            const ctx = document.getElementById('customChart').getContext('2d');
+            
+            if (customChart) {
+                customChart.destroy();
+            }
+            
+            const colors = [
+                '#3498db', '#2ecc71', '#e74c3c', '#f39c12', 
+                '#9b59b6', '#1abc9c', '#34495e', '#e67e22'
+            ];
+            
+            customChart = new Chart(ctx, {
+                type: type,
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Valores',
+                        data: data,
+                        backgroundColor: colors.slice(0, labels.length),
+                        borderColor: colors.slice(0, labels.length),
+                        borderWidth: 2,
+                        borderRadius: type === 'bar' ? 8 : 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: title,
+                            color: '#ecf0f1'
+                        },
+                        legend: {
+                            labels: { color: '#ecf0f1' }
+                        }
+                    },
+                    scales: type === 'pie' || type === 'doughnut' ? {} : {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { color: '#ecf0f1' },
+                            grid: { color: 'rgba(255,255,255,0.1)' }
+                        },
+                        x: {
+                            ticks: { color: '#ecf0f1' },
+                            grid: { color: 'rgba(255,255,255,0.1)' }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Statistics Calculator
+        function calculateStats() {
+            const numbersInput = document.getElementById('numbers').value;
+            
+            if (!numbersInput.trim()) {
+                alert('Por favor, ingresa algunos números');
+                return;
+            }
+            
+            const numbers = numbersInput.split(',').map(n => parseFloat(n.trim())).filter(n => !isNaN(n));
+            
+            if (numbers.length === 0) {
+                alert('No se encontraron números válidos');
+                return;
+            }
+            
+            // Calcular estadísticas
+            const sum = numbers.reduce((a, b) => a + b, 0);
+            const mean = sum / numbers.length;
+            const sortedNumbers = [...numbers].sort((a, b) => a - b);
+            const median = sortedNumbers.length % 2 === 0 
+                ? (sortedNumbers[sortedNumbers.length/2 - 1] + sortedNumbers[sortedNumbers.length/2]) / 2
+                : sortedNumbers[Math.floor(sortedNumbers.length/2)];
+            
+            const variance = numbers.reduce((sum, num) => sum + Math.pow(num - mean, 2), 0) / numbers.length;
+            const stdDev = Math.sqrt(variance);
+            const min = Math.min(...numbers);
+            const max = Math.max(...numbers);
+            
+            // Mostrar estadísticas
+            const statsDiv = document.getElementById('descriptiveStats');
+            statsDiv.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value">${numbers.length}</div>
+                    <div class="stat-label">Conteo</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${mean.toFixed(2)}</div>
+                    <div class="stat-label">Media</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${median.toFixed(2)}</div>
+                    <div class="stat-label">Mediana</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${stdDev.toFixed(2)}</div>
+                    <div class="stat-label">Desv. Estándar</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${min.toFixed(2)}</div>
+                    <div class="stat-label">Mínimo</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${max.toFixed(2)}</div>
+                    <div class="stat-label">Máximo</div>
+                </div>
+            `;
+            
+            // Crear histograma
+            createStatsChart(numbers);
+            document.getElementById('statsResults').style.display = 'block';
+        }
+        
+        function createStatsChart(numbers) {
+            const ctx = document.getElementById('statsChart').getContext('2d');
+            
+            if (statsChart) {
+                statsChart.destroy();
+            }
+            
+            // Crear histograma simple
+            const bins = 10;
+            const min = Math.min(...numbers);
+            const max = Math.max(...numbers);
+            const binWidth = (max - min) / bins;
+            
+            const histogram = new Array(bins).fill(0);
+            const binLabels = [];
+            
+            for (let i = 0; i < bins; i++) {
+                const binStart = min + i * binWidth;
+                const binEnd = min + (i + 1) * binWidth;
+                binLabels.push(`${binStart.toFixed(1)}-${binEnd.toFixed(1)}`);
+                
+                numbers.forEach(num => {
+                    if (num >= binStart && (num < binEnd || i === bins - 1)) {
+                        histogram[i]++;
+                    }
+                });
+            }
+            
+            statsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: binLabels,
+                    datasets: [{
+                        label: 'Frecuencia',
+                        data: histogram,
+                        backgroundColor: '#3498db',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Distribución de Valores (Histograma)',
+                            color: '#ecf0f1'
+                        },
+                        legend: {
+                            labels: { color: '#ecf0f1' }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { color: '#ecf0f1' },
+                            grid: { color: 'rgba(255,255,255,0.1)' }
+                        },
+                        x: {
+                            ticks: { color: '#ecf0f1' },
+                            grid: { color: 'rgba(255,255,255,0.1)' }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function downloadChart() {
+            if (customChart) {
+                const link = document.createElement('a');
+                link.download = 'chart.png';
+                link.href = customChart.toBase64Image();
+                link.click();
+            }
+        }
+        
+        // Drag and drop para archivos
+        const uploadArea = document.getElementById('excelUpload');
+        
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                document.getElementById('excelFile').files = files;
+                processExcelFile(document.getElementById('excelFile'));
+            }
+        });
+        
+        // Inicialización
+        window.addEventListener('load', function() {
+            // Cargar datos de ejemplo por defecto
+            setTimeout(() => {
+                document.getElementById('rawData').value = `Empleado,Proyecto,Horas,Fecha
+Luis Alberto,FastAPI Migration,8.5,2024-10-01
+María González,Dashboard Update,6.2,2024-10-01
+Carlos Rodríguez,Email Automation,7.8,2024-10-01
+Ana Martín,SSIS Maintenance,5.5,2024-10-01
+David López,DB2 Scripts,6.9,2024-10-01
+Elena Fernández,Angular Frontend,7.3,2024-10-01`;
+                
+                document.getElementById('numbers').value = '8.5, 6.2, 7.8, 9.1, 5.5, 8.0, 7.3, 6.9, 8.2, 7.5';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP Spanish Processor - Demo Interactivo</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .tool-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .tool-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+        }
+        
+        .tool-title {
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+        
+        .input-group {
+            margin: 15px 0;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #f8f9fa;
+            font-weight: 500;
+        }
+        
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
+            font-size: 14px;
+        }
+        
+        .input-group input::placeholder, .input-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(248, 249, 250, 0.2);
+            color: #f8f9fa;
+            border: 1px solid #f8f9fa;
+        }
+        
+        .result-area {
+            background: rgba(33, 37, 41, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+        
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .analysis-item {
+            background: rgba(255, 107, 107, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 107, 107, 0.4);
+        }
+        
+        .analysis-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+        
+        .analysis-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        .word-cloud {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 200px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .word-item {
+            padding: 5px 12px;
+            background: rgba(78, 205, 196, 0.3);
+            border-radius: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .word-item:hover {
+            background: rgba(78, 205, 196, 0.5);
+            transform: scale(1.1);
+        }
+        
+        .sentiment-bar {
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.1);
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .sentiment-fill {
+            height: 100%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .sentiment-positive { background: linear-gradient(90deg, #2ecc71, #27ae60); }
+        .sentiment-neutral { background: linear-gradient(90deg, #f39c12, #e67e22); }
+        .sentiment-negative { background: linear-gradient(90deg, #e74c3c, #c0392b); }
+        
+        .corrections-list {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .correction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .correction-item:last-child {
+            border-bottom: none;
+        }
+        
+        .error-text {
+            color: #e74c3c;
+            text-decoration: line-through;
+        }
+        
+        .correction-text {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        
+        .grammar-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin: 2px;
+            font-weight: bold;
+        }
+        
+        .tag-noun { background: rgba(52, 152, 219, 0.3); color: #3498db; }
+        .tag-verb { background: rgba(46, 204, 113, 0.3); color: #2ecc71; }
+        .tag-adj { background: rgba(155, 89, 182, 0.3); color: #9b59b6; }
+        .tag-adv { background: rgba(241, 196, 15, 0.3); color: #f1c40f; }
+        .tag-prep { background: rgba(231, 76, 60, 0.3); color: #e74c3c; }
+        .tag-det { background: rgba(26, 188, 156, 0.3); color: #1abc9c; }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+        }
+        
+        .real-time-analysis {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .typing-indicator {
+            display: none;
+            color: #4ecdc4;
+            font-style: italic;
+            margin: 10px 0;
+        }
+        
+        .typing-indicator.active {
+            display: block;
+        }
+        
+        .alert {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .alert-info {
+            background: rgba(52, 152, 219, 0.2);
+            border: 1px solid rgba(52, 152, 219, 0.4);
+            color: #3498db;
+        }
+        
+        .processing-animation {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 3px solid #ff6b6b;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔤 NLP Spanish Processor</h1>
+            <p>Procesamiento de Lenguaje Natural especializado en español para Santander Digital Services</p>
+        </div>
+        
+        <div class="tools-grid">
+            <!-- Text Analysis -->
+            <div class="tool-card">
+                <span class="tool-icon">📝</span>
+                <h3 class="tool-title">Análisis de Texto</h3>
+                
+                <div class="input-group">
+                    <label>Texto a analizar:</label>
+                    <textarea id="textToAnalyze" rows="6" placeholder="El equipo de desarrollo de Santander está trabajando en una nueva aplicación móvil que revolucionará la experiencia del cliente. Esta herramienta utilizará inteligencia artificial para ofrecer recomendaciones personalizadas y mejorar la satisfacción del usuario."></textarea>
+                </div>
+                
+                <button class="btn btn-primary" onclick="analyzeText()">
+                    🔍 Analizar Texto
+                </button>
+                
+                <div class="processing-animation" id="analysisProcessing">
+                    <div class="spinner"></div>
+                    <p>Procesando análisis de texto...</p>
+                </div>
+                
+                <div class="result-area" id="analysisResults" style="display: none;">
+                    <h4>📊 Resultados del Análisis</h4>
+                    <div class="analysis-grid" id="analysisStats"></div>
+                    
+                    <h5>☁️ Nube de Palabras Clave</h5>
+                    <div class="word-cloud" id="wordCloud"></div>
+                    
+                    <h5>🏷️ Etiquetado Gramatical</h5>
+                    <div id="grammarTags"></div>
+                </div>
+            </div>
+            
+            <!-- Sentiment Analysis -->
+            <div class="tool-card">
+                <span class="tool-icon">😊</span>
+                <h3 class="tool-title">Análisis de Sentimientos</h3>
+                
+                <div class="input-group">
+                    <label>Texto para análisis de sentimientos:</label>
+                    <textarea id="sentimentText" rows="4" placeholder="Estoy muy satisfecho con el nuevo sistema de pagos de Santander. Es rápido, seguro y muy fácil de usar. Definitivamente recomendaría este servicio a otros clientes."></textarea>
+                </div>
+                
+                <button class="btn btn-primary" onclick="analyzeSentiment()">
+                    😊 Analizar Sentimiento
+                </button>
+                
+                <div class="result-area" id="sentimentResults" style="display: none;">
+                    <h4>💭 Análisis de Sentimientos</h4>
+                    
+                    <div class="sentiment-bar">
+                        <div class="sentiment-fill" id="sentimentBar"></div>
+                    </div>
+                    
+                    <div class="analysis-grid" id="sentimentStats"></div>
+                    
+                    <div class="chart-container">
+                        <canvas id="sentimentChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grammar Checker -->
+            <div class="tool-card">
+                <span class="tool-icon">✏️</span>
+                <h3 class="tool-title">Corrector Gramatical</h3>
+                
+                <div class="input-group">
+                    <label>Texto a corregir:</label>
+                    <textarea id="grammarText" rows="5" placeholder="El equipo a desarrollado una aplicasion muy buena para los clientes de santander. Estan muy contentos con los resultados obtenidos asta ahora."></textarea>
+                </div>
+                
+                <button class="btn btn-primary" onclick="checkGrammar()">
+                    ✏️ Revisar Gramática
+                </button>
+                
+                <div class="result-area" id="grammarResults" style="display: none;">
+                    <h4>📝 Correcciones Sugeridas</h4>
+                    <div class="corrections-list" id="correctionsList"></div>
+                    
+                    <h5>✨ Texto Corregido</h5>
+                    <div class="code-output" id="correctedText"></div>
+                </div>
+            </div>
+            
+            <!-- Real-time Processor -->
+            <div class="tool-card">
+                <span class="tool-icon">⚡</span>
+                <h3 class="tool-title">Procesamiento en Tiempo Real</h3>
+                
+                <div class="input-group">
+                    <label>Escribe y observa el análisis en tiempo real:</label>
+                    <textarea id="realtimeText" rows="4" placeholder="Comienza a escribir para ver el análisis en tiempo real..."></textarea>
+                </div>
+                
+                <div class="typing-indicator" id="typingIndicator">
+                    ⚡ Analizando texto en tiempo real...
+                </div>
+                
+                <div class="real-time-analysis" id="realtimeAnalysis">
+                    <div class="analysis-grid" id="realtimeStats">
+                        <div class="analysis-item">
+                            <div class="analysis-value" id="realtimeWords">0</div>
+                            <div class="analysis-label">Palabras</div>
+                        </div>
+                        <div class="analysis-item">
+                            <div class="analysis-value" id="realtimeChars">0</div>
+                            <div class="analysis-label">Caracteres</div>
+                        </div>
+                        <div class="analysis-item">
+                            <div class="analysis-value" id="realtimeSentences">0</div>
+                            <div class="analysis-label">Oraciones</div>
+                        </div>
+                        <div class="analysis-item">
+                            <div class="analysis-value" id="realtimeComplexity">-</div>
+                            <div class="analysis-label">Complejidad</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sentiment-bar">
+                        <div class="sentiment-fill sentiment-neutral" id="realtimeSentiment" style="width: 50%;">
+                            Neutral
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Casos de uso -->
+        <div class="alert alert-info">
+            <h4>💡 Casos de Uso en Santander Digital Services:</h4>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li><strong>Análisis de feedback:</strong> Procesamiento automático de comentarios de clientes para identificar áreas de mejora</li>
+                <li><strong>Documentación técnica:</strong> Revisión automática de documentos y especificaciones técnicas</li>
+                <li><strong>Chatbots inteligentes:</strong> Comprensión de intenciones y sentimientos en consultas de clientes</li>
+                <li><strong>Clasificación de tickets:</strong> Categorización automática de incidencias por tipo y urgencia</li>
+                <li><strong>Reportes ejecutivos:</strong> Extracción de insights y resúmenes automáticos de textos largos</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Variables globales
+        let sentimentChart;
+        let typingTimer;
+        
+        // Diccionarios y datos para simulación
+        const stopWords = ['el', 'la', 'de', 'que', 'y', 'a', 'en', 'un', 'es', 'se', 'no', 'te', 'lo', 'le', 'da', 'su', 'por', 'son', 'con', 'para', 'al', 'del', 'los', 'las', 'una', 'como', 'pero', 'sus', 'me', 'ha', 'o', 'si', 'ya', 'muy', 'mas', 'esta', 'este'];
+        
+        const positiveWords = ['bueno', 'excelente', 'genial', 'fantástico', 'increíble', 'satisfecho', 'contento', 'feliz', 'amor', 'perfecto', 'maravilloso', 'espectacular', 'magnífico', 'extraordinario', 'recomiendo', 'fácil', 'rápido', 'seguro'];
+        
+        const negativeWords = ['malo', 'terrible', 'horrible', 'odio', 'disgusto', 'problema', 'error', 'fallo', 'lento', 'complicado', 'difícil', 'insatisfecho', 'molesto', 'enojado', 'furioso', 'decepcionado'];
+        
+        const grammarErrors = {
+            'a desarrollado': 'ha desarrollado',
+            'aplicasion': 'aplicación',
+            'santander': 'Santander',
+            'estan': 'están',
+            'asta': 'hasta'
+        };
+        
+        // Análisis de texto principal
+        function analyzeText() {
+            const text = document.getElementById('textToAnalyze').value.trim();
+            
+            if (!text) {
+                alert('Por favor, ingresa un texto para analizar');
+                return;
+            }
+            
+            // Mostrar animación de procesamiento
+            document.getElementById('analysisProcessing').style.display = 'block';
+            document.getElementById('analysisResults').style.display = 'none';
+            
+            // Simular procesamiento
+            setTimeout(() => {
+                const analysis = performDetailedAnalysis(text);
+                displayAnalysisResults(analysis);
+                
+                document.getElementById('analysisProcessing').style.display = 'none';
+                document.getElementById('analysisResults').style.display = 'block';
+            }, 2000);
+        }
+        
+        function performDetailedAnalysis(text) {
+            const words = text.toLowerCase().split(/\s+/).filter(word => word.length > 0);
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+            const chars = text.length;
+            const charsNoSpaces = text.replace(/\s/g, '').length;
+            
+            // Filtrar palabras clave (sin stop words)
+            const keywords = words.filter(word => !stopWords.includes(word) && word.length > 3);
+            const wordFreq = {};
+            keywords.forEach(word => {
+                wordFreq[word] = (wordFreq[word] || 0) + 1;
+            });
+            
+            // Ordenar por frecuencia
+            const sortedKeywords = Object.entries(wordFreq)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 15);
+            
+            // Calcular complejidad (palabras promedio por oración)
+            const complexity = sentences.length > 0 ? (words.length / sentences.length).toFixed(1) : 0;
+            
+            // Análisis de sentimientos básico
+            let positiveCount = 0, negativeCount = 0;
+            words.forEach(word => {
+                if (positiveWords.some(pw => word.includes(pw))) positiveCount++;
+                if (negativeWords.some(nw => word.includes(nw))) negativeCount++;
+            });
+            
+            const sentiment = positiveCount > negativeCount ? 'Positivo' : 
+                            negativeCount > positiveCount ? 'Negativo' : 'Neutral';
+            
+            return {
+                words: words.length,
+                sentences: sentences.length,
+                chars,
+                charsNoSpaces,
+                keywords: sortedKeywords,
+                complexity,
+                sentiment,
+                positiveCount,
+                negativeCount
+            };
+        }
+        
+        function displayAnalysisResults(analysis) {
+            // Estadísticas generales
+            document.getElementById('analysisStats').innerHTML = `
+                <div class="analysis-item">
+                    <div class="analysis-value">${analysis.words}</div>
+                    <div class="analysis-label">Palabras</div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-value">${analysis.sentences}</div>
+                    <div class="analysis-label">Oraciones</div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-value">${analysis.chars}</div>
+                    <div class="analysis-label">Caracteres</div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-value">${analysis.complexity}</div>
+                    <div class="analysis-label">Complejidad</div>
+                </div>
+            `;
+            
+            // Nube de palabras
+            const wordCloud = document.getElementById('wordCloud');
+            wordCloud.innerHTML = analysis.keywords.map(([word, freq]) => 
+                `<span class="word-item" style="font-size: ${Math.max(14, freq * 4)}px;">${word} (${freq})</span>`
+            ).join('');
+            
+            // Etiquetado gramatical simulado
+            const grammarTags = document.getElementById('grammarTags');
+            const sampleTags = [
+                { word: 'equipo', tag: 'noun' },
+                { word: 'desarrollando', tag: 'verb' },
+                { word: 'nueva', tag: 'adj' },
+                { word: 'aplicación', tag: 'noun' },
+                { word: 'muy', tag: 'adv' },
+                { word: 'buena', tag: 'adj' },
+                { word: 'para', tag: 'prep' },
+                { word: 'los', tag: 'det' }
+            ];
+            
+            grammarTags.innerHTML = sampleTags.map(item => 
+                `<span class="grammar-tag tag-${item.tag}">${item.word}</span>`
+            ).join(' ');
+        }
+        
+        // Análisis de sentimientos
+        function analyzeSentiment() {
+            const text = document.getElementById('sentimentText').value.trim();
+            
+            if (!text) {
+                alert('Por favor, ingresa un texto para analizar el sentimiento');
+                return;
+            }
+            
+            const words = text.toLowerCase().split(/\s+/);
+            let positiveScore = 0, negativeScore = 0, neutralScore = 0;
+            
+            words.forEach(word => {
+                if (positiveWords.some(pw => word.includes(pw))) {
+                    positiveScore += Math.random() * 0.3 + 0.7; // 0.7-1.0
+                } else if (negativeWords.some(nw => word.includes(nw))) {
+                    negativeScore += Math.random() * 0.3 + 0.7;
+                } else {
+                    neutralScore += Math.random() * 0.2 + 0.1;
+                }
+            });
+            
+            // Normalizar scores
+            const total = positiveScore + negativeScore + neutralScore;
+            positiveScore = (positiveScore / total * 100);
+            negativeScore = (negativeScore / total * 100);
+            neutralScore = (neutralScore / total * 100);
+            
+            // Determinar sentimiento dominante
+            let dominantSentiment, dominantScore, barClass;
+            if (positiveScore > negativeScore && positiveScore > neutralScore) {
+                dominantSentiment = 'Positivo';
+                dominantScore = positiveScore;
+                barClass = 'sentiment-positive';
+            } else if (negativeScore > positiveScore && negativeScore > neutralScore) {
+                dominantSentiment = 'Negativo';
+                dominantScore = negativeScore;
+                barClass = 'sentiment-negative';
+            } else {
+                dominantSentiment = 'Neutral';
+                dominantScore = neutralScore;
+                barClass = 'sentiment-neutral';
+            }
+            
+            // Mostrar barra de sentimiento
+            const sentimentBar = document.getElementById('sentimentBar');
+            sentimentBar.className = `sentiment-fill ${barClass}`;
+            sentimentBar.style.width = `${dominantScore}%`;
+            sentimentBar.textContent = `${dominantSentiment} (${dominantScore.toFixed(1)}%)`;
+            
+            // Mostrar estadísticas
+            document.getElementById('sentimentStats').innerHTML = `
+                <div class="analysis-item">
+                    <div class="analysis-value">${positiveScore.toFixed(1)}%</div>
+                    <div class="analysis-label">Positivo</div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-value">${neutralScore.toFixed(1)}%</div>
+                    <div class="analysis-label">Neutral</div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-value">${negativeScore.toFixed(1)}%</div>
+                    <div class="analysis-label">Negativo</div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-value">${words.length}</div>
+                    <div class="analysis-label">Palabras</div>
+                </div>
+            `;
+            
+            // Crear gráfico
+            createSentimentChart([positiveScore, neutralScore, negativeScore]);
+            
+            document.getElementById('sentimentResults').style.display = 'block';
+        }
+        
+        function createSentimentChart(scores) {
+            const ctx = document.getElementById('sentimentChart').getContext('2d');
+            
+            if (sentimentChart) {
+                sentimentChart.destroy();
+            }
+            
+            sentimentChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Positivo', 'Neutral', 'Negativo'],
+                    datasets: [{
+                        data: scores,
+                        backgroundColor: ['#2ecc71', '#f39c12', '#e74c3c'],
+                        borderWidth: 3,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Distribución de Sentimientos',
+                            color: '#ffffff'
+                        },
+                        legend: {
+                            labels: { color: '#ffffff' }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Corrector gramatical
+        function checkGrammar() {
+            const text = document.getElementById('grammarText').value.trim();
+            
+            if (!text) {
+                alert('Por favor, ingresa un texto para revisar');
+                return;
+            }
+            
+            const corrections = [];
+            let correctedText = text;
+            
+            // Buscar errores conocidos
+            Object.entries(grammarErrors).forEach(([error, correction]) => {
+                if (text.toLowerCase().includes(error)) {
+                    corrections.push({
+                        error: error,
+                        correction: correction,
+                        type: 'Ortografía'
+                    });
+                    correctedText = correctedText.replace(new RegExp(error, 'gi'), correction);
+                }
+            });
+            
+            // Agregar algunas correcciones adicionales simuladas
+            if (text.includes('muy buena')) {
+                corrections.push({
+                    error: 'muy buena',
+                    correction: 'excelente',
+                    type: 'Estilo'
+                });
+            }
+            
+            // Mostrar correcciones
+            const correctionsList = document.getElementById('correctionsList');
+            if (corrections.length > 0) {
+                correctionsList.innerHTML = corrections.map(corr => `
+                    <div class="correction-item">
+                        <div>
+                            <span class="error-text">${corr.error}</span> → 
+                            <span class="correction-text">${corr.correction}</span>
+                            <small style="opacity: 0.7; margin-left: 10px;">(${corr.type})</small>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                correctionsList.innerHTML = '<p style="text-align: center; opacity: 0.7;">✅ No se encontraron errores gramaticales</p>';
+            }
+            
+            // Mostrar texto corregido
+            document.getElementById('correctedText').textContent = correctedText;
+            document.getElementById('grammarResults').style.display = 'block';
+        }
+        
+        // Análisis en tiempo real
+        function setupRealTimeAnalysis() {
+            const realtimeText = document.getElementById('realtimeText');
+            const typingIndicator = document.getElementById('typingIndicator');
+            
+            realtimeText.addEventListener('input', function() {
+                const text = this.value;
+                
+                // Mostrar indicador de typing
+                typingIndicator.classList.add('active');
+                
+                // Limpiar timer anterior
+                clearTimeout(typingTimer);
+                
+                // Análisis inmediato básico
+                updateRealtimeStats(text);
+                
+                // Análisis completo después de pausa
+                typingTimer = setTimeout(() => {
+                    typingIndicator.classList.remove('active');
+                    performRealtimeAnalysis(text);
+                }, 500);
+            });
+        }
+        
+        function updateRealtimeStats(text) {
+            const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+            const chars = text.length;
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+            
+            document.getElementById('realtimeWords').textContent = words;
+            document.getElementById('realtimeChars').textContent = chars;
+            document.getElementById('realtimeSentences').textContent = sentences;
+        }
+        
+        function performRealtimeAnalysis(text) {
+            if (!text.trim()) {
+                document.getElementById('realtimeComplexity').textContent = '-';
+                updateRealtimeSentiment('neutral', 50);
+                return;
+            }
+            
+            const words = text.trim().split(/\s+/);
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+            const complexity = sentences.length > 0 ? 
+                (words.length / sentences.length).toFixed(1) : '0';
+            
+            document.getElementById('realtimeComplexity').textContent = complexity;
+            
+            // Análisis de sentimiento simplificado
+            const positiveCount = words.filter(word => 
+                positiveWords.some(pw => word.toLowerCase().includes(pw))).length;
+            const negativeCount = words.filter(word => 
+                negativeWords.some(nw => word.toLowerCase().includes(nw))).length;
+            
+            let sentiment, percentage;
+            if (positiveCount > negativeCount) {
+                sentiment = 'positive';
+                percentage = Math.min(90, 50 + (positiveCount - negativeCount) * 10);
+            } else if (negativeCount > positiveCount) {
+                sentiment = 'negative';
+                percentage = Math.min(90, 50 + (negativeCount - positiveCount) * 10);
+            } else {
+                sentiment = 'neutral';
+                percentage = 50;
+            }
+            
+            updateRealtimeSentiment(sentiment, percentage);
+        }
+        
+        function updateRealtimeSentiment(sentiment, percentage) {
+            const bar = document.getElementById('realtimeSentiment');
+            
+            bar.className = `sentiment-fill sentiment-${sentiment}`;
+            bar.style.width = `${percentage}%`;
+            
+            const labels = {
+                positive: 'Positivo',
+                negative: 'Negativo',
+                neutral: 'Neutral'
+            };
+            
+            bar.textContent = `${labels[sentiment]} (${percentage.toFixed(0)}%)`;
+        }
+        
+        // Inicialización
+        window.addEventListener('load', function() {
+            setupRealTimeAnalysis();
+            
+            // Llenar algunos campos con ejemplos
+            setTimeout(() => {
+                if (!document.getElementById('textToAnalyze').value) {
+                    document.getElementById('textToAnalyze').value = 'El equipo de desarrollo de Santander está trabajando en una nueva aplicación móvil que revolucionará la experiencia del cliente. Esta herramienta utilizará inteligencia artificial para ofrecer recomendaciones personalizadas y mejorar la satisfacción del usuario.';
+                }
+                
+                if (!document.getElementById('sentimentText').value) {
+                    document.getElementById('sentimentText').value = 'Estoy muy satisfecho con el nuevo sistema de pagos de Santander. Es rápido, seguro y muy fácil de usar. Definitivamente recomendaría este servicio a otros clientes.';
+                }
+                
+                if (!document.getElementById('grammarText').value) {
+                    document.getElementById('grammarText').value = 'El equipo a desarrollado una aplicasion muy buena para los clientes de santander. Estan muy contentos con los resultados obtenidos asta ahora.';
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>

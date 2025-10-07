@@ -43,10 +43,11 @@ Dashboard moderno desarrollado con **FastAPI** como backend y frontend ligero, d
 
 ## 🔧 Instalación y Uso
 
+### **Opción 1: Desarrollo Local**
 ```bash
 # Clonar el repositorio
-git clone https://github.com/luaoraa/fastapi-dashboard.git
-cd fastapi-dashboard
+git clone https://github.com/Albhiro/CV.git
+cd CV/fastapi-dashboard
 
 # Crear entorno virtual
 python -m venv venv
@@ -61,6 +62,28 @@ uvicorn main:app --reload
 
 # Acceder al dashboard
 http://localhost:8000
+```
+
+### **Opción 2: Docker (Recomendado)**
+```bash
+# Clonar el repositorio
+git clone https://github.com/Albhiro/CV.git
+cd CV/fastapi-dashboard
+
+# Ejecutar con Docker Compose
+docker-compose up --build
+
+# Acceder al dashboard
+http://localhost:8000
+```
+
+### **Opción 3: Docker Manual**
+```bash
+# Construir imagen
+docker build -t fastapi-dashboard .
+
+# Ejecutar contenedor
+docker run -p 8000:8000 fastapi-dashboard
 ```
 
 ## 🐳 Docker

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HYRULE - Avent                        <div class="shrine-glow"></div>
+                        <div class="shrine-label">Analytics Dashboard</div>
+                    </div>
+                    
+                    <div class="shrine" data-project="cloud-platform" style="top: 60%; left: 40%;" title="Plataforma Cloud Empresarial">
+                        <div class="shrine-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="shrine-glow"></div>
+                        <div class="shrine-label">Cloud Platform</div>
+                    </div>
+                    
+                    <div class="shrine" data-project="microservices-arch" style="top: 40%; left: 70%;" title="Arquitectura Microservicios">
+                        <div class="shrine-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <div class="shrine-glow"></div>
+                        <div class="shrine-label">Microservices</div>
+                    </div> | Luis Alberto Portfolio</title>
+    
+    <!-- Meta tags -->
+    <meta name="description" content="Explora los proyectos y aventuras de Luis Alberto a través del mundo de Hyrule">
+    <meta name="keywords" content="Proyectos, Aventuras, Portfolio, Zelda, Hyrule, Luis Alberto">
+    <meta name="author" content="Luis Alberto Oraa García">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Zelda Styles -->
+    <link href="./assets/css/zelda-hyrule.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Wind Effects Background -->
+    <div class="hyrule-background">
+        <canvas id="windCanvas"></canvas>
+        <div class="grass-field"></div>
+        <div class="mountain-range"></div>
+        <div class="clouds-layer"></div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="hyruleLoading" class="loading-overlay" style="display: flex;">
+        <div class="loading-content">
+            <div class="loading-triforce">
+                <div class="triforce-symbol">
+                    <div class="triforce-triangle triforce-top"></div>
+                    <div class="triforce-triangle triforce-left"></div>
+                    <div class="triforce-triangle triforce-right"></div>
+                </div>
+            </div>
+            <div class="loading-text">CARGANDO HYRULE...</div>
+            <div class="loading-subtext">Despertando en Hyrule...</div>
+        </div>
+    </div>
+
+    <!-- Main Hyrule Interface -->
+    <div class="hyrule-interface">
+        
+        <!-- Top HUD -->
+        <div class="hyrule-hud">
+            <div class="hud-left">
+                <div class="hero-profile">
+                    <div class="hero-avatar">
+                        <img src="./assets/images/me.jfif" alt="Link Alberto" class="hero-image">
+                        <div class="hero-aura"></div>
+                    </div>
+                    <div class="hero-info">
+                        <h3>Link Alberto</h3>
+                        <p class="hero-title">Héroe de la Tecnología</p>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <i class="fas fa-heart"></i>
+                                <span>16+ años exp</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-star"></i>
+                                <span>25+ proyectos</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-trophy"></i>
+                                <span>AI Specialist</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hud-center">
+                <div class="compass-container">
+                    <div class="compass">
+                        <div class="compass-needle"></div>
+                        <div class="compass-directions">
+                            <span class="north">N</span>
+                            <span class="south">S</span>
+                            <span class="east">E</span>
+                            <span class="west">W</span>
+                        </div>
+                    </div>
+                    <div class="compass-label">Brújula de Proyectos</div>
+                </div>
+            </div>
+            
+            <div class="hud-right">
+                <div class="portal-return" id="portalReturn">
+                    <i class="fas fa-portal-exit"></i>
+                    <span>Portal</span>
+                </div>
+                <div class="weather-info">
+                    <i class="fas fa-cloud"></i>
+                    <span>Viento del Oeste</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="hyrule-main">
+            
+            <!-- Left Panel - Hyrule Map -->
+            <div class="map-panel">
+                <div class="map-header">
+                    <h2><i class="fas fa-map"></i> Mapa de Hyrule</h2>
+                    <p>Aventuras Tecnológicas</p>
+                </div>
+                
+                <div class="hyrule-map" id="hyruleMap">
+                    <!-- Map Background -->
+                    <div class="map-background"></div>
+                    
+                    <!-- Towers (Hitos Profesionales) -->
+                    <div class="tower" data-location="central-tower" style="top: 40%; left: 50%;">
+                        <div class="tower-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="tower-info">
+                            <h4>Torre Central</h4>
+                            <p>Arquitecto Técnico Senior</p>
+                            <span class="tower-company">Santander</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tower" data-location="north-tower" style="top: 20%; left: 60%;">
+                        <div class="tower-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="tower-info">
+                            <h4>Torre del Conocimiento</h4>
+                            <p>AI Research Specialist</p>
+                            <span class="tower-company">Innovation Lab</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tower" data-location="west-tower" style="top: 50%; left: 20%;">
+                        <div class="tower-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <div class="tower-info">
+                            <h4>Torre del Liderazgo</h4>
+                            <p>Full Stack Lead</p>
+                            <span class="tower-company">Team Leadership</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Shrines (Proyectos Completados) -->
+                    <div class="shrine" data-project="fastapi-migration" style="top: 35%; left: 45%;" title="Migración FastAPI - Velocidad +300%">
+                        <div class="shrine-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="shrine-glow"></div>
+                        <div class="shrine-label">FastAPI Migration</div>
+                    </div>
+                    
+                    <div class="shrine" data-project="ai-engine" style="top: 25%; left: 55%;" title="Motor Conversacional IA">
+                        <div class="shrine-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="shrine-glow"></div>
+                        <div class="shrine-label">AI Engine</div>
+                    </div>
+
+                    <div class="shrine" data-project="banking-automation" style="top: 45%; left: 35%;" title="Automatización Procesos Bancarios">
+                        <div class="shrine-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="shrine-glow"></div>
+                        <div class="shrine-label">Banking Automation</div>
+                    </div>
+
+                    <div class="shrine" data-project="analytics-dashboard" style="top: 30%; left: 65%;" title="Dashboard Analytics Real-time">
+                        <div class="shrine-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="shrine-glow"></div>
+                    </div>
+                    
+                    <div class="shrine" data-project="docker-migration" style="top: 45%; left: 35%;">
+                        <div class="shrine-icon">
+                            <i class="fab fa-docker"></i>
+                        </div>
+                        <div class="shrine-glow"></div>
+                    </div>
+                    
+                    <div class="shrine" data-project="angular-frontend" style="top: 55%; left: 65%;">
+                        <div class="shrine-icon">
+                            <i class="fab fa-angular"></i>
+                        </div>
+                        <div class="shrine-glow"></div>
+                    </div>
+                    
+                    <div class="shrine" data-project="python-automation" style="top: 60%; left: 25%;">
+                        <div class="shrine-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div class="shrine-glow"></div>
+                    </div>
+                    
+                    <!-- Travel Points -->
+                    <div class="travel-point" data-destination="village" style="top: 70%; left: 40%;">
+                        <div class="travel-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <span>Pueblo Kakariko</span>
+                    </div>
+                    
+                    <!-- Link's Position -->
+                    <div class="link-position" id="linkPosition" style="top: 50%; left: 50%;">
+                        <div class="link-marker">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="position-pulse"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel - Project Details -->
+            <div class="details-panel">
+                <div class="details-header">
+                    <h2><i class="fas fa-scroll"></i> Aventuras Completadas</h2>
+                    <div class="adventure-counter">
+                        <span id="adventureCount">5</span> / 25 Descubiertas
+                    </div>
+                </div>
+                
+                <div class="adventure-details" id="adventureDetails">
+                    <div class="welcome-message">
+                        <div class="triforce-symbol">
+                            <div class="triforce-part"></div>
+                            <div class="triforce-part"></div>
+                            <div class="triforce-part"></div>
+                        </div>
+                        <h3>¡Bienvenido a Hyrule!</h3>
+                        <p>Explora el mapa para descubrir mis aventuras tecnológicas. Cada santuario representa un proyecto completado, y cada torre marca un hito importante en mi carrera.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Inventory Bar -->
+        <div class="inventory-bar">
+            <div class="inventory-section">
+                <h4><i class="fas fa-tools"></i> Herramientas del Aventurero</h4>
+                <div class="tools-grid">
+                    <div class="tool-item" data-tool="fastapi">
+                        <div class="tool-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <span>FastAPI</span>
+                    </div>
+                    <div class="tool-item" data-tool="python">
+                        <div class="tool-icon"><i class="fab fa-python"></i></div>
+                        <span>Python</span>
+                    </div>
+                    <div class="tool-item" data-tool="angular">
+                        <div class="tool-icon"><i class="fab fa-angular"></i></div>
+                        <span>Angular</span>
+                    </div>
+                    <div class="tool-item" data-tool="docker">
+                        <div class="tool-icon"><i class="fab fa-docker"></i></div>
+                        <span>Docker</span>
+                    </div>
+                    <div class="tool-item" data-tool="ai">
+                        <div class="tool-icon"><i class="fas fa-brain"></i></div>
+                        <span>IA/ML</span>
+                    </div>
+                    <div class="tool-item" data-tool="database">
+                        <div class="tool-icon"><i class="fas fa-database"></i></div>
+                        <span>Databases</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quest-section">
+                <h4><i class="fas fa-scroll"></i> Misiones Actuales</h4>
+                <div class="quest-list">
+                    <div class="quest-item active">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                        <span>Expandir soporte técnico al área completa</span>
+                        <div class="quest-progress"><div class="progress-bar" style="width: 75%"></div></div>
+                    </div>
+                    <div class="quest-item active">
+                        <i class="fas fa-robot"></i>
+                        <span>Implementar arquitectura conversacional IA</span>
+                        <div class="quest-progress"><div class="progress-bar" style="width: 60%"></div></div>
+                    </div>
+                    <div class="quest-item">
+                        <i class="fas fa-digital-tachograph"></i>
+                        <span>Liderar transformación digital completa</span>
+                        <div class="quest-progress"><div class="progress-bar" style="width: 40%"></div></div>
+                    </div>
+                    <div class="quest-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Mentorización equipo junior</span>
+                        <div class="quest-progress"><div class="progress-bar" style="width: 85%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wind Effects -->
+        <div class="wind-particles" id="windParticles"></div>
+    </div>
+
+    <!-- Project Detail Modal -->
+    <div class="modal hidden" id="projectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle" class="modal-title">Santuario Descubierto</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Project details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./assets/js/zelda-hyrule.js"></script>
+</body>
+</html>

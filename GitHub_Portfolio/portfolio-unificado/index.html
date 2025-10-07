@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis Alberto Oraa García - The Complete Experience</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f0f;
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+        
+        /* Navegación lateral fija */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 80px;
+            height: 100vh;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .nav-item {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.1);
+        }
+        
+        .nav-item i {
+            font-size: 20px;
+        }
+        
+        .nav-tooltip {
+            position: absolute;
+            left: 70px;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-item:hover .nav-tooltip {
+            opacity: 1;
+        }
+        
+        /* Contenido principal */
+        .main-content {
+            margin-left: 80px;
+            min-height: 100vh;
+        }
+        
+        /* Secciones */
+        .section {
+            min-height: 100vh;
+            padding: 60px 40px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+            to { text-shadow: 0 0 30px rgba(255,255,255,0.8); }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .hero-stat {
+            text-align: center;
+        }
+        
+        .hero-stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .hero-stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* CV Interactivo */
+        .cv-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            flex-direction: column;
+        }
+        
+        .timeline {
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 40px 0;
+            width: 45%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+            padding-right: 40px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 55%;
+            text-align: left;
+            padding-left: 40px;
+        }
+        
+        .timeline-content {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+        }
+        
+        .timeline-date {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-title {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .timeline-desc {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Portfolio Grid */
+        .portfolio-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            flex-direction: column;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            width: 100%;
+        }
+        
+        .project-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+        
+        .project-card:hover::before {
+            animation: shine 0.5s ease-in-out;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+        
+        .project-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .project-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .project-desc {
+            opacity: 0.9;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .tech-tag {
+            background: rgba(102, 126, 234, 0.3);
+            color: #667eea;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            border: 1px solid rgba(102, 126, 234, 0.5);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-link {
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .project-link.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .project-link.secondary {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .project-link:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Sección Research */
+        .research-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            flex-direction: column;
+        }
+        
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .research-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcf7e, #4d96ff);
+            animation: rainbow 3s linear infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 60px;
+            }
+            
+            .main-content {
+                margin-left: 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 60px);
+                left: 60px !important;
+                text-align: left !important;
+                padding-left: 20px !important;
+                padding-right: 0 !important;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Efectos de scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Sección títulos */
+        .section-title {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, #fff, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación lateral -->
+    <nav class="sidebar">
+        <div class="nav-item active" data-section="hero">
+            <i class="fas fa-home"></i>
+            <div class="nav-tooltip">Inicio</div>
+        </div>
+        <div class="nav-item" data-section="cv">
+            <i class="fas fa-user"></i>
+            <div class="nav-tooltip">CV Interactivo</div>
+        </div>
+        <div class="nav-item" data-section="portfolio">
+            <i class="fas fa-code"></i>
+            <div class="nav-tooltip">Portfolio</div>
+        </div>
+        <div class="nav-item" data-section="research">
+            <i class="fas fa-brain"></i>
+            <div class="nav-tooltip">Research Lab</div>
+        </div>
+        <div class="nav-item" data-section="contact">
+            <i class="fas fa-envelope"></i>
+            <div class="nav-tooltip">Contacto</div>
+        </div>
+    </nav>
+    
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="section hero">
+            <div class="hero-content">
+                <h1>Luis Alberto Oraa García</h1>
+                <div class="hero-subtitle">
+                    Systems & Processes Analyst II | IA Researcher | Technical Architect
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">16</span>
+                        <span class="hero-stat-label">Años Experiencia</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">11</span>
+                        <span class="hero-stat-label">Proyectos</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">15+</span>
+                        <span class="hero-stat-label">Tecnologías</span>
+                    </div>
+                </div>
+                
+                <p style="font-size: 1.2em; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+                    De programador a desarrollador, de desarrollador a diseñador. 
+                    16 años en Santander Digital Services creando soluciones que transforman procesos.
+                    Investigador secreto de IA revolucionaria. 🚀
+                </p>
+            </div>
+        </section>
+        
+        <!-- CV Interactivo -->
+        <section id="cv" class="section cv-section">
+            <h2 class="section-title fade-in">Mi Evolución Profesional</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024-2025</div>
+                        <div class="timeline-title">🧠 IA Researcher (Secreto)</div>
+                        <div class="timeline-desc">
+                            Motor conversacional con redes neuronales interconectadas • 
+                            Sistema de memoria 6 capas • NLP castellano completo • 
+                            Red social revolucionaria anti-viralismo
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023-Presente</div>
+                        <div class="timeline-title">🏗️ Technical Architect</div>
+                        <div class="timeline-desc">
+                            FastAPI + Angular19 arquitectura • Openshift + Docker • 
+                            Migración Access→Python (130+ emails/día) • 
+                            Visión estratégica: expansión soporte técnico área completa
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2018-2023</div>
+                        <div class="timeline-title">🔧 Systems Developer</div>
+                        <div class="timeline-desc">
+                            SSIS Portal maintenance • Django MVT migration • 
+                            RHEL8 server administration • DB2/Mainframe scripts • 
+                            Automatización procesos críticos
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2009-2018</div>
+                        <div class="timeline-title">📊 Data Analyst</div>
+                        <div class="timeline-desc">
+                            Informes mensuales Office Suite • VBA automation • 
+                            Análisis datos proyecto/horas • Excel dashboards • 
+                            Base fundacional: programador→desarrollador
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Portfolio Live -->
+        <section id="portfolio" class="section portfolio-section">
+            <h2 class="section-title fade-in">Portfolio Live - Proyectos Funcionando</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <span class="project-icon">📊</span>
+                    <h3 class="project-title">FastAPI Dashboard</h3>
+                    <p class="project-desc">
+                        Dashboard profesional inspirado en mi trabajo diario en Santander. 
+                        Control de horas/proyecto con visualizaciones interactivas.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Chart.js</span>
+                        <span class="tech-tag">SQLAlchemy</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="http://localhost:8000" class="project-link primary" target="_blank">
+                            <i class="fas fa-play"></i> Demo Live
+                        </a>
+                        <a href="./fastapi-dashboard/" class="project-link secondary">
+                            <i class="fab fa-github"></i> Código
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <span class="project-icon">📧</span>
+                    <h3 class="project-title">Email Processor</h3>
+                    <p class="project-desc">
+                        Automatización real: 130+ emails diarios procesados automáticamente. 
+                        Migración Access→Python implementada en producción.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">pandas</span>
+                        <span class="tech-tag">IMAP</span>
+                        <span class="tech-tag">Excel</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="../email-automation-toolkit/demo/index.html" class="project-link primary" target="_blank">
+                            <i class="fas fa-cogs"></i> Ver Demo
+                        </a>
+                        <a href="./python-email-processor/" class="project-link secondary">
+                            <i class="fab fa-github"></i> Código
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <span class="project-icon">🧠</span>
+                    <h3 class="project-title">NLP Spanish Engine</h3>
+                    <p class="project-desc">
+                        Motor de procesamiento de lenguaje natural para castellano. 
+                        Análisis gramatical, léxico y ortográfico completo.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">NLTK</span>
+                        <span class="tech-tag">spaCy</span>
+                        <span class="tech-tag">Transformers</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="../nlp-spanish-processor/demo/index.html" class="project-link primary" target="_blank">
+                            <i class="fas fa-brain"></i> Probar NLP
+                        </a>
+                        <a href="./nlp-spanish-basics/" class="project-link secondary">
+                            <i class="fab fa-github"></i> Código
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <span class="project-icon">🐳</span>
+                    <h3 class="project-title">Docker Templates</h3>
+                    <p class="project-desc">
+                        Templates de despliegue basados en mi experiencia con RHEL8, 
+                        nginx y Openshift en infraestructura Santander.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">nginx</span>
+                        <span class="tech-tag">RHEL8</span>
+                        <span class="tech-tag">Openshift</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link primary">
+                            <i class="fas fa-rocket"></i> Deploy Demo
+                        </a>
+                        <a href="./docker-deployment-template/" class="project-link secondary">
+                            <i class="fab fa-github"></i> Templates
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <span class="project-icon">📈</span>
+                    <h3 class="project-title">Data Analysis Toolkit</h3>
+                    <p class="project-desc">
+                        Herramientas de análisis desarrolladas para optimizar 
+                        mis tareas diarias de reporting y análisis de datos.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">pandas</span>
+                        <span class="tech-tag">matplotlib</span>
+                        <span class="tech-tag">openpyxl</span>
+                        <span class="tech-tag">Jupyter</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="../data-analysis-toolkit/demo/index.html" class="project-link primary" target="_blank">
+                            <i class="fas fa-chart-line"></i> Ver Tools
+                        </a>
+                        <a href="./data-analysis-toolkit/" class="project-link secondary">
+                            <i class="fab fa-github"></i> Toolkit
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <span class="project-icon">🤖</span>
+                    <h3 class="project-title">Neural Networks Lab</h3>
+                    <p class="project-desc">
+                        Playground de redes neuronales desde básicas hasta complejas. 
+                        Investigación personal en arquitecturas interconectadas.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">numpy</span>
+                        <span class="tech-tag">matplotlib</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link primary">
+                            <i class="fas fa-flask"></i> Lab Demo
+                        </a>
+                        <a href="./neural-network-playground/" class="project-link secondary">
+                            <i class="fab fa-github"></i> Playground
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Research Lab Secreto -->
+        <section id="research" class="section research-section">
+            <h2 class="section-title fade-in">🔬 Research Lab - Proyectos Secretos</h2>
+            
+            <div class="research-grid">
+                <div class="research-card fade-in">
+                    <h3 style="color: #ff6b6b; margin-bottom: 20px;">
+                        🧠 Motor Conversacional Revolucionario
+                    </h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">
+                        Arquitectura de <strong>redes de redes neuronales</strong> interconectadas 
+                        para crear conversaciones naturales más allá de ChatGPT. 
+                        Sistema de memoria multinivel en 6 capas para contexto profundo.
+                    </p>
+                    <div style="margin-top: 20px; color: #ffd93d;">
+                        <strong>Estado:</strong> Prototipo funcional • <strong>Nivel:</strong> Research-grade
+                    </div>
+                </div>
+                
+                <div class="research-card fade-in">
+                    <h3 style="color: #6bcf7e; margin-bottom: 20px;">
+                        🌐 Red Social Anti-Viralismo
+                    </h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">
+                        Plataforma que prioriza <strong>comunicación colectiva significativa</strong> 
+                        sobre el viralismo sin sentido. Algoritmos que promueven 
+                        conversaciones constructivas y conexiones reales.
+                    </p>
+                    <div style="margin-top: 20px; color: #4d96ff;">
+                        <strong>Estado:</strong> MVP desarrollo • <strong>Visión:</strong> Revolucionar social media
+                    </div>
+                </div>
+                
+                <div class="research-card fade-in">
+                    <h3 style="color: #ff9ff3; margin-bottom: 20px;">
+                        🤖 IA Familiar "JARVIS"
+                    </h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">
+                        Asistente de IA familiar que aprende y se adapta al contexto 
+                        del hogar. Integración con IoT, gestión familiar inteligente 
+                        y automatización predictiva.
+                    </p>
+                    <div style="margin-top: 20px; color: #ffb347;">
+                        <strong>Estado:</strong> Desarrollo activo • <strong>Objetivo:</strong> IA doméstica real
+                    </div>
+                </div>
+                
+                <div class="research-card fade-in">
+                    <h3 style="color: #87ceeb; margin-bottom: 20px;">
+                        📚 NLP Castellano Completo
+                    </h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">
+                        Motor completo de procesamiento de lenguaje natural para castellano 
+                        desde cero: gramática, vocabulario, tipado, ortografía. 
+                        Comprensión del idioma a nivel de documentación lingüística.
+                    </p>
+                    <div style="margin-top: 20px; color: #98fb98;">
+                        <strong>Estado:</strong> Core funcional • <strong>Alcance:</strong> Motor NLP propio
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 60px; opacity: 0.8;">
+                <p style="font-size: 1.2em; font-style: italic;">
+                    "Llevo casi un año trabajando en estos proyectos en secreto. 
+                    La IA familiar y la red social podrían cambiar el mundo... 
+                    ¡Ojalá triunfaran!" 🚀
+                </p>
+            </div>
+        </section>
+        
+        <!-- Contacto -->
+        <section id="contact" class="section" style="background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%); text-align: center;">
+            <div class="fade-in">
+                <h2 class="section-title">¿Hablamos?</h2>
+                
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <p style="font-size: 1.3em; margin-bottom: 40px; opacity: 0.9;">
+                        16 años transformando ideas en código. Listo para el siguiente desafío.
+                    </p>
+                    
+                    <div style="display: flex; justify-content: center; gap: 40px; margin: 40px 0; flex-wrap: wrap;">
+                        <a href="mailto:luaoraa@gmail.com" style="color: #667eea; text-decoration: none; font-size: 1.1em;">
+                            <i class="fas fa-envelope" style="margin-right: 10px;"></i>
+                            luaoraa@gmail.com
+                        </a>
+                        <a href="https://www.linkedin.com/in/luaoraa/" style="color: #667eea; text-decoration: none; font-size: 1.1em;">
+                            <i class="fab fa-linkedin" style="margin-right: 10px;"></i>
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/Albhiro" style="color: #667eea; text-decoration: none; font-size: 1.1em;">
+                            <i class="fab fa-github" style="margin-right: 10px;"></i>
+                            GitHub
+                        </a>
+                    </div>
+                    
+                    <div style="font-size: 1.2em; font-weight: bold; margin: 20px 0;">
+                        📱 695 10 15 88
+                    </div>
+                    
+                    <div style="margin-top: 40px; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                        <p style="font-style: italic; font-size: 1.1em; opacity: 0.9;">
+                            "16 años en la misma empresa reflejan mi capacidad de adaptación constante 
+                            y mi compromiso con el crecimiento profesional continuo."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // Navegación suave
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const section = this.getAttribute('data-section');
+                document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
+                
+                // Actualizar navegación activa
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Animaciones de scroll
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Actualizar navegación según scroll
+        window.addEventListener('scroll', function() {
+            const sections = ['hero', 'cv', 'portfolio', 'research', 'contact'];
+            const scrollPos = window.scrollY + 200;
+            
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (element) {
+                    const offsetTop = element.offsetTop;
+                    const height = element.offsetHeight;
+                    
+                    if (scrollPos >= offsetTop && scrollPos < offsetTop + height) {
+                        document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                        document.querySelector(`[data-section="${section}"]`).classList.add('active');
+                    }
+                }
+            });
+        });
+        
+        // Animaciones GSAP para elementos especiales
+        gsap.from('.hero h1', {
+            duration: 1.5,
+            y: 50,
+            opacity: 0,
+            ease: 'power3.out',
+            delay: 0.3
+        });
+        
+        gsap.from('.hero-stats .hero-stat', {
+            duration: 1,
+            y: 30,
+            opacity: 0,
+            ease: 'power2.out',
+            stagger: 0.2,
+            delay: 1
+        });
+        
+        // Contador animado para las estadísticas
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 20);
+        }
+        
+        // Animar contadores cuando sean visibles
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const number = entry.target.querySelector('.hero-stat-number');
+                    const target = parseInt(number.textContent);
+                    animateCounter(number, target);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+        
+        document.querySelectorAll('.hero-stat').forEach(stat => {
+            statsObserver.observe(stat);
+        });
+    </script>
+</body>
+</html>

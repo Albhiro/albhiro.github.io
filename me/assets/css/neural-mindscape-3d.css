@@ -1,0 +1,343 @@
+/* =============================================
+   3D NEURAL MINDSCAPE STYLES
+   ============================================= */
+
+/* Main canvas container */
+#mindscapeCanvas, #heroCanvas {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: -1 !important;
+    pointer-events: auto !important;
+    cursor: crosshair;
+}
+
+#mindscapeCanvas:hover {
+    cursor: pointer;
+}
+
+/* Section containers - floating in 3D space */
+.main-content section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(11, 13, 23, 0.95);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    max-width: 90vw;
+    max-height: 85vh;
+    overflow-y: auto;
+    z-index: 100;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 
+        0 20px 40px rgba(0, 212, 255, 0.1),
+        0 0 100px rgba(0, 212, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Active section */
+.main-content section:target,
+.main-content section.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 200;
+}
+
+/* Hero section - always visible as background */
+#hero {
+    position: relative !important;
+    opacity: 1 !important;
+    transform: none !important;
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    max-width: none !important;
+    max-height: none !important;
+    z-index: 1 !important;
+}
+
+/* Navigation enhancement for 3D */
+.main-nav {
+    background: rgba(11, 13, 23, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+    z-index: 1000;
+}
+
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    animation: pulse 2s infinite;
+}
+
+/* 3D Node Focus Indicator */
+.mindscape-focus-indicator {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 25px;
+    padding: 10px 20px;
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    z-index: 999;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.mindscape-focus-indicator.active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* 3D Depth Layers */
+.depth-layer-1 { z-index: 100; }
+.depth-layer-2 { z-index: 200; }
+.depth-layer-3 { z-index: 300; }
+.depth-layer-4 { z-index: 400; }
+.depth-layer-5 { z-index: 500; }
+
+/* Modal and popup management */
+.project-modal,
+.demo-results-modal {
+    z-index: 1000 !important;
+    background: rgba(11, 13, 23, 0.98) !important;
+    backdrop-filter: blur(30px) !important;
+    border: 2px solid rgba(0, 212, 255, 0.4) !important;
+    box-shadow: 
+        0 25px 50px rgba(0, 212, 255, 0.2),
+        0 0 100px rgba(0, 212, 255, 0.1) !important;
+}
+
+.terminal-section {
+    z-index: 999 !important;
+    position: relative !important;
+}
+
+/* Neural HUD integration */
+.neural-hud {
+    z-index: 1500 !important;
+}
+
+.data-stream {
+    z-index: 1400 !important;
+}
+
+/* 3D Navigation Controls */
+.mindscape-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 999;
+}
+
+.mindscape-control-btn {
+    width: 50px;
+    height: 50px;
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    background: rgba(11, 13, 23, 0.9);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    font-size: 18px;
+}
+
+.mindscape-control-btn:hover {
+    border-color: var(--primary-color);
+    background: rgba(0, 212, 255, 0.1);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+/* Node Connection Indicators */
+.node-connection-hint {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    background: rgba(11, 13, 23, 0.9);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 250px;
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.node-connection-hint.visible {
+    opacity: 1;
+}
+
+.node-connection-hint h4 {
+    color: var(--primary-color);
+    margin: 0 0 10px 0;
+    font-size: 16px;
+}
+
+.node-connection-hint p {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* 3D Cursor Effects */
+.mindscape-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.1s ease;
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.mindscape-cursor.active {
+    opacity: 1;
+    transform: scale(1.5);
+    background: rgba(0, 212, 255, 0.2);
+    box-shadow: 0 0 20px var(--primary-color);
+}
+
+/* Section-specific depth styling */
+#about.active { 
+    z-index: 201; 
+    transform: translate(-50%, -50%) scale(1) rotateY(-2deg);
+}
+
+#experience.active { 
+    z-index: 202;
+    transform: translate(-50%, -50%) scale(1) rotateY(2deg);
+}
+
+#projects.active { 
+    z-index: 203;
+    transform: translate(-50%, -50%) scale(1) rotateX(-1deg);
+}
+
+#research.active { 
+    z-index: 204;
+    transform: translate(-50%, -50%) scale(1) rotateX(1deg) rotateY(-1deg);
+}
+
+#contact.active { 
+    z-index: 205;
+    transform: translate(-50%, -50%) scale(1) rotateY(1deg);
+}
+
+/* Loading screen for 3D */
+.mindscape-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #0B0D17 0%, #1a1a2e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.mindscape-loading.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.mindscape-loading-text {
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace;
+    font-size: 24px;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+.mindscape-loading-progress {
+    width: 300px;
+    height: 4px;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.mindscape-loading-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Responsive adjustments for 3D */
+@media (max-width: 768px) {
+    .main-content section {
+        max-width: 95vw;
+        max-height: 90vh;
+        padding: 1rem;
+    }
+    
+    .mindscape-controls {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .mindscape-control-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .node-connection-hint {
+        left: 10px;
+        max-width: 200px;
+        padding: 10px;
+    }
+}
