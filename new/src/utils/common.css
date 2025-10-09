@@ -1,0 +1,133 @@
+/* ===================================================================
+   COMMON STYLES - VARIABLES Y ESTILOS BASE
+   Autor: Luis Alberto Oraa García  
+   Descripción: Variables globales, reset y estilos comunes reutilizables
+   =================================================================== */
+
+/* === VARIABLES CSS PERSONALIZADAS === */
+:root {
+  /* Colores Cuánticos */
+  --color-quantum-primary: #9c27b0;
+  --color-quantum-secondary: #4fc3f7;
+  --color-neon-pink: #ff4081;
+  --color-neon-green: #00ff88;
+  --color-space-dark: #0a0a0a;
+  --color-deep-space: #1a1a2e;
+  
+  /* Gradientes */
+  --gradient-space: linear-gradient(135deg, 
+    rgba(10, 10, 10, 0.95) 0%, 
+    rgba(26, 26, 46, 0.9) 35%,
+    rgba(15, 15, 25, 0.95) 70%,
+    rgba(5, 5, 15, 1) 100%);
+    
+  --gradient-quantum: linear-gradient(45deg,
+    rgba(156, 39, 176, 0.8) 0%,
+    rgba(79, 195, 247, 0.6) 50%,
+    rgba(255, 64, 129, 0.7) 100%);
+    
+  /* Timing y Animaciones */
+  --timing-instant: 0.15s;
+  --timing-quick: 0.3s;
+  --timing-smooth: 0.6s;
+  --timing-epic: 1.2s;
+  --timing-legendary: 2.4s;
+  
+  /* Easing */
+  --ease-power: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-bounce: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  
+  /* Z-Index */
+  --z-quantum: 9999;
+  --z-crystal: 100;
+  --z-ui: 50;
+  --z-base: 1;
+  
+  /* Espaciado */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-xxl: 4rem;
+  
+  /* Tipografías */
+  --font-primary: 'Orbitron', monospace;
+  --font-secondary: 'Rajdhani', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+}
+
+/* === RESET Y BASE === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-secondary);
+  background: var(--gradient-space);
+  color: #ffffff;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* === UTILIDADES COMUNES === */
+.quantum-text {
+  font-family: var(--font-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--gradient-quantum);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.neon-glow {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px var(--color-quantum-primary);
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-screen {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* === ANIMACIONES BASE === */
+@keyframes particleFloat3D {
+  0% { transform: translateZ(20px) translateY(0px) rotate(0deg); }
+  25% { transform: translateZ(30px) translateY(-10px) rotate(90deg); }
+  50% { transform: translateZ(40px) translateY(-5px) rotate(180deg); }
+  75% { transform: translateZ(25px) translateY(-15px) rotate(270deg); }
+  100% { transform: translateZ(20px) translateY(0px) rotate(360deg); }
+}
+
+@keyframes energyFlow3D {
+  0% { 
+    transform: translateZ(-30px) rotateX(10deg) scale(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateZ(-20px) rotateX(15deg) scale(1.1);
+    opacity: 0.6;
+  }
+  100% { 
+    transform: translateZ(-35px) rotateX(5deg) scale(0.95);
+    opacity: 0.4;
+  }
+}
