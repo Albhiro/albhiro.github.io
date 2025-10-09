@@ -42,7 +42,7 @@
     
     <!-- Preload critical assets -->
     <link rel="preload" href="./src/utils/quantum-engine.js" as="script">
-    <link rel="preload" href="./assets/audio/system-boot.mp3" as="audio">
+    <!-- Audio preload removed to fix warning -->
 </head>
 <body class="quantum-loading">
     
@@ -114,6 +114,13 @@
                     if (landingContainer) {
                         landingContainer.innerHTML = html;
                         console.log('✅ Landing page cargada correctamente');
+                        
+                        // Inicializar Crystal Mouse Tracker DESPUÉS de cargar HTML
+                        setTimeout(() => {
+                            if (window.CrystalMouseTracker) {
+                                window.CrystalMouseTracker.init();
+                            }
+                        }, 500);
                     }
                 } catch (error) {
                     console.error('❌ Error cargando landing page:', error);

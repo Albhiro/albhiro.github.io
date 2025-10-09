@@ -127,15 +127,5 @@ const CrystalMouseTracker = {
     }
 };
 
-// Auto-inicialización cuando el DOM esté listo
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        // Delay para asegurar que los cristales estén renderizados
-        setTimeout(() => CrystalMouseTracker.init(), 500);
-    });
-} else {
-    setTimeout(() => CrystalMouseTracker.init(), 500);
-}
-
-// Export para uso modular
+// Export para uso modular (auto-inicialización controlada desde index.html)
 window.CrystalMouseTracker = CrystalMouseTracker;
