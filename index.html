@@ -3,84 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis Alberto Oraa García - Digital Portfolio</title>
+    <title>Luis Alberto Oraa García - Arquitecto de Soluciones Imposibles</title>
     
-    <!-- Meta tags -->
-    <meta name="description" content="Luis Alberto Oraa García - 16 años en Santander Digital Services. Full-stack developer, IA researcher, technical architect.">
-    <meta name="keywords" content="FastAPI, Python, Angular, Docker, Machine Learning, Santander, Full Stack Developer">
+    <!-- Meta Tags Estratégicos -->
+    <meta name="description" content="16 años convirtiendo ideas imposibles en realidades digitales. Arquitecto Senior en Santander Digital Services. Cuando otros dicen 'no se puede', yo pregunto '¿cómo lo hacemos?'">
+    <meta name="keywords" content="Arquitecto de Software, Santander Digital Services, Python, FastAPI, Microservicios, Liderazgo Técnico, Innovación, IA, Machine Learning">
     <meta name="author" content="Luis Alberto Oraa García">
+    <meta name="robots" content="index, follow">
     
-    <!-- Stylesheets -->
+    <!-- Open Graph para impacto en redes sociales -->
+    <meta property="og:title" content="Luis Alberto Oraa - Arquitecto de Soluciones Imposibles">
+    <meta property="og:description" content="Si para presentarme he creado esto... imagina lo que puedo hacer por tu proyecto">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/images/og-preview.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Luis Alberto Oraa - Cuando 'imposible' no está en el diccionario">
+    <meta name="twitter:description" content="16 años demostrando que los límites están para superarlos">
+    
+    <!-- Preconnections para performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts épicas -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="./assets/css/main.css" rel="stylesheet">
     
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- ESTILOS MODULARES -->
+    <link href="./src/utils/common.css" rel="stylesheet">
+    <link href="./src/assets/css/landing.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="./src/utils/quantum-engine.js" as="script">
+    <link rel="preload" href="./assets/audio/system-boot.mp3" as="audio">
 </head>
-<body>
-    <!-- Simple Loading Screen -->
-    <div id="loading-screen" class="simple-loading">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <h2>Conectando con Luis Alberto...</h2>
-            <p>Inicializando portfolio • Cargando mundos • Preparando experiencias</p>
+<body class="quantum-loading">
+    
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div id="app-container">
+        
+        <!-- PÁGINA DE LANDING (INICIALIZACIÓN CUÁNTICA) -->
+        <div id="landing-page">
+            <!-- El contenido se carga desde landing.html -->
         </div>
+        
+        <!-- DASHBOARD PRINCIPAL (OCULTO INICIALMENTE) -->
+        <div id="dashboard-page" class="quantum-dashboard" style="display: none; opacity: 0; transform: scale(0.95);">
+            <!-- Aquí se cargará el dashboard cuando esté listo -->
+            <div class="dashboard-placeholder">
+                <h2 class="quantum-text">SISTEMA CUÁNTICO ACTIVADO</h2>
+                <p>Dashboard en construcción...</p>
+            </div>
+        </div>
+        
     </div>
-
-    <!-- Main Content -->
-    <main class="main-content" id="dynamic-content">            
-        <!-- World Selector Grid -->
-        <section id="worlds" class="world-selector">
-            <div class="selector-header">
-                <h2 class="selector-title">Elige tu Mundo</h2>
-                <p class="selector-subtitle">Explora diferentes aspectos de mi experiencia profesional</p>
-            </div>
-            <div class="world-grid">
-                <!-- Hyrule World Section -->
-                <a href="zelda.html" class="world-section" data-world="hyrule">
-                    <div class="world-overlay"></div>
-                    <div class="world-circle">
-                        <div class="world-content">
-                            <p class="world-description hyrule-epic">16 YEARS OF LEGENDARY QUESTS</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Tamriel World Section -->
-                <a href="tamriel.html" class="world-section" data-world="tamriel">
-                    <div class="world-overlay"></div>
-                    <div class="world-circle">
-                        <div class="world-content">
-                            <p class="world-description tamriel-constellation">MASTER OF ALL SKILL TREES</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Night City World Section -->
-                <a href="cyberpunk.html" class="world-section" data-world="night-city">
-                    <div class="world-overlay"></div>
-                    <div class="world-circle">
-                        <div class="world-content">
-                            <p class="world-description nightcity-cyber">CYBERNETIC ENHANCEMENT ACTIVE</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Arcade World Section -->
-                <a href="retro.html" class="world-section" data-world="arcade">
-                    <div class="world-overlay"></div>
-                    <div class="world-circle">
-                        <div class="world-content">
-                            <p class="world-description arcade-retro">PRESS START TO CONNECT</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-        </section>
-    </main>
-
-    <!-- Scripts -->
-    <script src="./assets/js/main.js"></script>
+    
+    <!-- SCRIPTS MODULARES -->
+    <script src="./src/utils/quantum-engine.js"></script>
+    <script src="./src/scripts/js/landing.js"></script>
+    
+    <!-- INICIALIZACIÓN PRINCIPAL -->
+    <script>
+        /**
+         * ===================================================================
+         * SISTEMA DE INICIALIZACIÓN MODULAR
+         * ===================================================================
+         */
+        
+        'use strict';
+        
+        class QuantumApp {
+            constructor() {
+                this.quantumEngine = null;
+                this.currentPage = 'landing';
+                this.isInitialized = false;
+                
+                this.init();
+            }
+            
+            async init() {
+                console.log('🚀 Quantum App: Inicializando aplicación...');
+                
+                // Cargar contenido de la landing page
+                await this.loadLandingPage();
+                
+                // Inicializar motor cuántico
+                this.quantumEngine = new QuantumEngine();
+                
+                this.isInitialized = true;
+                console.log('✅ Quantum App: Aplicación inicializada');
+            }
+            
+            async loadLandingPage() {
+                try {
+                    const response = await fetch('./src/pages/landing.html');
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const html = await response.text();
+                    const landingContainer = document.getElementById('landing-page');
+                    
+                    if (landingContainer) {
+                        landingContainer.innerHTML = html;
+                        console.log('✅ Landing page cargada correctamente');
+                    }
+                } catch (error) {
+                    console.error('❌ Error cargando landing page:', error);
+                    
+                    // Fallback: mostrar mensaje de error
+                    const landingContainer = document.getElementById('landing-page');
+                    if (landingContainer) {
+                        landingContainer.innerHTML = `
+                            <div class="error-fallback">
+                                <h2>Error de carga</h2>
+                                <p>No se pudo cargar la página de inicialización.</p>
+                            </div>
+                        `;
+                    }
+                }
+            }
+            
+            transitionToPage(pageName) {
+                console.log(`🔄 Transicionando a: ${pageName}`);
+                this.currentPage = pageName;
+                
+                // Lógica de transición entre páginas
+                const currentPageEl = document.getElementById(`${this.currentPage}-page`);
+                const targetPageEl = document.getElementById(`${pageName}-page`);
+                
+                if (currentPageEl && targetPageEl) {
+                    // Fade out página actual
+                    currentPageEl.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        currentPageEl.style.display = 'none';
+                        targetPageEl.style.display = 'block';
+                        
+                        // Fade in nueva página
+                        setTimeout(() => {
+                            targetPageEl.style.opacity = '1';
+                        }, 100);
+                    }, 600);
+                }
+            }
+        }
+        
+        // Inicializar aplicación cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                window.quantumApp = new QuantumApp();
+            });
+        } else {
+            window.quantumApp = new QuantumApp();
+        }
+        
+        // Debugging global
+        window.addEventListener('error', (e) => {
+            console.error('❌ Error global capturado:', e.error);
+        });
+        
+        console.log('📋 Sistema modular cargado correctamente');
+    </script>
 </body>
 </html>
