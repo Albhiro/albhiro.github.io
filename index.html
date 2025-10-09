@@ -67,7 +67,7 @@
     
     <!-- SCRIPTS MODULARES -->
     <script src="./src/utils/quantum-engine.js"></script>
-    <script src="./src/scripts/js/landing.js"></script>
+    <!-- <script src="./src/scripts/js/landing.js"></script> --> <!-- TEMPORALMENTE DESACTIVADO -->
     
     <!-- INICIALIZACIÓN PRINCIPAL -->
     <script>
@@ -94,8 +94,7 @@
                 // Cargar contenido de la landing page
                 await this.loadLandingPage();
                 
-                // Inicializar motor cuántico
-                this.quantumEngine = new QuantumEngine();
+                // QuantumEngine se inicializa desde loadLandingPage()
                 
                 this.isInitialized = true;
                 console.log('✅ Quantum App: Aplicación inicializada');
@@ -115,12 +114,14 @@
                         landingContainer.innerHTML = html;
                         console.log('✅ Landing page cargada correctamente');
                         
-                        // Inicializar Crystal Mouse Tracker DESPUÉS de cargar HTML
-                        setTimeout(() => {
-                            if (window.CrystalMouseTracker) {
-                                window.CrystalMouseTracker.init();
-                            }
-                        }, 500);
+                        // Inicializar sistema cuántico
+                        if (window.QuantumEngine) {
+                            window.quantumEngine = new QuantumEngine();
+                            window.quantumEngine.init();
+                            console.log('✅ QuantumEngine inicializado correctamente');
+                        } else {
+                            console.error('❌ QuantumEngine no disponible');
+                        }
                     }
                 } catch (error) {
                     console.error('❌ Error cargando landing page:', error);
@@ -137,6 +138,8 @@
                     }
                 }
             }
+            
+
             
             transitionToPage(pageName) {
                 console.log(`🔄 Transicionando a: ${pageName}`);

@@ -91,16 +91,14 @@ const CrystalMouseTracker = {
             const crystalRotateX = distanceY * intensity * -20; // ±20 grados
             const crystalScale = 1 + intensity * 0.3; // Escala 1.0 a 1.3
             
-            // Combinar transformación del mouse con animaciones CSS base
-            crystal.style.setProperty('transform', `
-                translate(-50%, -50%)
-                rotateX(${crystalRotateX}deg) 
-                rotateY(${crystalRotateY}deg)
-                scale(${crystalScale})
-            `, 'important');
+            // Aplicar transformación del mouse SIN sobrescribir las animaciones CSS
+            // Usamos CSS custom properties para que coexistan con las animaciones
+            crystal.style.setProperty('--mouse-rotate-x', `${crystalRotateX}deg`);
+            crystal.style.setProperty('--mouse-rotate-y', `${crystalRotateY}deg`);
+            crystal.style.setProperty('--mouse-scale', crystalScale);
             
-            // Mantener una transición suave
-            crystal.style.transition = 'transform 0.1s ease-out, filter 0.2s ease-out';
+            // Activar clase que combina mouse + animaciones originales
+            crystal.classList.add('mouse-active');
             
             // Efecto de brillo dinámico
             const brightness = 1 + intensity * 0.5; // 1.0 a 1.5
@@ -119,8 +117,10 @@ const CrystalMouseTracker = {
         
         // Resetear cristales a sus animaciones originales
         this.crystals.forEach(crystal => {
-            crystal.style.removeProperty('transform');
-            crystal.style.removeProperty('transition');
+            crystal.classList.remove('mouse-active');
+            crystal.style.removeProperty('--mouse-rotate-x');
+            crystal.style.removeProperty('--mouse-rotate-y');
+            crystal.style.removeProperty('--mouse-scale');
             crystal.style.filter = '';
         });
     },

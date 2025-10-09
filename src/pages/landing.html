@@ -262,11 +262,26 @@
                 <!-- BARRA DE PROGRESO CUÁNTICA -->
                 <div class="progress-container">
                     <div class="progress-label">PROGRESO DEL SISTEMA</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                        <div class="progress-overlay"></div>
+                    
+                    <!-- FILA CON BARRA Y BOTÓN -->
+                    <div class="progress-and-button-row">
+                        <div class="progress-section">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                                <div class="progress-overlay"></div>
+                            </div>
+                            <div class="progress-percentage">0%</div>
+                        </div>
+                        
+                        <!-- BOTÓN DE ACCESO AL LADO -->
+                        <div class="access-button-container">
+                            <button class="quantum-access-button disabled">
+                                <span class="button-core">ACCEDER</span>
+                                <div class="button-energy"></div>
+                                <div class="button-glow"></div>
+                            </button>
+                        </div>
                     </div>
-                    <div class="progress-percentage">0%</div>
                 </div>
                 
                 <!-- MENSAJE DE ESTADO -->
@@ -296,17 +311,6 @@
                 
             </div>
             
-            <!-- BOTÓN DE ACCESO MANUAL -->
-            <div class="access-button-container">
-                <button class="quantum-access-button" style="display: none;">
-                    <span class="button-core">ACCEDER AL SISTEMA</span>
-                    <div class="button-energy"></div>
-                    <div class="button-glow"></div>
-                </button>
-            </div>
-            
         </div>
-        
     </div>
-    
 </div>

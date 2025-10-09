@@ -49,6 +49,7 @@ class QuantumEngine {
     init() {
         this.startTime = Date.now();
         console.log('🚀 Quantum Engine: Inicializando sistema...');
+        console.log('🎯 DEBUG: Stages configurados:', this.loadingStages.length);
         
         // Randomizar duración de etapas ±200ms
         this.loadingStages.forEach(stage => {
@@ -67,8 +68,12 @@ class QuantumEngine {
      * Start the quantum boot sequence
      */
     startQuantumBoot() {
+        console.log('🎯 DEBUG: startQuantumBoot ejecutándose...');
         this.initializeAudio();
-        setTimeout(() => this.executeBootSequence(), 500);
+        setTimeout(() => {
+            console.log('🎯 DEBUG: Ejecutando boot sequence...');
+            this.executeBootSequence();
+        }, 500);
     }
     
     /**
@@ -76,11 +81,15 @@ class QuantumEngine {
      */
     async executeBootSequence() {
         try {
+            console.log('🎯 DEBUG: executeBootSequence iniciado');
             this.playSound('system-boot', true, 0.3);
             this.activateSystemStatus();
+            console.log('🎯 DEBUG: Iniciando runLoadingStages...');
             await this.runLoadingStages();
+            console.log('🎯 DEBUG: runLoadingStages completado');
             await this.completeInitialization();
         } catch (error) {
+            console.error('❌ DEBUG: Error en executeBootSequence:', error);
             this.handleError('Boot sequence failed', error);
         }
     }
@@ -96,15 +105,23 @@ class QuantumEngine {
             // Actualizar mensaje
             this.updateLoadingMessage(stage.message);
             
-            // Progreso base (0-50% para permitir botón manual)
-            this.baseProgress = (i / this.loadingStages.length) * 50;
+            // Para el último stage, asegurar que llegue al 100%
+            let finalProgress;
+            if (i === this.loadingStages.length - 1) {
+                finalProgress = 100;
+                console.log('🎯 DEBUG: Último stage, forzando 100%');
+            } else {
+                // Progreso base (0-95% para stages intermedios)
+                this.baseProgress = (i / (this.loadingStages.length - 1)) * 95;
+                
+                // Variación aleatoria ±3%
+                this.progressVariation = (Math.random() - 0.5) * 6; // ±3%
+                
+                // Progreso final
+                finalProgress = Math.min(95, Math.max(0, this.baseProgress + this.progressVariation));
+            }
             
-            // Variación aleatoria ±3%
-            this.progressVariation = (Math.random() - 0.5) * 6; // ±3%
-            
-            // Progreso final limitado a 50%
-            const finalProgress = Math.min(50, Math.max(0, this.baseProgress + this.progressVariation));
-            
+            console.log(`🎯 DEBUG: Stage ${i+1}/${this.loadingStages.length} - Progress: ${finalProgress}%`);
             await this.updateProgressBar(finalProgress, stage.duration);
             
             // Activar sistema correspondiente
@@ -113,6 +130,8 @@ class QuantumEngine {
                 this.activateSystem(systemKey);
             }
         }
+        
+        console.log('🎯 DEBUG: Todos los stages completados');
     }
     
     /**
@@ -123,7 +142,14 @@ class QuantumEngine {
             const progressBar = document.querySelector('.progress-fill');
             const progressText = document.querySelector('.progress-percentage');
             
+            console.log('🎯 DEBUG: Elementos encontrados?', {
+                progressBar: !!progressBar,
+                progressText: !!progressText,
+                targetProgress: targetProgress
+            });
+            
             if (!progressBar || !progressText) {
+                console.error('❌ DEBUG: No se encontraron elementos de progreso');
                 resolve();
                 return;
             }
@@ -187,34 +213,50 @@ class QuantumEngine {
      * Complete initialization and show access button
      */
     async completeInitialization() {
-        // Mostrar botón de acceso cuando llegue al 50%
+        console.log('🎯 DEBUG: completeInitialization ejecutándose...');
+        
+        // Mostrar botón de acceso cuando llegue al 100%
         await this.showAccessButton();
         
         this.isInitialized = true;
-        console.log('✅ Quantum Engine: Sistema inicializado');
+        console.log('✅ Quantum Engine: Sistema inicializado - Botón habilitado');
     }
     
     /**
-     * Show access button for manual entry
+     * Enable access button after loading completes
      */
     showAccessButton() {
         return new Promise(resolve => {
             const accessButton = document.querySelector('.quantum-access-button');
+            console.log('🎯 DEBUG: showAccessButton ejecutándose...', {
+                button: !!accessButton,
+                hasDisabledClass: accessButton ? accessButton.classList.contains('disabled') : false
+            });
+            
             if (accessButton) {
-                accessButton.style.display = 'block';
-                accessButton.style.opacity = '0';
-                accessButton.style.transform = 'scale(0.8)';
+                // Remover clase disabled y habilitar interacción
+                accessButton.classList.remove('disabled');
+                accessButton.style.pointerEvents = 'auto';
                 
+                console.log('🎯 DEBUG: Botón habilitado, removida clase disabled');
+                
+                // Animación de habilitación
                 setTimeout(() => {
                     accessButton.style.transition = 'all 0.6s var(--ease-power)';
-                    accessButton.style.opacity = '1';
-                    accessButton.style.transform = 'scale(1)';
+                    accessButton.style.borderColor = 'rgba(79, 195, 247, 0.5)';
+                    accessButton.style.color = 'rgba(255, 255, 255, 0.9)';
+                    accessButton.style.cursor = 'pointer';
+                    
+                    console.log('🎯 DEBUG: Estilos de habilitación aplicados');
                 }, 100);
                 
                 // Evento de click para acceder
                 accessButton.addEventListener('click', () => {
+                    console.log('🎯 DEBUG: Botón clickeado!');
                     this.enterSystem();
                 });
+            } else {
+                console.error('❌ DEBUG: No se encontró el botón .quantum-access-button');
             }
             resolve();
         });
@@ -322,7 +364,44 @@ class QuantumEngine {
             this.completeInitialization();
         }, 1000);
     }
+    /**
+     * FUNCIÓN DE TEST: Habilitar botón manualmente
+     */
+    testEnableButton() {
+        console.log('🧪 TEST: Habilitando botón manualmente...');
+        const accessButton = document.querySelector('.quantum-access-button');
+        
+        if (accessButton) {
+            accessButton.classList.remove('disabled');
+            accessButton.style.pointerEvents = 'auto';
+            accessButton.style.borderColor = 'rgba(79, 195, 247, 0.5)';
+            accessButton.style.color = 'rgba(255, 255, 255, 0.9)';
+            accessButton.style.cursor = 'pointer';
+            
+            console.log('✅ TEST: Botón habilitado manualmente');
+            
+            // Agregar event listener si no existe
+            if (!accessButton.hasAttribute('data-listener-added')) {
+                accessButton.addEventListener('click', () => {
+                    console.log('🎯 TEST: Botón clickeado!');
+                    this.enterSystem();
+                });
+                accessButton.setAttribute('data-listener-added', 'true');
+            }
+        } else {
+            console.error('❌ TEST: No se encontró el botón');
+        }
+    }
 }
 
 // Export para uso modular
 window.QuantumEngine = QuantumEngine;
+
+// FUNCIÓN GLOBAL DE TEST
+window.testEnableButton = function() {
+    if (window.quantumEngine) {
+        window.quantumEngine.testEnableButton();
+    } else {
+        console.error('❌ TEST: QuantumEngine no inicializado');
+    }
+};
