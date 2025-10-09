@@ -36,11 +36,7 @@ const CrystalMouseTracker = {
         // Eventos de mouse en la sección izquierda
         this.leftSection.addEventListener('mouseenter', () => {
             this.crystalField.style.transition = 'transform 0.3s ease-out';
-            
-            // Pausar animaciones CSS de los cristales
-            this.crystals.forEach(crystal => {
-                crystal.style.animationPlayState = 'paused';
-            });
+            // Las animaciones originales seguirán corriendo en segundo plano
         });
         
         this.leftSection.addEventListener('mousemove', (e) => {
@@ -51,11 +47,7 @@ const CrystalMouseTracker = {
         
         this.leftSection.addEventListener('mouseleave', () => {
             this.resetPerspective();
-            
-            // Reactivar animaciones CSS de los cristales
-            this.crystals.forEach(crystal => {
-                crystal.style.animationPlayState = 'running';
-            });
+            // Las animaciones originales se restauran automáticamente
         });
         
         // Debug: mostrar información en consola
@@ -70,9 +62,6 @@ const CrystalMouseTracker = {
         // Posición del mouse relativa al centro (normalizada -1 a 1)
         const mouseX = (e.clientX - rect.left - centerX) / centerX;
         const mouseY = (e.clientY - rect.top - centerY) / centerY;
-        
-        // DEBUG TEMPORAL
-        console.log('🖱️ Mouse move:', { mouseX, mouseY, crystalsFound: this.crystals.length });
         
         // Perspectiva global del campo
         const fieldRotateY = mouseX * 15; // ±15 grados
@@ -102,13 +91,16 @@ const CrystalMouseTracker = {
             const crystalRotateX = distanceY * intensity * -20; // ±20 grados
             const crystalScale = 1 + intensity * 0.3; // Escala 1.0 a 1.3
             
-            // Aplicar transformación sobrescribiendo animaciones CSS
+            // Combinar transformación del mouse con animaciones CSS base
             crystal.style.setProperty('transform', `
                 translate(-50%, -50%)
                 rotateX(${crystalRotateX}deg) 
                 rotateY(${crystalRotateY}deg)
                 scale(${crystalScale})
             `, 'important');
+            
+            // Mantener una transición suave
+            crystal.style.transition = 'transform 0.1s ease-out, filter 0.2s ease-out';
             
             // Efecto de brillo dinámico
             const brightness = 1 + intensity * 0.5; // 1.0 a 1.5
@@ -125,9 +117,10 @@ const CrystalMouseTracker = {
         // Resetear perspectiva del campo
         this.crystalField.style.transform = '';
         
-        // Resetear cristales individuales
+        // Resetear cristales a sus animaciones originales
         this.crystals.forEach(crystal => {
             crystal.style.removeProperty('transform');
+            crystal.style.removeProperty('transition');
             crystal.style.filter = '';
         });
     },
