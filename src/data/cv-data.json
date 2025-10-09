@@ -1,0 +1,365 @@
+{
+  "personal": {
+    "name": "Luis Alberto Oraa García",
+    "title": "Diseñador de Soluciones Imposibles",
+    "subtitle": "16 años convirtiendo ideas imposibles en realidades digitales",
+    "tagline": "Cuando otros dicen 'no se puede', yo pregunto '¿cómo lo hacemos?'",
+    "company": "Santander Digital Services",
+    "experience_years": 16,
+    "location": "Madrid, España",
+    "email": "luaoraa@gmail.com",
+    "linkedin": "linkedin.com/in/luaoraa",
+    "github": "github.com/albhiro"
+  },
+  
+  "landing": {
+    "title": {
+      "main": "QUANTUM PORTFOLIO",
+      "sub": "INITIALIZATION SEQUENCE"
+    },
+    "author_signature": {
+      "label": "ARCHITECT:",
+      "name": "LUIS ALBERTO ORAA GARCÍA"
+    },
+    "progress_label": "PROGRESO DEL SISTEMA",
+    "button_text": "ACCEDER",
+    "loading_messages": [
+      "Estableciendo conexión cuántica...",
+      "Validando credenciales de Santander Digital Services...",
+      "Sincronizando 16 años de experiencia...",
+      "Cargando arsenal tecnológico...",
+      "Inicializando red neural de proyectos...",
+      "Activando motor de innovación...",
+      "Preparando multiverso de habilidades...",
+      "Calibrando matrices de impacto...",
+      "Sistema cuántico listo. Acceso habilitado..."
+    ],
+    "system_indicators": [
+      { "key": "neural", "label": "RED NEURAL" },
+      { "key": "experience", "label": "EXPERIENCIA" },
+      { "key": "innovation", "label": "INNOVACIÓN" },
+      { "key": "multiverse", "label": "MULTIVERSO" }
+    ]
+  },
+
+  "navigation": {
+    "pages": [
+      { "id": "landing", "title": "Inicio", "icon": "🚀" },
+      { "id": "portfolio", "title": "Proyectos", "icon": "💼" },
+      { "id": "experience", "title": "Experiencia", "icon": "🏆" },
+      { "id": "skills", "title": "Habilidades", "icon": "⚡" },
+      { "id": "contact", "title": "Contacto", "icon": "📞" }
+    ]
+  },
+
+  "portfolio": {
+    "title": {
+      "quantum": "QUANTUM",
+      "projects": "PROJECTS"
+    },
+    "subtitle": "16 años convirtiendo ideas imposibles en realidades digitales",
+    "filters": [
+      { "id": "all", "label": "TODOS LOS PROYECTOS", "active": true },
+      { "id": "architecture", "label": "ARQUITECTURA" },
+      { "id": "ai", "label": "INTELIGENCIA ARTIFICIAL" },
+      { "id": "microservices", "label": "MICROSERVICIOS" },
+      { "id": "innovation", "label": "INNOVACIÓN" }
+    ],
+    "floating_elements": [
+      { "emoji": "⚡", "delay": "0s" },
+      { "emoji": "🚀", "delay": "1s" },
+      { "emoji": "⭐", "delay": "2s" }
+    ],
+    "projects": [
+      {
+        "id": "quantum-ai",
+        "title": "QUANTUM AI PLATFORM",
+        "description": "Arquitectura de IA cuántica que procesa 1M+ transacciones/día en Santander Digital Services",
+        "icon": "🧠",
+        "featured": true,
+        "categories": ["ai", "architecture"],
+        "tags": ["Python", "TensorFlow", "Microservicios", "Azure"],
+        "metrics": [
+          { "value": "99.9%", "label": "Uptime" },
+          { "value": "1M+", "label": "Transacciones/día" }
+        ],
+        "status": "En producción",
+        "year": "2024"
+      },
+      {
+        "id": "blockchain-validator",
+        "title": "BLOCKCHAIN VALIDATOR",
+        "description": "Sistema de validación distribuida para transacciones financieras",
+        "icon": "⛓️",
+        "featured": false,
+        "categories": ["innovation", "architecture"],
+        "tags": ["Solidity", "Web3", "FastAPI"],
+        "status": "Beta",
+        "year": "2024"
+      },
+      {
+        "id": "realtime-analytics",
+        "title": "REAL-TIME ANALYTICS",
+        "description": "Dashboard en tiempo real para análisis de comportamiento de usuarios",
+        "icon": "📊",
+        "featured": false,
+        "categories": ["architecture", "microservices"],
+        "tags": ["React", "WebSockets", "Redis"],
+        "status": "Producción",
+        "year": "2023"
+      },
+      {
+        "id": "quantum-security",
+        "title": "QUANTUM SECURITY",
+        "description": "Encriptación cuántica para protección de datos bancarios",
+        "icon": "🔐",
+        "featured": false,
+        "categories": ["innovation", "architecture"],
+        "tags": ["Cryptography", "Quantum", "C++"],
+        "status": "Investigación",
+        "year": "2024"
+      },
+      {
+        "id": "api-gateway",
+        "title": "API GATEWAY ULTRA",
+        "description": "Gateway de alta performance para 500+ microservicios",
+        "icon": "🌐",
+        "featured": false,
+        "categories": ["architecture", "microservices"],
+        "tags": ["Kong", "Kubernetes", "GraphQL"],
+        "status": "Producción",
+        "year": "2023"
+      },
+      {
+        "id": "ml-pipeline",
+        "title": "ML PIPELINE ENGINE",
+        "description": "Pipeline automatizado para entrenamiento y despliegue de modelos ML",
+        "icon": "🤖",
+        "featured": false,
+        "categories": ["ai", "microservices"],
+        "tags": ["MLOps", "Docker", "Jenkins"],
+        "status": "Producción",
+        "year": "2023"
+      }
+    ],
+    "achievements": [
+      "16+ años de experiencia",
+      "100+ proyectos completados",
+      "99.9% uptime en producción",
+      "Arquitecto Senior en Santander",
+      "Especialista en sistemas imposibles"
+    ]
+  },
+
+  "experience": {
+    "title": {
+      "main": "EXPERIENCE",
+      "sub": "TIMELINE"
+    },
+    "subtitle": "16 años de evolución profesional",
+    "timeline": [
+      {
+        "year": "2024",
+        "company": "Santander Digital Services",
+        "position": "Arquitecto Principal",
+        "type": "current",
+        "description": "Liderando la transformación digital con arquitecturas cuánticas",
+        "achievements": [
+          "Arquitectura de IA que procesa 1M+ transacciones/día",
+          "Reducción del 60% en tiempo de respuesta de APIs",
+          "Implementación de microservicios cloud-native"
+        ],
+        "technologies": ["Python", "Kubernetes", "Azure", "TensorFlow"]
+      },
+      {
+        "year": "2021-2024",
+        "company": "Santander Digital Services",
+        "position": "Arquitecto Senior",
+        "type": "promotion",
+        "description": "Diseño de sistemas distribuidos de alta disponibilidad",
+        "achievements": [
+          "Migración completa a microservicios (500+ servicios)",
+          "99.9% uptime en todos los sistemas críticos",
+          "Liderazgo técnico de 12 desarrolladores"
+        ],
+        "technologies": ["FastAPI", "Docker", "PostgreSQL", "Redis"]
+      },
+      {
+        "year": "2018-2021",
+        "company": "Santander",
+        "position": "Desarrollador Senior",
+        "type": "growth",
+        "description": "Desarrollo de plataformas bancarias de misión crítica",
+        "achievements": [
+          "Sistema de pagos instantáneos (24/7)",
+          "API Gateway para 200M+ transacciones/mes",
+          "Optimización de bases de datos (+300% performance)"
+        ],
+        "technologies": ["Java", "Spring", "Oracle", "Kafka"]
+      },
+      {
+        "year": "2015-2018",
+        "company": "Everis",
+        "position": "Consultor Técnico",
+        "type": "consulting",
+        "description": "Consultoría en transformación digital para grandes corporaciones",
+        "achievements": [
+          "Modernización de legacy systems",
+          "Implementación de DevOps pipelines",
+          "Automatización de procesos críticos"
+        ],
+        "technologies": ["Python", ".NET", "Angular", "AWS"]
+      },
+      {
+        "year": "2008-2015",
+        "company": "Freelance & Startups",
+        "position": "Full Stack Developer",
+        "type": "start",
+        "description": "Desarrollo de aplicaciones web y móviles innovadoras",
+        "achievements": [
+          "Creación de 15+ aplicaciones desde cero",
+          "Participación en 3 startups exitosas",
+          "Dominio de múltiples tecnologías"
+        ],
+        "technologies": ["PHP", "JavaScript", "MySQL", "iOS"]
+      }
+    ]
+  },
+
+  "skills": {
+    "title": {
+      "main": "QUANTUM",
+      "sub": "SKILLS"
+    },
+    "subtitle": "Arsenal tecnológico forjado en 16 años de batallas épicas",
+    "categories": [
+      {
+        "id": "architecture",
+        "name": "ARQUITECTURA",
+        "icon": "🏗️",
+        "description": "Diseño de sistemas complejos y escalables",
+        "skills": [
+          { "name": "Microservicios", "level": 95, "years": 8 },
+          { "name": "API Design", "level": 98, "years": 12 },
+          { "name": "System Design", "level": 92, "years": 10 },
+          { "name": "Cloud Architecture", "level": 88, "years": 6 },
+          { "name": "Event-Driven", "level": 85, "years": 5 }
+        ]
+      },
+      {
+        "id": "backend",
+        "name": "BACKEND",
+        "icon": "⚙️",
+        "description": "Motores de alta performance y confiabilidad",
+        "skills": [
+          { "name": "Python", "level": 98, "years": 14 },
+          { "name": "FastAPI", "level": 95, "years": 4 },
+          { "name": "Java", "level": 90, "years": 8 },
+          { "name": "Node.js", "level": 85, "years": 6 },
+          { "name": "Go", "level": 75, "years": 3 }
+        ]
+      },
+      {
+        "id": "data",
+        "name": "DATOS & IA",
+        "icon": "🧠",
+        "description": "Inteligencia artificial y análisis de datos",
+        "skills": [
+          { "name": "Machine Learning", "level": 88, "years": 6 },
+          { "name": "TensorFlow", "level": 82, "years": 4 },
+          { "name": "Data Engineering", "level": 85, "years": 7 },
+          { "name": "Apache Kafka", "level": 90, "years": 5 },
+          { "name": "Pandas", "level": 92, "years": 8 }
+        ]
+      },
+      {
+        "id": "cloud",
+        "name": "CLOUD & DEVOPS",
+        "icon": "☁️",
+        "description": "Infraestructura moderna y automatización",
+        "skills": [
+          { "name": "Azure", "level": 92, "years": 6 },
+          { "name": "Kubernetes", "level": 88, "years": 4 },
+          { "name": "Docker", "level": 95, "years": 7 },
+          { "name": "Terraform", "level": 80, "years": 3 },
+          { "name": "Jenkins", "level": 85, "years": 5 }
+        ]
+      },
+      {
+        "id": "databases",
+        "name": "BASES DE DATOS",
+        "icon": "🗄️",
+        "description": "Gestión y optimización de datos",
+        "skills": [
+          { "name": "PostgreSQL", "level": 95, "years": 10 },
+          { "name": "Redis", "level": 90, "years": 6 },
+          { "name": "MongoDB", "level": 85, "years": 8 },
+          { "name": "Elasticsearch", "level": 80, "years": 4 },
+          { "name": "Oracle", "level": 88, "years": 6 }
+        ]
+      },
+      {
+        "id": "frontend",
+        "name": "FRONTEND",
+        "icon": "🎨",
+        "description": "Interfaces modernas y experiencias de usuario",
+        "skills": [
+          { "name": "React", "level": 85, "years": 5 },
+          { "name": "TypeScript", "level": 82, "years": 4 },
+          { "name": "Vue.js", "level": 75, "years": 3 },
+          { "name": "CSS/SCSS", "level": 88, "years": 12 },
+          { "name": "JavaScript", "level": 92, "years": 15 }
+        ]
+      }
+    ],
+    "certifications": [
+      { "name": "Azure Solutions Architect", "issuer": "Microsoft", "year": "2023" },
+      { "name": "AWS Certified Developer", "issuer": "Amazon", "year": "2022" },
+      { "name": "Kubernetes Administrator", "issuer": "CNCF", "year": "2023" },
+      { "name": "TensorFlow Developer", "issuer": "Google", "year": "2022" }
+    ]
+  },
+
+  "contact": {
+    "title": {
+      "main": "QUANTUM TEST",
+      "sub": "CONTACT"
+    },
+    "subtitle": "Conectemos y creemos algo imposible juntos",
+    "description": "¿Tienes un proyecto que otros consideran imposible? Perfecto. Esos son mis favoritos.",
+    "contact_info": [
+      { "type": "email", "label": "Email", "value": "luaoraa@gmail.com", "icon": "📧" },
+      { "type": "linkedin", "label": "LinkedIn", "value": "linkedin.com/in/luaoraa", "icon": "💼" },
+      { "type": "github", "label": "GitHub", "value": "github.com/albhiro", "icon": "🐙" },
+      { "type": "location", "label": "Ubicación", "value": "Madrid, España", "icon": "📍" }
+    ],
+    "form_fields": [
+      { "id": "name", "type": "text", "label": "Nombre", "placeholder": "Tu nombre completo", "required": true },
+      { "id": "email", "type": "email", "label": "Email", "placeholder": "tu@email.com", "required": true },
+      { "id": "company", "type": "text", "label": "Empresa", "placeholder": "Tu empresa (opcional)" },
+      { "id": "project", "type": "select", "label": "Tipo de Proyecto", "required": true, "options": [
+        { "value": "", "text": "Selecciona el tipo de proyecto" },
+        { "value": "architecture", "text": "Arquitectura de Software" },
+        { "value": "ai", "text": "Inteligencia Artificial" },
+        { "value": "microservices", "text": "Microservicios" },
+        { "value": "consulting", "text": "Consultoría Técnica" },
+        { "value": "other", "text": "Otro proyecto imposible" }
+      ]},
+      { "id": "message", "type": "textarea", "label": "Mensaje", "placeholder": "Cuéntame sobre tu proyecto imposible...", "required": true, "rows": 5 }
+    ],
+    "call_to_action": "Si para presentarme he creado esto... imagina lo que puedo hacer por tu proyecto",
+    "availability": {
+      "status": "Disponible para proyectos épicos",
+      "response_time": "Respuesta en menos de 24 horas",
+      "preferred_contact": "email"
+    }
+  },
+
+  "meta": {
+    "version": "1.0.0",
+    "last_updated": "2025-10-09",
+    "languages": ["es", "en"],
+    "theme": "quantum",
+    "author": "Luis Alberto Oraa García"
+  }
+}

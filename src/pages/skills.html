@@ -1,0 +1,145 @@
+<!-- ===================================================================
+     SKILLS PAGE - QUANTUM ABILITIES MATRIX
+     Descripción: Matriz de habilidades cuánticas con visualizaciones interactivas
+     =================================================================== -->
+
+<div class="skills-container">
+    
+    <!-- HEADER SECTION -->
+    <section class="skills-header">
+        <h1 class="skills-title">
+            <span class="title-main" data-text="skills.title.main">QUANTUM</span>
+            <span class="title-sub" data-text="skills.title.sub">SKILLS</span>
+        </h1>
+        <p class="skills-subtitle" data-text="skills.subtitle">Arsenal tecnológico forjado en 16 años de batallas épicas</p>
+        
+        <!-- RADAR CUÁNTICO -->
+        <div class="skill-radar">
+            <div class="radar-rings">
+                <div class="radar-ring ring-1"></div>
+                <div class="radar-ring ring-2"></div>
+                <div class="radar-ring ring-3"></div>
+            </div>
+            <div class="radar-scanner"></div>
+            <div class="radar-center">CORE</div>
+        </div>
+    </section>
+    
+    <!-- FILTROS DE CATEGORÍAS -->
+    <section class="skills-filters">
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-category="all">TODAS LAS HABILIDADES</button>
+            <button class="filter-tab" data-category="architecture">ARQUITECTURA</button>
+            <button class="filter-tab" data-category="backend">BACKEND</button>
+            <button class="filter-tab" data-category="data">DATOS & IA</button>
+            <button class="filter-tab" data-category="cloud">CLOUD</button>
+            <button class="filter-tab" data-category="frontend">FRONTEND</button>
+        </div>
+    </section>
+    
+    <!-- MATRIZ DE HABILIDADES -->
+    <section class="skills-matrix">
+        
+        <!-- Las categorías se generarán dinámicamente desde JSON -->
+        <div class="skills-categories" data-dynamic="skills-categories">
+            <!-- Skills categories se insertan aquí automáticamente -->
+        </div>
+        
+    </section>
+    
+    <!-- CERTIFICACIONES -->
+    <section class="certifications-section">
+        <h2 class="section-title">CERTIFICACIONES CUÁNTICAS</h2>
+        <div class="certifications-grid">
+            
+            <div class="cert-card azure">
+                <div class="cert-icon">🏆</div>
+                <div class="cert-info">
+                    <h3 class="cert-name">Azure Solutions Architect</h3>
+                    <div class="cert-issuer">Microsoft</div>
+                    <div class="cert-year">2023</div>
+                </div>
+                <div class="cert-badge">EXPERT</div>
+            </div>
+            
+            <div class="cert-card aws">
+                <div class="cert-icon">☁️</div>
+                <div class="cert-info">
+                    <h3 class="cert-name">AWS Certified Developer</h3>
+                    <div class="cert-issuer">Amazon</div>
+                    <div class="cert-year">2022</div>
+                </div>
+                <div class="cert-badge">CERTIFIED</div>
+            </div>
+            
+            <div class="cert-card k8s">
+                <div class="cert-icon">⚙️</div>
+                <div class="cert-info">
+                    <h3 class="cert-name">Kubernetes Administrator</h3>
+                    <div class="cert-issuer">CNCF</div>
+                    <div class="cert-year">2023</div>
+                </div>
+                <div class="cert-badge">CKA</div>
+            </div>
+            
+            <div class="cert-card ml">
+                <div class="cert-icon">🧠</div>
+                <div class="cert-info">
+                    <h3 class="cert-name">TensorFlow Developer</h3>
+                    <div class="cert-issuer">Google</div>
+                    <div class="cert-year">2022</div>
+                </div>
+                <div class="cert-badge">ML</div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <!-- GRÁFICO DE EVOLUCIÓN -->
+    <section class="skill-evolution-graph">
+        <h2 class="section-title">EVOLUCIÓN TEMPORAL</h2>
+        <div class="evolution-chart">
+            
+            <div class="chart-axis-y">
+                <div class="axis-label">Expertise Level</div>
+                <div class="axis-marks">
+                    <span class="mark">100%</span>
+                    <span class="mark">80%</span>
+                    <span class="mark">60%</span>
+                    <span class="mark">40%</span>
+                    <span class="mark">20%</span>
+                    <span class="mark">0%</span>
+                </div>
+            </div>
+            
+            <div class="chart-area">
+                <!-- Líneas de evolución de habilidades principales -->
+                <div class="skill-line python" data-points="20,40,60,80,95,98">
+                    <div class="line-label">Python</div>
+                </div>
+                <div class="skill-line architecture" data-points="10,30,50,70,85,95">
+                    <div class="line-label">Architecture</div>
+                </div>
+                <div class="skill-line cloud" data-points="0,10,25,50,80,92">
+                    <div class="line-label">Cloud</div>
+                </div>
+                <div class="skill-line ai" data-points="0,0,10,30,70,88">
+                    <div class="line-label">AI/ML</div>
+                </div>
+            </div>
+            
+            <div class="chart-axis-x">
+                <div class="axis-marks">
+                    <span class="mark">2008</span>
+                    <span class="mark">2012</span>
+                    <span class="mark">2016</span>
+                    <span class="mark">2020</span>
+                    <span class="mark">2024</span>
+                    <span class="mark">Now</span>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+</div>

@@ -1,0 +1,299 @@
+/**
+ * ===================================================================
+ * PORTFOLIO CSS - OPTIMIZADO PARA RENDIMIENTO
+ * Descripción: Estilos de portfolio con animaciones adaptativas
+ * ===================================================================
+ */
+
+/* === CONTENEDOR PRINCIPAL === */
+.portfolio-container {
+  min-height: 100vh;
+  background: var(--color-bg-primary);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* === HEADER OPTIMIZADO === */
+.portfolio-header {
+  text-align: center;
+  padding: var(--space-xxxl) var(--space-lg);
+  position: relative;
+}
+
+.portfolio-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 8vw, 4rem);
+  margin-bottom: var(--space-lg);
+  position: relative;
+}
+
+.title-quantum {
+  color: var(--color-neon-blue);
+  text-shadow: 0 0 20px var(--color-neon-blue);
+}
+
+.title-projects {
+  color: var(--color-text-primary);
+  margin-left: var(--space-md);
+}
+
+.portfolio-subtitle {
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* === ELEMENTOS FLOTANTES OPTIMIZADOS === */
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.float-item {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.6;
+  animation: floatGently 6s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.float-item:nth-child(1) {
+  top: 20%;
+  left: 10%;
+}
+
+.float-item:nth-child(2) {
+  top: 15%;
+  right: 10%;
+}
+
+.float-item:nth-child(3) {
+  bottom: 20%;
+  right: 15%;
+}
+
+/* === GRID DE PROYECTOS === */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-xl);
+  padding: var(--space-xxxl) var(--space-lg);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* === TARJETAS DE PROYECTO OPTIMIZADAS === */
+.project-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(79, 195, 247, 0.2);
+  border-radius: 16px;
+  padding: var(--space-xl);
+  position: relative;
+  transition: all 0.3s var(--ease-smooth);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  border-color: rgba(79, 195, 247, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-8px);
+}
+
+.project-card.featured {
+  grid-column: span 2;
+  background: linear-gradient(135deg, 
+    rgba(79, 195, 247, 0.1) 0%, 
+    rgba(156, 39, 176, 0.1) 100%);
+}
+
+/* === VISUAL DE PROYECTO === */
+.project-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  margin-bottom: var(--space-lg);
+  position: relative;
+}
+
+.project-icon {
+  font-size: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.visual-effects {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pulse-ring {
+  width: 80px;
+  height: 80px;
+  border: 2px solid var(--color-neon-blue);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* Solo en HIGH_PERFORMANCE */
+.animations-full .pulse-ring {
+  animation: pulseRing 2s ease-out infinite;
+}
+
+/* En BALANCED, animación más lenta */
+.animations-reduced .pulse-ring {
+  animation: pulseRing 3s ease-out infinite;
+}
+
+/* En LOW_PERFORMANCE, sin animación */
+.animations-minimal .pulse-ring {
+  animation: none;
+  opacity: 0.3;
+}
+
+/* === INFORMACIÓN DEL PROYECTO === */
+.project-info {
+  text-align: left;
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.project-description {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+}
+
+.tag {
+  background: rgba(79, 195, 247, 0.2);
+  color: var(--color-neon-blue);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* === MÉTRICAS DEL PROYECTO === */
+.project-metrics {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.metric {
+  text-align: center;
+}
+
+.metric-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-neon-green);
+  font-weight: bold;
+}
+
+.metric-label {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+/* === TICKER DE LOGROS === */
+.achievement-ticker {
+  background: rgba(0, 0, 0, 0.5);
+  padding: var(--space-md) 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(79, 195, 247, 0.2);
+  border-bottom: 1px solid rgba(79, 195, 247, 0.2);
+}
+
+.ticker-content {
+  display: flex;
+  animation: tickerScroll 30s linear infinite;
+  white-space: nowrap;
+}
+
+.achievement {
+  color: var(--color-text-primary);
+  margin: 0 var(--space-lg);
+  font-weight: 500;
+}
+
+.separator {
+  color: var(--color-neon-blue);
+  margin: 0 var(--space-lg);
+}
+
+/* === ANIMACIONES OPTIMIZADAS === */
+@keyframes floatGently {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes tickerScroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-xl) var(--space-md);
+  }
+  
+  .project-card.featured {
+    grid-column: span 1;
+  }
+  
+  .floating-elements {
+    display: none; /* Ocultar en móvil para mejor rendimiento */
+  }
+}
+
+/* === MODO PAUSED === */
+.animations-paused .pulse-ring,
+.animations-paused .float-item,
+.animations-paused .ticker-content {
+  animation-play-state: paused;
+}

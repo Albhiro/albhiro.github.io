@@ -1,0 +1,309 @@
+/* =========================
+   CONTACT PAGE STYLES
+   ========================= */
+
+/* Base styles */
+#contact-page {
+    background: linear-gradient(135deg, #001122 0%, #003344 50%, #004466 100%);
+    padding: 2rem;
+    color: #FFFFFF;
+    min-height: 100vh;
+}
+
+/* Header */
+.contact-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.contact-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #00CCFF;
+    text-shadow: 0 0 20px rgba(0, 204, 255, 0.5);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.contact-subtitle {
+    font-size: 1.2rem;
+    color: #B3E5FF;
+    margin-bottom: 2rem;
+}
+
+/* Contact Container */
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* Contact Info */
+.contact-info {
+    background: rgba(0, 204, 255, 0.1);
+    border: 2px solid rgba(0, 204, 255, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.contact-info-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    color: #00CCFF;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(0, 204, 255, 0.05);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.contact-info-item:hover {
+    background: rgba(0, 204, 255, 0.1);
+    transform: translateX(10px);
+}
+
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    color: #00CCFF;
+    font-size: 1.5rem;
+}
+
+.contact-details {
+    flex: 1;
+}
+
+.contact-label {
+    font-weight: 600;
+    color: #00CCFF;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+}
+
+.contact-value {
+    color: #B3E5FF;
+    font-size: 1.1rem;
+}
+
+.contact-value a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-value a:hover {
+    color: #00CCFF;
+}
+
+/* Contact Form */
+.contact-form {
+    background: rgba(0, 204, 255, 0.1);
+    border: 2px solid rgba(0, 204, 255, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.contact-form-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    color: #00CCFF;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #00CCFF;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-input,
+.form-textarea {
+    background: rgba(0, 204, 255, 0.05);
+    border: 2px solid rgba(0, 204, 255, 0.3);
+    border-radius: 10px;
+    padding: 1rem;
+    color: #FFFFFF;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #00CCFF;
+    background: rgba(0, 204, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 204, 255, 0.3);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: rgba(179, 229, 255, 0.6);
+}
+
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-submit {
+    background: linear-gradient(45deg, #00CCFF, #0099CC);
+    border: none;
+    color: #001122;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', monospace;
+    margin-top: 1rem;
+}
+
+.form-submit:hover {
+    background: linear-gradient(45deg, #0099CC, #00CCFF);
+    box-shadow: 0 5px 20px rgba(0, 204, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+.form-submit:active {
+    transform: translateY(-1px);
+}
+
+/* Social Links */
+.social-links {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 204, 255, 0.1);
+    border: 2px solid rgba(0, 204, 255, 0.3);
+    border-radius: 50%;
+    color: #00CCFF;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: rgba(0, 204, 255, 0.2);
+    border-color: #00CCFF;
+    box-shadow: 0 0 20px rgba(0, 204, 255, 0.4);
+    transform: translateY(-5px);
+}
+
+/* Connection Animation */
+.connection-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.connection-line {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #00CCFF, transparent);
+    animation: connectionPulse 3s ease-in-out infinite;
+}
+
+.connection-line:nth-child(1) {
+    top: 20%;
+    left: 0;
+    width: 100%;
+    animation-delay: 0s;
+}
+
+.connection-line:nth-child(2) {
+    top: 60%;
+    left: 0;
+    width: 100%;
+    animation-delay: 1s;
+}
+
+@keyframes connectionPulse {
+    0%, 100% { opacity: 0.2; transform: scaleX(0.5); }
+    50% { opacity: 1; transform: scaleX(1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #contact-page {
+        padding: 1rem;
+    }
+    
+    .contact-title {
+        font-size: 2rem;
+    }
+    
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .contact-info,
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    .social-links {
+        gap: 1rem;
+    }
+    
+    .social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}

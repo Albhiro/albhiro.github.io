@@ -1,0 +1,208 @@
+/* =========================
+   EXPERIENCE PAGE STYLES
+   ========================= */
+
+/* Base styles */
+#experience-page {
+    background: linear-gradient(135deg, #0A0E27 0%, #16213E 50%, #2E4C6D 100%);
+    padding: 2rem;
+    color: #FFFFFF;
+    min-height: 100vh;
+}
+
+/* Header */
+.experience-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.experience-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #00D4FF;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.experience-subtitle {
+    font-size: 1.2rem;
+    color: #A8D8EA;
+    margin-bottom: 2rem;
+}
+
+/* Timeline Container */
+.timeline-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Timeline Line */
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #00D4FF, #0099CC);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Timeline Items */
+.timeline-items {
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Timeline Content */
+.timeline-content {
+    background: rgba(0, 212, 255, 0.1);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 0 2rem;
+    width: calc(50% - 2rem);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    border-color: #00D4FF;
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+    transform: translateY(-5px);
+}
+
+/* Timeline Dot */
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    background: #00D4FF;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.7);
+}
+
+/* Experience Item Content */
+.experience-period {
+    background: rgba(0, 212, 255, 0.2);
+    color: #00D4FF;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.experience-role {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem;
+    color: #00D4FF;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.experience-company {
+    font-size: 1.2rem;
+    color: #A8D8EA;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.experience-description {
+    color: #E8F4F8;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.experience-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag {
+    background: rgba(0, 212, 255, 0.2);
+    color: #00D4FF;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+/* Arrow indicators */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    transform: translateY(-50%);
+}
+
+.timeline-item:nth-child(odd)::before {
+    right: calc(50% - 15px);
+    border-left-color: rgba(0, 212, 255, 0.3);
+}
+
+.timeline-item:nth-child(even)::before {
+    left: calc(50% - 15px);
+    border-right-color: rgba(0, 212, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #experience-page {
+        padding: 1rem;
+    }
+    
+    .experience-title {
+        font-size: 2rem;
+    }
+    
+    .timeline-line {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        flex-direction: row !important;
+        margin-left: 60px;
+    }
+    
+    .timeline-content {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .timeline-dot {
+        left: 30px;
+    }
+    
+    .timeline-item::before {
+        display: none;
+    }
+    
+    .timeline-item:nth-child(even) {
+        flex-direction: row !important;
+    }
+}

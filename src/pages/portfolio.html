@@ -1,0 +1,319 @@
+<!-- ===================================================================
+     PORTFOLIO PAGE - QUANTUM PROJECT SHOWCASE  
+     Descripción: Galería de proyectos con efectos visuales optimizados
+     =================================================================== -->
+
+<div class="portfolio-container">
+    
+    <!-- HEADER OPTIMIZADO -->
+    <div class="portfolio-header">
+        <h1 class="portfolio-title">
+            <span class="title-quantum">QUANTUM</span>
+            <span class="title-projects">PROJECTS</span>
+        </h1>
+        <p class="portfolio-subtitle">16 años convirtiendo ideas imposibles en realidades digitales</p>
+        
+        <!-- ELEMENTOS FLOTANTES MINIMALISTAS -->
+        <div class="floating-elements">
+            <div class="float-item" style="--delay: 0s;">⚡</div>
+            <div class="float-item" style="--delay: 1s;">🚀</div>
+            <div class="float-item" style="--delay: 2s;">⭐</div>
+        </div>
+    </div>
+    
+    <!-- FILTROS DE CATEGORÍAS -->
+    <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">TODOS LOS PROYECTOS</button>
+        <button class="filter-btn" data-filter="architecture">ARQUITECTURA</button>
+        <button class="filter-btn" data-filter="ai">INTELIGENCIA ARTIFICIAL</button>
+        <button class="filter-btn" data-filter="microservices">MICROSERVICIOS</button>
+        <button class="filter-btn" data-filter="innovation">INNOVACIÓN</button>
+    </div>
+    
+    <!-- GRID DE PROYECTOS -->
+    <div class="projects-grid">
+        
+        <!-- PROYECTO 1: SANTANDER DIGITAL PLATFORM -->
+        <article class="project-card" data-category="architecture microservices">
+            <div class="project-hologram">
+                <div class="hologram-layer layer-1"></div>
+                <div class="hologram-layer layer-2"></div>
+                <div class="hologram-layer layer-3"></div>
+            </div>
+            <div class="project-content">
+                <div class="project-header">
+                    <h3 class="project-title">Santander Digital Platform</h3>
+                    <div class="project-status">ARQUITECTURA CORE</div>
+                </div>
+                <p class="project-description">
+                    Plataforma distribuida que procesa +50M transacciones diarias. 
+                    Microservicios con FastAPI, Redis, PostgreSQL y Docker Swarm.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">FastAPI</span>
+                    <span class="tech-tag">Redis</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Docker</span>
+                </div>
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">50M+</span>
+                        <span class="metric-label">Trans/día</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">99.9%</span>
+                        <span class="metric-label">Uptime</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">200ms</span>
+                        <span class="metric-label">Latencia</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <!-- PROYECTO 2: AI FRAUD DETECTION -->
+        <article class="project-card" data-category="ai innovation">
+            <div class="project-hologram">
+                <div class="hologram-layer layer-1"></div>
+                <div class="hologram-layer layer-2"></div>
+                <div class="hologram-layer layer-3"></div>
+            </div>
+            <div class="project-content">
+                <div class="project-header">
+                    <h3 class="project-title">AI Fraud Detection Engine</h3>
+                    <div class="project-status">MACHINE LEARNING</div>
+                </div>
+                <p class="project-description">
+                    Sistema de IA que detecta fraudes en tiempo real usando redes neuronales 
+                    y algoritmos de anomalía. Reduce fraudes 85%.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">Scikit-learn</span>
+                    <span class="tech-tag">Apache Kafka</span>
+                    <span class="tech-tag">Elasticsearch</span>
+                </div>
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">85%</span>
+                        <span class="metric-label">↓ Fraudes</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">50ms</span>
+                        <span class="metric-label">Detección</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">99.2%</span>
+                        <span class="metric-label">Precisión</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <!-- PROYECTO 3: QUANTUM DATA PIPELINE -->
+        <article class="project-card" data-category="architecture innovation">
+            <div class="project-hologram">
+                <div class="hologram-layer layer-1"></div>
+                <div class="hologram-layer layer-2"></div>
+                <div class="hologram-layer layer-3"></div>
+            </div>
+            <div class="project-content">
+                <div class="project-header">
+                    <h3 class="project-title">Quantum Data Pipeline</h3>
+                    <div class="project-status">BIG DATA</div>
+                </div>
+                <p class="project-description">
+                    Pipeline de datos masivos que procesa 10TB diarios con Apache Spark, 
+                    Delta Lake y orquestación con Airflow.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Apache Spark</span>
+                    <span class="tech-tag">Delta Lake</span>
+                    <span class="tech-tag">Airflow</span>
+                    <span class="tech-tag">Databricks</span>
+                </div>
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">10TB</span>
+                        <span class="metric-label">Por día</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">70%</span>
+                        <span class="metric-label">↓ Tiempo</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">24/7</span>
+                        <span class="metric-label">Operativo</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <!-- PROYECTO 4: MICROSERVICES ORCHESTRATOR -->
+        <article class="project-card" data-category="microservices architecture">
+            <div class="project-hologram">
+                <div class="hologram-layer layer-1"></div>
+                <div class="hologram-layer layer-2"></div>
+                <div class="hologram-layer layer-3"></div>
+            </div>
+            <div class="project-content">
+                <div class="project-header">
+                    <h3 class="project-title">Microservices Orchestrator</h3>
+                    <div class="project-status">ORQUESTACIÓN</div>
+                </div>
+                <p class="project-description">
+                    Plataforma de orquestación de +200 microservicios con service mesh, 
+                    tracing distribuido y auto-scaling inteligente.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Kubernetes</span>
+                    <span class="tech-tag">Istio</span>
+                    <span class="tech-tag">Jaeger</span>
+                    <span class="tech-tag">Prometheus</span>
+                </div>
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">200+</span>
+                        <span class="metric-label">Services</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">60%</span>
+                        <span class="metric-label">↓ Costos</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">5min</span>
+                        <span class="metric-label">Deploy</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <!-- PROYECTO 5: BLOCKCHAIN SMART CONTRACTS -->
+        <article class="project-card" data-category="innovation">
+            <div class="project-hologram">
+                <div class="hologram-layer layer-1"></div>
+                <div class="hologram-layer layer-2"></div>
+                <div class="hologram-layer layer-3"></div>
+            </div>
+            <div class="project-content">
+                <div class="project-header">
+                    <h3 class="project-title">Blockchain Smart Contracts</h3>
+                    <div class="project-status">WEB3</div>
+                </div>
+                <p class="project-description">
+                    Contratos inteligentes para automatización de procesos financieros 
+                    con Ethereum y Hyperledger Fabric.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Solidity</span>
+                    <span class="tech-tag">Web3.py</span>
+                    <span class="tech-tag">Hyperledger</span>
+                    <span class="tech-tag">IPFS</span>
+                </div>
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">90%</span>
+                        <span class="metric-label">Automatización</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">100K+</span>
+                        <span class="metric-label">Transacciones</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">0</span>
+                        <span class="metric-label">Errores</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <!-- PROYECTO 6: QUANTUM ML PLATFORM -->
+        <article class="project-card" data-category="ai innovation">
+            <div class="project-hologram">
+                <div class="hologram-layer layer-1"></div>
+                <div class="hologram-layer layer-2"></div>
+                <div class="hologram-layer layer-3"></div>
+            </div>
+            <div class="project-content">
+                <div class="project-header">
+                    <h3 class="project-title">Quantum ML Platform</h3>
+                    <div class="project-status">MLOPS</div>
+                </div>
+                <p class="project-description">
+                    Plataforma MLOps completa con pipeline automatizado de entrenamiento, 
+                    validación y deploy de modelos de ML.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">MLflow</span>
+                    <span class="tech-tag">Kubeflow</span>
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">DVC</span>
+                </div>
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">80%</span>
+                        <span class="metric-label">↓ Time to Market</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">50+</span>
+                        <span class="metric-label">Modelos</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">A/B</span>
+                        <span class="metric-label">Testing</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+    
+    <!-- NAVEGACIÓN -->
+    <div class="portfolio-navigation">
+        <button class="nav-btn" data-route="/">← VOLVER AL INICIO</button>
+        <button class="nav-btn" data-route="/experience">EXPERIENCIA →</button>
+    </div>
+    
+</div>
+
+<!-- Simple Router -->
+<script src="../utils/simple-router.js"></script>
+
+<!-- Scripts específicos de Portfolio -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('📁 Portfolio page loaded');
+    
+    // Activar filtros
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remover active de todos
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Activar el clickeado
+            btn.classList.add('active');
+            
+            const filter = btn.getAttribute('data-filter');
+            console.log(`🔍 Filtrando por: ${filter}`);
+            
+            // Mostrar/ocultar proyectos según filtro
+            projectCards.forEach(card => {
+                if (filter === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    const categories = card.getAttribute('data-category') || '';
+                    if (categories.includes(filter)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
+});
+</script>

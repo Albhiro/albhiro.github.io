@@ -286,6 +286,7 @@ class QuantumEngine {
     transitionToDashboard() {
         const initContainer = document.querySelector('.quantum-init-container');
         const dashboard = document.querySelector('.quantum-dashboard');
+        const navigation = document.getElementById('main-navigation');
         
         if (initContainer) {
             initContainer.style.opacity = '0';
@@ -293,6 +294,8 @@ class QuantumEngine {
             
             setTimeout(() => {
                 initContainer.style.display = 'none';
+                
+                // Mostrar dashboard
                 if (dashboard) {
                     dashboard.style.display = 'block';
                     setTimeout(() => {
@@ -300,6 +303,25 @@ class QuantumEngine {
                         dashboard.style.transform = 'scale(1)';
                     }, 100);
                 }
+                
+                // Mostrar navegación con animación
+                if (navigation) {
+                    navigation.style.display = 'block';
+                    navigation.style.opacity = '0';
+                    navigation.style.transform = 'translateY(-20px)';
+                    
+                    setTimeout(() => {
+                        navigation.style.transition = 'all 0.5s ease';
+                        navigation.style.opacity = '1';
+                        navigation.style.transform = 'translateY(0)';
+                        
+                        // Notificar al router que el sistema está listo
+                        if (window.cvRouter) {
+                            window.cvRouter.handlePendingRoute();
+                        }
+                    }, 200);
+                }
+                
             }, 600);
         }
     }
@@ -308,6 +330,9 @@ class QuantumEngine {
      * Initialize audio system
      */
     initializeAudio() {
+        // Temporalmente deshabilitado hasta tener archivos de audio
+        this.audioEnabled = false;
+        
         if (!this.audioEnabled) return;
         
         const audioFiles = [

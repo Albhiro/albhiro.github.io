@@ -247,12 +247,12 @@
             <div class="control-header">
                 <div class="header-glow"></div>
                 <h1 class="quantum-title">
-                    <span class="title-main">QUANTUM PORTFOLIO</span>
-                    <span class="title-sub">INITIALIZATION SEQUENCE</span>
+                    <span class="title-main" data-text="landing.title.main">QUANTUM PORTFOLIO</span>
+                    <span class="title-sub" data-text="landing.title.sub">INITIALIZATION SEQUENCE</span>
                 </h1>
                 <div class="author-signature">
-                    <span class="signature-label">ARCHITECT:</span>
-                    <span class="signature-name">LUIS ALBERTO ORAA GARCÍA</span>
+                    <span class="signature-label" data-text="landing.author_signature.label">ARCHITECT:</span>
+                    <span class="signature-name" data-text="landing.author_signature.name">LUIS ALBERTO ORAA GARCÍA</span>
                 </div>
             </div>
             
@@ -261,7 +261,7 @@
                 
                 <!-- BARRA DE PROGRESO CUÁNTICA -->
                 <div class="progress-container">
-                    <div class="progress-label">PROGRESO DEL SISTEMA</div>
+                    <div class="progress-label" data-text="landing.progress_label">PROGRESO DEL SISTEMA</div>
                     
                     <!-- FILA CON BARRA Y BOTÓN -->
                     <div class="progress-and-button-row">
@@ -276,7 +276,7 @@
                         <!-- BOTÓN DE ACCESO AL LADO -->
                         <div class="access-button-container">
                             <button class="quantum-access-button disabled">
-                                <span class="button-core">ACCEDER</span>
+                                <span class="button-core" data-text="landing.button_text">ACCEDER</span>
                                 <div class="button-energy"></div>
                                 <div class="button-glow"></div>
                             </button>
@@ -289,24 +289,9 @@
                     <div class="loading-message">Iniciando sistemas cuánticos...</div>
                 </div>
                 
-                <!-- INDICADORES DE SISTEMA -->
-                <div class="system-indicators">
-                    <div class="indicator-item" data-system="neural">
-                        <div class="indicator-dot"></div>
-                        <span class="indicator-label">RED NEURAL</span>
-                    </div>
-                    <div class="indicator-item" data-system="experience">
-                        <div class="indicator-dot"></div>
-                        <span class="indicator-label">EXPERIENCIA</span>
-                    </div>
-                    <div class="indicator-item" data-system="innovation">
-                        <div class="indicator-dot"></div>
-                        <span class="indicator-label">INNOVACIÓN</span>
-                    </div>
-                    <div class="indicator-item" data-system="multiverse">
-                        <div class="indicator-dot"></div>
-                        <span class="indicator-label">MULTIVERSO</span>
-                    </div>
+                <!-- INDICADORES DE SISTEMA - DINÁMICOS -->
+                <div class="system-indicators" data-dynamic="landing-indicators">
+                    <!-- Los indicadores se generarán dinámicamente desde JSON -->
                 </div>
                 
             </div>

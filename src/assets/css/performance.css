@@ -1,0 +1,170 @@
+/**
+ * ===================================================================
+ * PERFORMANCE ANIMATIONS - ANIMACIONES OPTIMIZADAS POR RENDIMIENTO
+ * Descripción: Sistema de animaciones adaptativo según capacidades del dispositivo
+ * ===================================================================
+ */
+
+/* === VARIABLES DE RENDIMIENTO === */
+:root {
+  --animation-duration-multiplier: 1;
+  --crystal-count: 20;
+  --animation-complexity: full;
+}
+
+/* === MODO HIGH PERFORMANCE === */
+.animations-full {
+  --animation-complexity: full;
+}
+
+.animations-full .crystal-container {
+  animation: 
+    chaosRotation calc(var(--speed) * var(--animation-duration-multiplier)) linear infinite,
+    chaosFloat calc(var(--speed) * 1.5 * var(--animation-duration-multiplier)) ease-in-out infinite alternate,
+    chaosScale calc(var(--speed) * 2 * var(--animation-duration-multiplier)) ease-in-out infinite alternate;
+  animation-delay: calc(var(--index, 0) * 0.1s);
+}
+
+/* === MODO BALANCED === */
+.animations-reduced {
+  --animation-complexity: reduced;
+}
+
+.animations-reduced .crystal-container {
+  animation: 
+    chaosRotation calc(var(--speed) * var(--animation-duration-multiplier) * 1.5) linear infinite,
+    chaosFloat calc(var(--speed) * 2 * var(--animation-duration-multiplier)) ease-in-out infinite alternate;
+  animation-delay: calc(var(--index, 0) * 0.15s);
+}
+
+/* Reducir cristales en modo balanced */
+.animations-reduced .crystal-container:nth-child(even) {
+  animation-play-state: paused;
+  opacity: 0.7;
+}
+
+/* === MODO LOW PERFORMANCE === */
+.animations-minimal {
+  --animation-complexity: minimal;
+}
+
+.animations-minimal .crystal-container {
+  animation: chaosRotation calc(var(--speed) * var(--animation-duration-multiplier) * 2) linear infinite;
+  animation-delay: calc(var(--index, 0) * 0.2s);
+}
+
+/* Solo mostrar 25% de cristales en modo minimal */
+.animations-minimal .crystal-container:not(:nth-child(4n+1)) {
+  animation-play-state: paused;
+  opacity: 0.3;
+}
+
+/* === MODO PAUSADO === */
+.animations-paused * {
+  animation-play-state: paused !important;
+}
+
+/* === KEYFRAMES OPTIMIZADOS === */
+@keyframes chaosRotation {
+  0% { 
+    transform: translate(-50%, -50%) 
+               rotateX(0deg) rotateY(0deg) rotateZ(0deg) 
+               translateZ(0px);
+  }
+  25% { 
+    transform: translate(-50%, -50%) 
+               rotateX(90deg) rotateY(180deg) rotateZ(45deg) 
+               translateZ(50px);
+  }
+  50% { 
+    transform: translate(-50%, -50%) 
+               rotateX(180deg) rotateY(360deg) rotateZ(180deg) 
+               translateZ(-30px);
+  }
+  75% { 
+    transform: translate(-50%, -50%) 
+               rotateX(270deg) rotateY(540deg) rotateZ(315deg) 
+               translateZ(40px);
+  }
+  100% { 
+    transform: translate(-50%, -50%) 
+               rotateX(360deg) rotateY(720deg) rotateZ(360deg) 
+               translateZ(0px);
+  }
+}
+
+@keyframes chaosFloat {
+  0% { 
+    top: calc(var(--y) - 20px);
+    left: calc(var(--x) - 15px);
+  }
+  50% { 
+    top: calc(var(--y) + 25px);
+    left: calc(var(--x) + 20px);
+  }
+  100% { 
+    top: calc(var(--y) - 10px);
+    left: calc(var(--x) - 5px);
+  }
+}
+
+@keyframes chaosScale {
+  0% { 
+    transform: translate(-50%, -50%) scale(calc(var(--size) * 0.8));
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(calc(var(--size) * 1.2));
+  }
+  100% { 
+    transform: translate(-50%, -50%) scale(var(--size));
+  }
+}
+
+/* === OPTIMIZACIONES DE RENDERING === */
+.crystal-container {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.crystal-cube {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* === MEDIA QUERIES PARA DISPOSITIVOS ESPECÍFICOS === */
+@media (max-width: 768px) {
+  :root {
+    --crystal-count: 10;
+    --animation-duration-multiplier: 1.5;
+  }
+  
+  .crystal-container:nth-child(n+11) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --animation-duration-multiplier: 3;
+  }
+  
+  .crystal-container {
+    animation-duration: 10s;
+  }
+}
+
+/* === UTILIDADES DE DEBUG === */
+.performance-debug {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: monospace;
+  font-size: 12px;
+  z-index: 10000;
+}
