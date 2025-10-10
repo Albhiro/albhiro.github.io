@@ -3,14 +3,16 @@
 
 RewriteEngine On
 
-# URLs bonitas para páginas específicas
-RewriteRule ^portfolio/?$ src/pages/portfolio.html [L]
-RewriteRule ^experience/?$ src/pages/experience.html [L]
-RewriteRule ^skills/?$ src/pages/skills.html [L]
-RewriteRule ^contact/?$ src/pages/contact.html [L]
-
-# Redirigir raíz a index.html
+# FLUJO PRINCIPAL: Landing → Home
 RewriteRule ^$ index.html [L]
+RewriteRule ^landing/?$ index.html [L]
+RewriteRule ^home/?$ home.html [L]
+
+# URLs de páginas específicas
+RewriteRule ^portfolio/?$ portfolio.html [L]
+RewriteRule ^experience/?$ experience.html [L]
+RewriteRule ^skills/?$ skills.html [L]
+RewriteRule ^contact/?$ contact.html [L]
 
 # Para cualquier otra cosa no encontrada, ir al index
 RewriteCond %{REQUEST_FILENAME} !-f

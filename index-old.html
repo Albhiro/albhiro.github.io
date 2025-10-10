@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis Alberto Oraa García - Arquitecto de Soluciones Imposibles</title>
+    
+    <!-- Meta Tags Estratégicos -->
+    <meta name="description" content="16 años convirtiendo ideas imposibles en realidades digitales. Arquitecto Senior en Santander Digital Services. Cuando otros dicen 'no se puede', yo pregunto '¿cómo lo hacemos?'">
+    <meta name="keywords" content="Arquitecto de Software, Santander Digital Services, Python, FastAPI, Microservicios, Liderazgo Técnico, Innovación, IA, Machine Learning">
+    <meta name="author" content="Luis Alberto Oraa García">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph para impacto en redes sociales -->
+    <meta property="og:title" content="Luis Alberto Oraa - Arquitecto de Soluciones Imposibles">
+    <meta property="og:description" content="Si para presentarme he creado esto... imagina lo que puedo hacer por tu proyecto">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/images/og-preview.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Luis Alberto Oraa - Cuando 'imposible' no está en el diccionario">
+    <meta name="twitter:description" content="16 años demostrando que los límites están para superarlos">
+    
+    <!-- Canonical URL para SEO -->
+    <link rel="canonical" href="https://luisalberto-oraa.dev">
+    
+    <!-- Schema.org para estructura de datos -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Luis Alberto Oraa García",
+        "jobTitle": "Arquitecto de Software Senior",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Santander Digital Services"
+        },
+        "url": "https://luisalberto-oraa.dev",
+        "sameAs": [
+            "https://linkedin.com/in/luisalberto-oraa",
+            "https://github.com/luisalberto-oraa"
+        ]
+    }
+    </script>
+    
+    <!-- Preconnections para performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts épicas -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- ESTILOS MODULARES -->
+    <link href="./src/utils/common.css" rel="stylesheet">
+    <link href="./src/assets/css/performance.css" rel="stylesheet">
+    <link href="./src/assets/css/navigation.css" rel="stylesheet">
+    <link href="./src/assets/css/landing.css" rel="stylesheet">
+    <link href="./src/css/main.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="./src/utils/quantum-engine.js" as="script">
+    <link rel="preload" href="./src/utils/performance-manager.js" as="script">
+    <!-- Audio preload removed to fix warning -->
+</head>
+<body class="quantum-loading">
+    
+    <!-- NAVEGACIÓN PRINCIPAL -->
+    <nav class="quantum-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="./index.html" data-route="landing">LA.ORAA</a>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="./index.html" data-route="landing" class="nav-link active">INICIO</a>
+                <a href="./portfolio.html" data-route="portfolio" class="nav-link">PORTFOLIO</a>
+                <a href="./experience.html" data-route="experience" class="nav-link">EXPERIENCIA</a>
+                <a href="./skills.html" data-route="skills" class="nav-link">SKILLS</a>
+                <a href="./contact.html" data-route="contact" class="nav-link">CONTACTO</a>
+            </div>
+            
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <!-- QUANTUM EFFECTS -->
+            <div class="nav-quantum-effects">
+                <div class="quantum-dot"></div>
+                <div class="quantum-dot"></div>
+                <div class="quantum-dot"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div id="app-container">
+        
+        <!-- LANDING PAGE -->
+        <div id="landing-page" class="page-container active">
+            <!-- El contenido se carga desde landing.html -->
+        </div>
+        
+        <!-- PORTFOLIO PAGE -->
+        <div id="portfolio-page" class="page-container">
+            <!-- Contenido se carga dinámicamente -->
+        </div>
+        
+        <!-- EXPERIENCE PAGE -->
+        <div id="experience-page" class="page-container">
+            <!-- Contenido se carga dinámicamente -->
+        </div>
+        
+        <!-- SKILLS PAGE -->
+        <div id="skills-page" class="page-container">
+            <!-- Contenido se carga dinámicamente -->
+        </div>
+        
+        <!-- CONTACT PAGE -->
+        <div id="contact-page" class="page-container">
+            <!-- Contenido se carga dinámicamente -->
+        </div>
+        
+    </div>
+    
+    <!-- SCRIPTS MODULARES -->
+        <!-- SCRIPTS CRÍTICOS -->
+    <script src="./src/utils/performance-manager.js"></script>
+    <script src="./src/utils/dynamic-content-manager.js"></script>
+    <script src="./src/utils/quantum-engine.js"></script>
+    <script src="./src/utils/cv-router.js"></script>
+    <!-- <script src="./src/scripts/js/landing.js"></script> --> <!-- TEMPORALMENTE DESACTIVADO -->
+    
+    <!-- INICIALIZACIÓN PRINCIPAL -->
+    <script>
+        /**
+         * ===================================================================
+         * SISTEMA DE INICIALIZACIÓN MODULAR
+         * ===================================================================
+         */
+        
+        'use strict';
+        
+        class QuantumApp {
+            constructor() {
+                this.quantumEngine = null;
+                this.currentPage = 'landing';
+                this.isInitialized = false;
+                this.performanceManager = null;
+                
+                this.init();
+            }
+            
+            async init() {
+                console.log('🚀 Quantum App: Inicializando aplicación...');
+                
+                // Inicializar gestor de rendimiento
+                if (window.PerformanceManager) {
+                    this.performanceManager = new PerformanceManager();
+                    console.log('✅ Performance Manager inicializado');
+                }
+                
+                // Inicializar gestor de contenido dinámico
+                if (window.DynamicContentManager) {
+                    this.contentManager = new DynamicContentManager();
+                    console.log('✅ Dynamic Content Manager inicializado');
+                }
+                
+                // Cargar contenido de la landing page
+                await this.loadLandingPage();
+                
+                // QuantumEngine se inicializa desde loadLandingPage()
+                
+                this.isInitialized = true;
+                console.log('✅ Quantum App: Aplicación inicializada');
+            }
+            
+            async loadLandingPage() {
+                try {
+                    const response = await fetch('./src/pages/landing.html');
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const html = await response.text();
+                    const landingContainer = document.getElementById('landing-page');
+                    
+                    if (landingContainer) {
+                        landingContainer.innerHTML = html;
+                        console.log('✅ Landing page cargada correctamente');
+                        
+                        // Esperar a que el content manager esté listo
+                        if (this.contentManager && this.contentManager.initialized) {
+                            this.setupDynamicContent();
+                        } else {
+                            // Reintentar cada 100ms hasta que esté listo
+                            const waitForContentManager = () => {
+                                if (this.contentManager && this.contentManager.initialized) {
+                                    this.setupDynamicContent();
+                                } else {
+                                    setTimeout(waitForContentManager, 100);
+                                }
+                            };
+                            waitForContentManager();
+                        }
+                    }
+                } catch (error) {
+                    console.error('❌ Error cargando landing page:', error);
+                    
+                    // Fallback: mostrar mensaje de error
+                    const landingContainer = document.getElementById('landing-page');
+                    if (landingContainer) {
+                        landingContainer.innerHTML = `
+                            <div class="error-fallback">
+                                <h2>Error de carga</h2>
+                                <p>No se pudo cargar la página de inicialización.</p>
+                            </div>
+                        `;
+                    }
+                }
+            }
+            
+            setupDynamicContent() {
+                console.log('🎨 Configurando contenido dinámico...');
+                
+                // Reemplazar textos estáticos con datos JSON
+                this.contentManager.replaceTextContent();
+                
+                // Generar navegación
+                this.contentManager.generateSection('navigation-menu', '.nav-menu[data-dynamic="navigation-menu"]');
+                
+                // Generar indicadores de sistema dinámicamente
+                this.contentManager.generateSection('landing-indicators', '.system-indicators[data-dynamic="landing-indicators"]');
+                
+                // Inicializar sistema cuántico después del contenido dinámico
+                if (window.QuantumEngine) {
+                    window.quantumEngine = new QuantumEngine();
+                    window.quantumEngine.init();
+                    console.log('✅ QuantumEngine inicializado correctamente');
+                } else {
+                    console.error('❌ QuantumEngine no disponible');
+                }
+            }
+            
+            async loadPage(pageId) {
+                console.log(`📄 Cargando página: ${pageId}`);
+                
+                // Si es la landing, mostrar página original y ocultar navegación
+                if (pageId === 'landing') {
+                    this.showLandingPage();
+                    return;
+                }
+                
+                // Verificar si la página ya está cargada
+                const pageContainer = document.getElementById(`${pageId}-page`);
+                if (!pageContainer) {
+                    console.error(`❌ Container no encontrado para: ${pageId}`);
+                    return;
+                }
+                
+                // Si no tiene contenido, cargar
+                if (!pageContainer.innerHTML.trim()) {
+                    await this.loadPageContent(pageId);
+                }
+                
+                // Mostrar página
+                this.showPage(pageId);
+            }
+            
+            async loadPageContent(pageId) {
+                const pageContainer = document.getElementById(`${pageId}-page`);
+                
+                try {
+                    console.log(`🔄 Iniciando carga de ${pageId}...`);
+                    
+                    // Mostrar loading
+                    pageContainer.innerHTML = `
+                        <div class="page-loading">
+                            <div class="loading-spinner"></div>
+                            <div class="loading-text">Cargando ${pageId}...</div>
+                        </div>
+                    `;
+                    
+                    // Cargar recursos (CSS/JS) con Performance Manager
+                    if (this.performanceManager) {
+                        console.log(`📦 Cargando recursos CSS para ${pageId}...`);
+                        await this.performanceManager.loadPageResources(pageId);
+                    }
+                    
+                    // Generar contenido HTML específico de la página
+                    console.log(`🎨 Generando HTML para ${pageId}...`);
+                    const html = this.generatePageHTML(pageId);
+                    
+                    if (html && html.length > 100) {
+                        pageContainer.innerHTML = html;
+                        console.log(`✅ HTML de ${pageId} insertado (${html.length} caracteres)`);
+                        
+                        // Pequeña pausa para que el DOM se actualice
+                        setTimeout(() => {
+                            // Generar contenido dinámico específico de la página
+                            this.generatePageContent(pageId);
+                        }, 50);
+                    } else {
+                        throw new Error(`HTML vacío o muy corto para ${pageId}`);
+                    }
+                    
+                    console.log(`✅ Página ${pageId} cargada correctamente`);
+                    
+                } catch (error) {
+                    console.error(`❌ Error cargando página ${pageId}:`, error);
+                    pageContainer.innerHTML = `
+                        <div class="page-loading">
+                            <div class="loading-text">Error cargando ${pageId}: ${error.message}</div>
+                        </div>
+                    `;
+                }
+            }
+            
+            generatePageHTML(pageId) {
+                const pageTemplates = {
+                    portfolio: `
+                        <div class="portfolio-header">
+                            <h1 class="portfolio-title">🎨 Mi Portfolio</h1>
+                            <p class="portfolio-subtitle">Proyectos y creaciones que definen mi experiencia</p>
+                        </div>
+                        
+                        <div class="portfolio-filters">
+                            <button class="filter-btn active" data-filter="all">Todos</button>
+                            <button class="filter-btn" data-filter="web">Web</button>
+                            <button class="filter-btn" data-filter="mobile">Mobile</button>
+                            <button class="filter-btn" data-filter="ai">IA</button>
+                        </div>
+                        
+                        <div class="projects-grid">
+                            <div class="project-card">
+                                <h3 class="project-title">Sistema de Gestión Bancaria</h3>
+                                <p class="project-description">Plataforma integral para Santander con Python, FastAPI y microservicios. Maneja +1M transacciones diarias.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">FastAPI</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">Docker</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">Ver Demo</a>
+                                    <a href="#" class="project-link">Código</a>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card">
+                                <h3 class="project-title">CV Interactivo Cuántico</h3>
+                                <p class="project-description">Esta misma página. Un CV que desafía las convenciones con animaciones cuánticas y arquitectura modular.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">JSON</span>
+                                    <span class="tech-tag">SPA</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">Ver Demo</a>
+                                    <a href="#" class="project-link">Código</a>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card">
+                                <h3 class="project-title">IA Predictiva de Mercados</h3>
+                                <p class="project-description">Sistema de ML para predicción de tendencias financieras con 94% de precisión usando TensorFlow.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">TensorFlow</span>
+                                    <span class="tech-tag">Pandas</span>
+                                    <span class="tech-tag">APIs</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">Ver Demo</a>
+                                    <a href="#" class="project-link">Código</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="floating-elements">
+                            <div class="floating-element"></div>
+                            <div class="floating-element"></div>
+                            <div class="floating-element"></div>
+                        </div>
+                    `,
+                    
+                    experience: `
+                        <div class="experience-header">
+                            <h1 class="experience-title">💼 Mi Experiencia</h1>
+                            <p class="experience-subtitle">16 años convirtiendo imposibles en realidades</p>
+                        </div>
+                        
+                        <div class="timeline-container">
+                            <div class="timeline-line"></div>
+                            <div class="timeline-items">
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <div class="experience-period">2020 - Presente</div>
+                                        <h3 class="experience-role">Arquitecto Senior de Software</h3>
+                                        <h4 class="experience-company">Santander Digital Services</h4>
+                                        <p class="experience-description">
+                                            Lidero equipos multidisciplinarios en la creación de soluciones fintech innovadoras. 
+                                            Responsable de la arquitectura de microservicios que procesan millones de transacciones diarias.
+                                        </p>
+                                        <div class="experience-skills">
+                                            <span class="skill-tag">Python</span>
+                                            <span class="skill-tag">FastAPI</span>
+                                            <span class="skill-tag">Kubernetes</span>
+                                            <span class="skill-tag">Liderazgo</span>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <div class="experience-period">2018 - 2020</div>
+                                        <h3 class="experience-role">Lead Developer</h3>
+                                        <h4 class="experience-company">Fintech Innovadora</h4>
+                                        <p class="experience-description">
+                                            Desarrollé desde cero una plataforma de pagos que revolucionó el mercado latinoamericano. 
+                                            Implementé algoritmos de IA para detección de fraudes con 99.7% de efectividad.
+                                        </p>
+                                        <div class="experience-skills">
+                                            <span class="skill-tag">Node.js</span>
+                                            <span class="skill-tag">React</span>
+                                            <span class="skill-tag">ML</span>
+                                            <span class="skill-tag">DevOps</span>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <div class="experience-period">2015 - 2018</div>
+                                        <h3 class="experience-role">Full Stack Developer</h3>
+                                        <h4 class="experience-company">Startup Tecnológica</h4>
+                                        <p class="experience-description">
+                                            Construí aplicaciones web y móviles que escalaron de 0 a 1M+ usuarios. 
+                                            Especializado en crear experiencias de usuario que convertían visitantes en clientes fanáticos.
+                                        </p>
+                                        <div class="experience-skills">
+                                            <span class="skill-tag">JavaScript</span>
+                                            <span class="skill-tag">PHP</span>
+                                            <span class="skill-tag">MySQL</span>
+                                            <span class="skill-tag">UX/UI</span>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `,
+                    
+                    skills: `
+                        <div class="skills-header">
+                            <h1 class="skills-title">🛠️ Mis Habilidades</h1>
+                            <p class="skills-subtitle">Tecnologías que domino para crear lo imposible</p>
+                        </div>
+                        
+                        <div class="skills-container">
+                            <div class="skills-categories">
+                                <div class="skill-category">
+                                    <h3 class="category-title">
+                                        <span class="category-icon">⚡</span>
+                                        Backend & APIs
+                                    </h3>
+                                    <div class="skills-list">
+                                        <div class="skill-item">
+                                            <div class="skill-header">
+                                                <span class="skill-name">Python</span>
+                                                <span class="skill-level expert">Experto</span>
+                                            </div>
+                                            <div class="skill-progress">
+                                                <div class="skill-progress-fill expert"></div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="skill-header">
+                                                <span class="skill-name">FastAPI</span>
+                                                <span class="skill-level expert">Experto</span>
+                                            </div>
+                                            <div class="skill-progress">
+                                                <div class="skill-progress-fill expert"></div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="skill-header">
+                                                <span class="skill-name">Node.js</span>
+                                                <span class="skill-level advanced">Avanzado</span>
+                                            </div>
+                                            <div class="skill-progress">
+                                                <div class="skill-progress-fill advanced"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h3 class="category-title">
+                                        <span class="category-icon">🎨</span>
+                                        Frontend & UX
+                                    </h3>
+                                    <div class="skills-list">
+                                        <div class="skill-item">
+                                            <div class="skill-header">
+                                                <span class="skill-name">JavaScript</span>
+                                                <span class="skill-level expert">Experto</span>
+                                            </div>
+                                            <div class="skill-progress">
+                                                <div class="skill-progress-fill expert"></div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="skill-header">
+                                                <span class="skill-name">React</span>
+                                                <span class="skill-level advanced">Avanzado</span>
+                                            </div>
+                                            <div class="skill-progress">
+                                                <div class="skill-progress-fill advanced"></div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="skill-header">
+                                                <span class="skill-name">CSS3 Avanzado</span>
+                                                <span class="skill-level expert">Experto</span>
+                                            </div>
+                                            <div class="skill-progress">
+                                                <div class="skill-progress-fill expert"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h3 class="category-title">
+                                        <span class="category-icon">🚀</span>
+                                        DevOps & Cloud
+                                    </h3>
+                                    <div class="skills-list">
+                                        <div class="skill-item">
+                                            <div class="skill-header">
+                                                <span class="skill-name">Docker</span>
+                                                <span class="skill-level expert">Experto</span>
+                                            </div>
+                                            <div class="skill-progress">
+                                                <div class="skill-progress-fill expert"></div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="skill-header">
+                                                <span class="skill-name">Kubernetes</span>
+                                                <span class="skill-level advanced">Avanzado</span>
+                                            </div>
+                                            <div class="skill-progress">
+                                                <div class="skill-progress-fill advanced"></div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="skill-header">
+                                                <span class="skill-name">AWS</span>
+                                                <span class="skill-level advanced">Avanzado</span>
+                                            </div>
+                                            <div class="skill-progress">
+                                                <div class="skill-progress-fill advanced"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-particles">
+                            <div class="skill-particle"></div>
+                            <div class="skill-particle"></div>
+                            <div class="skill-particle"></div>
+                            <div class="skill-particle"></div>
+                        </div>
+                    `,
+                    
+                    contact: `
+                        <div class="contact-header">
+                            <h1 class="contact-title">📞 Conectemos</h1>
+                            <p class="contact-subtitle">¿Tienes un proyecto imposible? Perfecto, es mi especialidad</p>
+                        </div>
+                        
+                        <div class="contact-container">
+                            <div class="contact-info">
+                                <h2 class="contact-info-title">Información de Contacto</h2>
+                                <div class="contact-info-list">
+                                    <div class="contact-info-item">
+                                        <div class="contact-icon">📧</div>
+                                        <div class="contact-details">
+                                            <div class="contact-label">Email</div>
+                                            <div class="contact-value">
+                                                <a href="mailto:luaoraa@gmail.com">luaoraa@gmail.com</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-info-item">
+                                        <div class="contact-icon">💼</div>
+                                        <div class="contact-details">
+                                            <div class="contact-label">LinkedIn</div>
+                                            <div class="contact-value">
+                                                <a href="https://linkedin.com/in/luisalberto-oraa" target="_blank">Luis Alberto Oraa</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-info-item">
+                                        <div class="contact-icon">⚡</div>
+                                        <div class="contact-details">
+                                            <div class="contact-label">GitHub</div>
+                                            <div class="contact-value">
+                                                <a href="https://github.com/luisalberto-oraa" target="_blank">@luisalberto-oraa</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-info-item">
+                                        <div class="contact-icon">🌍</div>
+                                        <div class="contact-details">
+                                            <div class="contact-label">Ubicación</div>
+                                            <div class="contact-value">Madrid, España</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-form">
+                                <h2 class="contact-form-title">Envíame un Mensaje</h2>
+                                <div class="form-fields">
+                                    <div class="form-field">
+                                        <label class="form-label">Nombre</label>
+                                        <input type="text" class="form-input" placeholder="Tu nombre completo">
+                                    </div>
+                                    
+                                    <div class="form-field">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-input" placeholder="tu@email.com">
+                                    </div>
+                                    
+                                    <div class="form-field">
+                                        <label class="form-label">Asunto</label>
+                                        <input type="text" class="form-input" placeholder="¿De qué quieres hablar?">
+                                    </div>
+                                    
+                                    <div class="form-field">
+                                        <label class="form-label">Mensaje</label>
+                                        <textarea class="form-textarea" placeholder="Cuéntame sobre tu proyecto imposible..."></textarea>
+                                    </div>
+                                    
+                                    <button type="submit" class="form-submit">Enviar Mensaje</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="connection-lines">
+                            <div class="connection-line"></div>
+                            <div class="connection-line"></div>
+                        </div>
+                    `
+                };
+                
+                return pageTemplates[pageId] || '<div>Página no encontrada</div>';
+            }
+            
+            generatePageContent(pageId) {
+                console.log(`🎨 Generando contenido para: ${pageId}`);
+                
+                // El contenido ya está generado en generatePageHTML
+                // Solo necesitamos activar interactividad si es necesario
+                switch(pageId) {
+                    case 'portfolio':
+                        console.log('📁 Activando filtros de portfolio...');
+                        this.activatePortfolioFilters();
+                        break;
+                        
+                    case 'contact':
+                        console.log('📞 Activando formulario de contacto...');
+                        this.activateContactForm();
+                        break;
+                }
+                
+                console.log(`✅ Contenido de ${pageId} listo`);
+            }
+            
+            activatePortfolioFilters() {
+                const filterBtns = document.querySelectorAll('.filter-btn');
+                const projectCards = document.querySelectorAll('.project-card');
+                
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        // Remover active de todos
+                        filterBtns.forEach(b => b.classList.remove('active'));
+                        // Activar el clickeado
+                        btn.classList.add('active');
+                        
+                        const filter = btn.getAttribute('data-filter');
+                        console.log(`� Filtrando por: ${filter}`);
+                        
+                        // Por ahora mostrar todos (se puede implementar filtro real después)
+                        projectCards.forEach(card => {
+                            card.style.display = 'block';
+                        });
+                    });
+                });
+            }
+            
+            activateContactForm() {
+                const form = document.querySelector('.form-submit');
+                if (form) {
+                    form.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        alert('¡Gracias por tu interés! El formulario se implementará próximamente.');
+                        console.log('📧 Formulario activado');
+                    });
+                }
+            }
+            
+            showPage(pageId) {
+                // Ocultar todas las páginas
+                document.querySelectorAll('.page-container').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Mostrar página solicitada
+                const targetPage = document.getElementById(`${pageId}-page`);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                    
+                    // Mostrar navegación si no es landing
+                    const nav = document.getElementById('main-navigation');
+                    if (pageId !== 'landing') {
+                        nav.style.display = 'block';
+                    } else {
+                        nav.style.display = 'none';
+                    }
+                    
+                    // Actualizar estado de navegación
+                    if (window.cvRouter) {
+                        window.cvRouter.updateNavigationState(pageId);
+                    }
+                    
+                    // Activar animaciones de la página visible
+                    if (this.performanceManager) {
+                        this.performanceManager.activatePageAnimations(`${pageId}-page`);
+                    }
+                }
+                
+                this.currentPage = pageId;
+            }
+            
+            showLandingPage() {
+                // Ocultar todas las páginas
+                document.querySelectorAll('.page-container').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Mostrar página landing
+                const landingPage = document.getElementById('landing-page');
+                if (landingPage) {
+                    landingPage.classList.add('active');
+                }
+                
+                // Ocultar navegación
+                const nav = document.getElementById('main-navigation');
+                if (nav) {
+                    nav.style.display = 'none';
+                }
+                
+                // Mostrar elementos originales del landing
+                const dashboard = document.querySelector('.quantum-dashboard');
+                const initContainer = document.querySelector('.quantum-init-container');
+                
+                if (dashboard) {
+                    dashboard.style.display = 'block';
+                    dashboard.style.opacity = '1';
+                }
+                
+                this.currentPage = 'landing';
+                console.log('🏠 Regresando al landing original');
+            }
+            
+            transitionToPage(pageName) {
+                console.log(`🔄 Transicionando a: ${pageName}`);
+                this.currentPage = pageName;
+                
+                // Lógica de transición entre páginas
+                const currentPageEl = document.getElementById(`${this.currentPage}-page`);
+                const targetPageEl = document.getElementById(`${pageName}-page`);
+                
+                if (currentPageEl && targetPageEl) {
+                    // Fade out página actual
+                    currentPageEl.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        currentPageEl.style.display = 'none';
+                        targetPageEl.style.display = 'block';
+                        
+                        // Fade in nueva página
+                        setTimeout(() => {
+                            targetPageEl.style.opacity = '1';
+                        }, 100);
+                    }, 600);
+                }
+            }
+        }
+        
+        // Inicializar aplicación cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                initializeApp();
+            });
+        } else {
+            initializeApp();
+        }
+        
+        function initializeApp() {
+            // Inicializar Router
+            window.cvRouter = new CVRouter();
+            
+            // Inicializar QuantumApp
+            window.quantumApp = new QuantumApp();
+            
+            // Conectar Router con QuantumApp
+            window.cvRouter.setQuantumApp(window.quantumApp);
+            
+            console.log('🚀 Sistema completo inicializado');
+        }
+        
+        // Debugging global
+        window.addEventListener('error', (e) => {
+            console.error('❌ Error global capturado:', e.error);
+        });
+        
+        console.log('📋 Sistema modular cargado correctamente');
+        
+        // Debug helper global
+        window.debugCV = {
+            testNavigation: () => {
+                console.log('🧪 Probando navegación simple...');
+                setTimeout(() => window.cvRouter.navigateTo('/portfolio'), 1000);
+                setTimeout(() => window.cvRouter.navigateTo('/experience'), 3000);
+                setTimeout(() => window.cvRouter.navigateTo('/skills'), 5000);
+                setTimeout(() => window.cvRouter.navigateTo('/contact'), 7000);
+                setTimeout(() => window.cvRouter.navigateTo('/'), 9000);
+            },
+            
+            checkPages: () => {
+                const pages = ['landing', 'portfolio', 'experience', 'skills', 'contact'];
+                pages.forEach(page => {
+                    const container = document.getElementById(`${page}-page`);
+                    const hasContent = container && container.innerHTML.trim().length > 0;
+                    console.log(`📋 ${page}: ${container ? 'Existe' : 'No existe'} - Visible: ${container?.classList.contains('active')} - Contenido: ${hasContent ? 'Sí' : 'No'}`);
+                });
+            },
+            
+            forceLoadPortfolio: () => {
+                console.log('🔨 Forzando carga de portfolio...');
+                window.quantumApp.loadPage('portfolio');
+            }
+        };
+        
+        // Navegación con data-route para archivos físicos
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('[data-route]').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const route = this.getAttribute('data-route');
+                    const href = this.getAttribute('href');
+                    
+                    if (href && href !== '#') {
+                        console.log(`🔗 Navegando a: ${href}`);
+                        window.location.href = href;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

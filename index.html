@@ -3,53 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis Alberto Oraa García - Arquitecto de Soluciones Imposibles</title>
+    <title>Landing - Luis Alberto Oraa García</title>
     
-    <!-- Meta Tags Estratégicos -->
-    <meta name="description" content="16 años convirtiendo ideas imposibles en realidades digitales. Arquitecto Senior en Santander Digital Services. Cuando otros dicen 'no se puede', yo pregunto '¿cómo lo hacemos?'">
-    <meta name="keywords" content="Arquitecto de Software, Santander Digital Services, Python, FastAPI, Microservicios, Liderazgo Técnico, Innovación, IA, Machine Learning">
+    <!-- Meta Tags -->
+    <meta name="description" content="Página inicial de Luis Alberto Oraa García - Bienvenido al futuro de la arquitectura de software">
+    <meta name="keywords" content="Landing, Luis Alberto Oraa, Arquitecto Software, Quantum, Inicio"                      } else if (line.includes('💻') || line.includes('☕') || line.includes('🧠')) {
+                    // Mensajes personales: timing reducido
+                    nextDelay = getRandomDelay(40, 80);        } else if (line.includes('💻') || line.includes('☕') || line.includes('🧠')) {
+                    // Mensajes personales: timing medio para impacto
+                    nextDelay = getRandomDelay(500, 800);
     <meta name="author" content="Luis Alberto Oraa García">
     <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph para impacto en redes sociales -->
-    <meta property="og:title" content="Luis Alberto Oraa - Arquitecto de Soluciones Imposibles">
-    <meta property="og:description" content="Si para presentarme he creado esto... imagina lo que puedo hacer por tu proyecto">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="./assets/images/og-preview.jpg">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Luis Alberto Oraa - Cuando 'imposible' no está en el diccionario">
-    <meta name="twitter:description" content="16 años demostrando que los límites están para superarlos">
-    
-    <!-- Canonical URL para SEO -->
-    <link rel="canonical" href="https://luisalberto-oraa.dev">
-    
-    <!-- Schema.org para estructura de datos -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Luis Alberto Oraa García",
-        "jobTitle": "Arquitecto de Software Senior",
-        "worksFor": {
-            "@type": "Organization",
-            "name": "Santander Digital Services"
-        },
-        "url": "https://luisalberto-oraa.dev",
-        "sameAs": [
-            "https://linkedin.com/in/luisalberto-oraa",
-            "https://github.com/luisalberto-oraa"
-        ]
-    }
-    </script>
     
     <!-- Preconnections para performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
-    <!-- Fonts épicas -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     
     <!-- Icons -->
@@ -64,797 +35,649 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
-    
-    <!-- Preload critical assets -->
-    <link rel="preload" href="./src/utils/quantum-engine.js" as="script">
-    <link rel="preload" href="./src/utils/performance-manager.js" as="script">
-    <!-- Audio preload removed to fix warning -->
 </head>
-<body class="quantum-loading">
+<body>
+    <!-- OVERLAY DE TRANSICIÓN NEGRA -->
+    <div class="black-transition-overlay" id="blackOverlay">
+        <div class="transition-content">
+            <div class="quantum-loader">
+                <div class="loader-ring"></div>
+                <div class="loader-ring"></div>
+                <div class="loader-ring"></div>
+            </div>
+            <div class="transition-text">ACCEDIENDO AL SISTEMA...</div>
+        </div>
+    </div>
     
-    <!-- NAVEGACIÓN PRINCIPAL (OCULTA INICIALMENTE) -->
-    <nav id="main-navigation" class="quantum-nav" style="display: none;">
+    <!-- NAVIGATION -->
+    <nav class="quantum-nav">
         <div class="nav-container">
             <div class="nav-brand">
-                <span class="brand-text" data-text="personal.name">Luis Alberto Oraa García</span>
+                <a href="/home" data-route="home">LA.ORAA</a>
             </div>
-            <div class="nav-menu" data-dynamic="navigation-menu">
-                <!-- Navigation items se insertan aquí automáticamente -->
+            
+            <div class="nav-menu">
+                <a href="/home" data-route="home" class="nav-link">INICIO</a>
+                <a href="/portfolio" data-route="portfolio" class="nav-link">PORTFOLIO</a>
+                <a href="/experience" data-route="experience" class="nav-link">EXPERIENCIA</a>
+                <a href="/skills" data-route="skills" class="nav-link">SKILLS</a>
+                <a href="/contact" data-route="contact" class="nav-link">CONTACTO</a>
+            </div>
+            
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <!-- QUANTUM EFFECTS -->
+            <div class="nav-quantum-effects">
+                <div class="quantum-dot"></div>
+                <div class="quantum-dot"></div>
+                <div class="quantum-dot"></div>
             </div>
         </div>
     </nav>
 
-    <!-- CONTENEDOR PRINCIPAL -->
-    <div id="app-container">
+    <!-- MAIN CONTENT -->
+    <main class="quantum-init-container">
         
-        <!-- LANDING PAGE -->
-        <div id="landing-page" class="page-container active">
-            <!-- El contenido se carga desde landing.html -->
+        <!-- SECCIÓN IZQUIERDA: CRISTALES CAÓTICOS -->
+        <div class="init-left-section">
+            
+            <!-- CAMPO DE CRISTALES HOLOGRÁFICOS CAÓTICOS -->
+            <div class="chaos-crystal-field">
+                
+                <!-- Cristal Principal Centro -->
+                <div class="crystal-container main-crystal" style="--x: 50%; --y: 50%; --size: 1.2; --speed: 8s;">
+                    <div class="crystal-cube">
+                        <div class="face front"></div>
+                        <div class="face back"></div>
+                        <div class="face right"></div>
+                        <div class="face left"></div>
+                        <div class="face top"></div>
+                        <div class="face bottom"></div>
+                    </div>
+                </div>
+                
+                <!-- Cristales Satélites Caóticos -->
+                <div class="crystal-container" style="--x: 20%; --y: 30%; --size: 0.7; --speed: 12s;">
+                    <div class="crystal-cube">
+                        <div class="face front"></div>
+                        <div class="face back"></div>
+                        <div class="face right"></div>
+                        <div class="face left"></div>
+                        <div class="face top"></div>
+                        <div class="face bottom"></div>
+                    </div>
+                </div>
+                
+                <div class="crystal-container" style="--x: 75%; --y: 20%; --size: 0.5; --speed: 15s;">
+                    <div class="crystal-cube">
+                        <div class="face front"></div>
+                        <div class="face back"></div>
+                        <div class="face right"></div>
+                        <div class="face left"></div>
+                        <div class="face top"></div>
+                        <div class="face bottom"></div>
+                    </div>
+                </div>
+                
+                <div class="crystal-container" style="--x: 30%; --y: 75%; --size: 0.8; --speed: 10s;">
+                    <div class="crystal-cube">
+                        <div class="face front"></div>
+                        <div class="face back"></div>
+                        <div class="face right"></div>
+                        <div class="face left"></div>
+                        <div class="face top"></div>
+                        <div class="face bottom"></div>
+                    </div>
+                </div>
+                
+                <div class="crystal-container" style="--x: 85%; --y: 65%; --size: 0.6; --speed: 14s;">
+                    <div class="crystal-cube">
+                        <div class="face front"></div>
+                        <div class="face back"></div>
+                        <div class="face right"></div>
+                        <div class="face left"></div>
+                        <div class="face top"></div>
+                        <div class="face bottom"></div>
+                    </div>
+                </div>
+                
+                <div class="crystal-container" style="--x: 15%; --y: 80%; --size: 0.4; --speed: 18s;">
+                    <div class="crystal-cube">
+                        <div class="face front"></div>
+                        <div class="face back"></div>
+                        <div class="face right"></div>
+                        <div class="face left"></div>
+                        <div class="face top"></div>
+                        <div class="face bottom"></div>
+                    </div>
+                </div>
+                
+            </div>
         </div>
         
-        <!-- PORTFOLIO PAGE -->
-        <div id="portfolio-page" class="page-container">
-            <!-- Contenido se carga dinámicamente -->
+        <!-- SECCIÓN DERECHA: INTERFACE CUÁNTICA -->
+        <div class="init-right-section">
+            
+            <!-- ÁREA DEL TERMINAL (60%) -->
+            <div class="terminal-area">
+                <div class="quantum-terminal">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <div class="control-btn close"></div>
+                        <div class="control-btn minimize"></div>
+                        <div class="control-btn maximize"></div>
+                    </div>
+                    <div class="terminal-title">QUANTUM_INIT.exe</div>
+                </div>
+                
+                <div class="terminal-body">
+                    <div class="terminal-content" id="terminalContent">
+                        <div class="terminal-line">
+                            <span class="prompt">quantum@universe:~$</span>
+                            <span class="command typing">initializing_architect.exe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            <!-- ÁREA DE INFORMACIÓN MEJORADA (40%) -->
+            <div class="info-area">
+                
+                <!-- PANEL DE INFORMACIÓN CUÁNTICA -->
+                <div class="quantum-info-panel">
+                
+                <!-- STATS VITALES -->
+                <div class="vital-stats">
+                    <div class="stat-row">
+                        <span class="stat-label">EXPERIENCIA:</span>
+                        <span class="stat-value typing-number" data-target="16">0</span>
+                        <span class="stat-unit">AÑOS</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">MICROSERVICIOS:</span>
+                        <span class="stat-value typing-number" data-target="500">0</span>
+                        <span class="stat-unit">ACTIVOS</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">UPTIME:</span>
+                        <span class="stat-value">99.99</span>
+                        <span class="stat-unit">%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">CAFÉ:</span>
+                        <span class="stat-value">∞</span>
+                        <span class="stat-unit">LITROS</span>
+                    </div>
+                </div>
+                
+                <!-- INDICADORES DE SISTEMA -->
+                <div class="system-indicators">
+                    <div class="indicator active">
+                        <div class="indicator-light"></div>
+                        <span class="indicator-label">CREATIVIDAD</span>
+                    </div>
+                    <div class="indicator active">
+                        <div class="indicator-light"></div>
+                        <span class="indicator-label">INNOVACIÓN</span>
+                    </div>
+                    <div class="indicator active">
+                        <div class="indicator-light"></div>
+                        <span class="indicator-label">PROBLEMA-SOLVER</span>
+                    </div>
+                    <div class="indicator active">
+                        <div class="indicator-light"></div>
+                        <span class="indicator-label">ARQUITECTURA</span>
+                    </div>
+                </div>
+                
+                <!-- BOTÓN DE INICIALIZACIÓN -->
+                <div class="init-button-container">
+                    <button class="quantum-init-btn" id="initButton">
+                        <span class="btn-text">ACCEDER<br>AL SISTEMA</span>
+                        <div class="btn-particles">
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                        </div>
+                    </button>
+                </div>
+                
+            </div>
+            </div>
+            
         </div>
         
-        <!-- EXPERIENCE PAGE -->
-        <div id="experience-page" class="page-container">
-            <!-- Contenido se carga dinámicamente -->
-        </div>
-        
-        <!-- SKILLS PAGE -->
-        <div id="skills-page" class="page-container">
-            <!-- Contenido se carga dinámicamente -->
-        </div>
-        
-        <!-- CONTACT PAGE -->
-        <div id="contact-page" class="page-container">
-            <!-- Contenido se carga dinámicamente -->
-        </div>
-        
-    </div>
-    
-    <!-- SCRIPTS MODULARES -->
-        <!-- SCRIPTS CRÍTICOS -->
+    </main>
+
+    <!-- QUANTUM PERFORMANCE MANAGER -->
     <script src="./src/utils/performance-manager.js"></script>
-    <script src="./src/utils/dynamic-content-manager.js"></script>
-    <script src="./src/utils/quantum-engine.js"></script>
-    <script src="./src/utils/cv-router.js"></script>
-    <!-- <script src="./src/scripts/js/landing.js"></script> --> <!-- TEMPORALMENTE DESACTIVADO -->
     
-    <!-- INICIALIZACIÓN PRINCIPAL -->
+    <!-- DYNAMIC CONTENT MANAGER -->
+    <script src="./src/utils/dynamic-content-manager.js"></script>
+    
+    <!-- QUANTUM ENGINE -->
+    <script src="./src/utils/quantum-engine.js"></script>
+    
+    <!-- CV ROUTER -->
+    <script src="./src/utils/cv-router.js"></script>
+    
+    <!-- Simple Router -->
+    <script src="./src/utils/simple-router.js"></script>
+
+    <!-- Scripts específicos de Landing -->
     <script>
-        /**
-         * ===================================================================
-         * SISTEMA DE INICIALIZACIÓN MODULAR
-         * ===================================================================
-         */
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🚀 Landing page loaded');
         
-        'use strict';
+        // Simulación de terminal avanzada - Carga de sistema completa
+        const terminalContent = document.getElementById('terminalContent');
         
-        class QuantumApp {
-            constructor() {
-                this.quantumEngine = null;
-                this.currentPage = 'landing';
-                this.isInitialized = false;
-                this.performanceManager = null;
-                
-                this.init();
-            }
+        // Sistema de líneas de carga realistas con prompts cuánticos
+        const systemLoadLines = [
+            // Boot inicial del sistema cuántico
+            'quantum@universe:~$ sudo systemctl start quantum-architect.service',
+            '[  0.001] 🚀 QUANTUM ARCHITECT BOOT SEQUENCE INITIATED',
+            '[  0.003] Quantum kernel loading...',
+            'quantum@universe:~$ dmesg | tail -20',
+            '[  0.015] CPU: Intel(R) Xeon(R) Platinum 8380C (32 cores) detected',
+            '[  0.027] Memory: 64GB DDR4-3200 ECC initialized',
+            '[  0.039] Storage: NVMe SSD 2TB Samsung 980 PRO - Ready',
+            '[  0.051] GPU: NVIDIA RTX 4090 (24GB VRAM) - Detected',
+            '[  0.063] Network: 10Gb Ethernet - Link Up',
+            'quantum@universe:~$ systemctl status quantum-core',
+            '[  0.089] ✓ Quantum Core - Active (running)',
             
-            async init() {
-                console.log('🚀 Quantum App: Inicializando aplicación...');
-                
-                // Inicializar gestor de rendimiento
-                if (window.PerformanceManager) {
-                    this.performanceManager = new PerformanceManager();
-                    console.log('✅ Performance Manager inicializado');
-                }
-                
-                // Inicializar gestor de contenido dinámico
-                if (window.DynamicContentManager) {
-                    this.contentManager = new DynamicContentManager();
-                    console.log('✅ Dynamic Content Manager inicializado');
-                }
-                
-                // Cargar contenido de la landing page
-                await this.loadLandingPage();
-                
-                // QuantumEngine se inicializa desde loadLandingPage()
-                
-                this.isInitialized = true;
-                console.log('✅ Quantum App: Aplicación inicializada');
-            }
+            // Inicialización de servicios críticos
+            'quantum@universe:~$ ./initialize_architect_services.sh',
+            '[  0.123] Starting critical quantum services...',
+            '[  0.135] ✓ Authentication Matrix - LOADED',
+            '[  0.147] ✓ Security Quantum Shield - ACTIVE',
+            '[  0.159] ✓ Neural Network Engine - ONLINE',
+            '[  0.171] ✓ Code Generation AI - READY',
+            '[  0.183] ✓ Problem Solver Core - INITIALIZED',
+            'quantum@universe:~$ docker ps --all',
+            '[  0.205] Container orchestration status:',
             
-            async loadLandingPage() {
-                try {
-                    const response = await fetch('./src/pages/landing.html');
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    
-                    const html = await response.text();
-                    const landingContainer = document.getElementById('landing-page');
-                    
-                    if (landingContainer) {
-                        landingContainer.innerHTML = html;
-                        console.log('✅ Landing page cargada correctamente');
-                        
-                        // Esperar a que el content manager esté listo
-                        if (this.contentManager && this.contentManager.initialized) {
-                            this.setupDynamicContent();
-                        } else {
-                            // Reintentar cada 100ms hasta que esté listo
-                            const waitForContentManager = () => {
-                                if (this.contentManager && this.contentManager.initialized) {
-                                    this.setupDynamicContent();
-                                } else {
-                                    setTimeout(waitForContentManager, 100);
-                                }
-                            };
-                            waitForContentManager();
-                        }
-                    }
-                } catch (error) {
-                    console.error('❌ Error cargando landing page:', error);
-                    
-                    // Fallback: mostrar mensaje de error
-                    const landingContainer = document.getElementById('landing-page');
-                    if (landingContainer) {
-                        landingContainer.innerHTML = `
-                            <div class="error-fallback">
-                                <h2>Error de carga</h2>
-                                <p>No se pudo cargar la página de inicialización.</p>
-                            </div>
-                        `;
-                    }
-                }
-            }
+            // Microservicios en contenedores
+            '[  0.227] ✓ api-gateway:latest - Port 8000 [HEALTHY]',
+            '[  0.239] ✓ user-service:v2.1 - Port 8001 [HEALTHY]',
+            '[  0.251] ✓ payment-engine:v3.0 - Port 8002 [HEALTHY]',
+            '[  0.263] ✓ notification-hub:v1.8 - Port 8003 [HEALTHY]',
+            '[  0.275] ✓ analytics-core:v4.2 - Port 8004 [HEALTHY]',
+            '[  0.287] ✓ ml-processor:v2.5 - Port 8005 [HEALTHY]',
+            '[  0.299] ✓ quantum-cache:redis7 - Port 6379 [HEALTHY]',
+            'quantum@universe:~$ kubectl get pods --all-namespaces',
+            '[  0.321] Kubernetes cluster status:',
+            '[  0.333] ✓ ingress-nginx - 3/3 Running',
+            '[  0.345] ✓ monitoring-stack - 8/8 Running',
+            '[  0.357] ✓ logging-system - 4/4 Running',
             
-            setupDynamicContent() {
-                console.log('🎨 Configurando contenido dinámico...');
+            // Bases de datos y persistencia
+            'quantum@universe:~$ pg_isready && redis-cli ping',
+            '[  0.389] Database systems check:',
+            '[  0.401] ✓ PostgreSQL 15.4 - Primary [READY]',
+            '[  0.413] ✓ PostgreSQL 15.4 - Replica [SYNCED]',
+            '[  0.425] ✓ Redis 7.2.1 - Cache Layer [PONG]',
+            '[  0.437] ✓ MongoDB 7.0.2 - Document Store [PRIMARY]',
+            '[  0.449] ✓ Elasticsearch 8.10 - Search Engine [GREEN]',
+            'quantum@universe:~$ curl -s localhost:8000/health | jq',
+            '[  0.471] API Gateway health check:',
+            '[  0.483] ✓ Response time: 8ms [EXCELLENT]',
+            '[  0.495] ✓ Memory usage: 2.1GB/64GB [OPTIMAL]',
+            '[  0.507] ✓ CPU load: 12% average [PERFECT]',
+            
+            // Sistemas de IA y ML
+            'quantum@universe:~$ python -c "import tensorflow, torch; print(\'AI Ready\')"',
+            '[  0.539] AI/ML Stack initialization:',
+            '[  0.551] ✓ TensorFlow 2.14.0 - Neural Networks [READY]',
+            '[  0.563] ✓ PyTorch 2.1.0 - Deep Learning [READY]',
+            '[  0.575] ✓ Scikit-learn 1.3.1 - ML Algorithms [READY]',
+            '[  0.587] ✓ Apache Kafka 3.5 - Event Streaming [READY]',
+            '[  0.599] ✓ Apache Spark 3.4 - Big Data [READY]',
+            'quantum@universe:~$ nvidia-smi --query-gpu=utilization.gpu --format=csv',
+            '[  0.621] ✓ GPU Utilization: 5% [AVAILABLE]',
+            '[  0.633] ✓ CUDA 12.2 - GPU Computing [READY]',
+            
+            // Herramientas de desarrollo
+            'quantum@universe:~$ which python java node go rust',
+            '[  0.665] Development environment check:',
+            '[  0.677] ✓ Python 3.11.5 - /usr/bin/python3 [READY]',
+            '[  0.689] ✓ OpenJDK 17.0.8 - /usr/bin/java [READY]',
+            '[  0.701] ✓ Node.js 20.7.0 - /usr/bin/node [READY]',
+            '[  0.713] ✓ Go 1.21.1 - /usr/bin/go [READY]',
+            '[  0.725] ✓ Rust 1.73.0 - /usr/bin/rustc [READY]',
+            'quantum@universe:~$ git --version && docker --version',
+            '[  0.747] ✓ Git 2.42.0 - Version Control [READY]',
+            '[  0.759] ✓ Docker 24.0.6 - Containerization [READY]',
+            
+            // Monitoreo y observabilidad
+            'quantum@universe:~$ systemctl status prometheus grafana',
+            '[  0.791] Monitoring stack status:',
+            '[  0.803] ✓ Prometheus 2.47.0 - Metrics [ACTIVE]',
+            '[  0.815] ✓ Grafana 10.1.2 - Dashboards [ACTIVE]',
+            '[  0.827] ✓ Jaeger 1.49.0 - Tracing [ACTIVE]',
+            '[  0.839] ✓ AlertManager 0.26.0 - Alerts [ACTIVE]',
+            'quantum@universe:~$ curl -s localhost:9090/api/v1/status/buildinfo',
+            '[  0.861] ✓ Monitoring endpoints - All responding [200 OK]',
+            
+            // Test de conectividad y rendimiento
+            'quantum@universe:~$ ping -c 3 8.8.8.8 && curl -w "%{time_total}" -s github.com',
+            '[  0.893] Network connectivity test:',
+            '[  0.905] ✓ External DNS: 8.8.8.8 - 3ms avg [EXCELLENT]',
+            '[  0.917] ✓ HTTPS connection - 0.045s [FAST]',
+            '[  0.929] ✓ Bandwidth test - 950 Mbps [HIGH SPEED]',
+            'quantum@universe:~$ iostat -x 1 1 | grep nvme',
+            '[  0.951] Storage performance test:',
+            '[  0.963] ✓ NVMe Read: 6.8 GB/s [BLAZING FAST]',
+            '[  0.975] ✓ NVMe Write: 5.2 GB/s [EXTREMELY FAST]',
+            
+            // Carga de perfil del arquitecto
+            'quantum@universe:~$ cat ~/.architect_profile | head -20',
+            '[  1.007] 👨‍💻 Loading Architect Profile...',
+            '[  1.019] ✓ Name: Luis Alberto Oraa García [LOADED]',
+            '[  1.031] ✓ Experience: 16 years [VETERAN LEVEL]',
+            '[  1.043] ✓ Specialization: Impossible Solutions [EXPERT]',
+            '[  1.055] ✓ Microservices deployed: 500+ [MASTER]',
+            '[  1.067] ✓ Uptime record: 99.99% [LEGENDARY]',
+            '[  1.079] ✓ Coffee consumption: ∞ liters [MAXIMUM]',
+            'quantum@universe:~$ grep -c "problem_solved" ~/work_history.log',
+            '[  1.101] ✓ Problems solved: ∞ [UNCOUNTABLE]',
+            '[  1.113] ✓ Lines of code written: 2,847,392 [MASSIVE]',
+            '[  1.125] ✓ Architectures designed: 47 [SCALABLE]',
+            
+            // Verificación de habilidades
+            'quantum@universe:~$ ls ~/skills/ | wc -l',
+            '[  1.157] Skills inventory loaded:',
+            '[  1.169] ✓ Backend Technologies: 25+ [MASTERED]',
+            '[  1.181] ✓ Cloud Platforms: AWS, Azure, GCP [CERTIFIED]',
+            '[  1.193] ✓ AI/ML Frameworks: 15+ [PROFICIENT]',
+            '[  1.205] ✓ DevOps Tools: 30+ [EXPERT]',
+            '[  1.217] ✓ Programming Languages: 12+ [POLYGLOT]',
+            'quantum@universe:~$ docker images | grep -E "(python|java|node)" | wc -l',
+            '[  1.239] ✓ Development images: 47 [READY TO USE]',
+            
+            // Estado final del sistema
+            'quantum@universe:~$ systemctl is-system-running',
+            '[  1.271] 🎯 System State: RUNNING [OPTIMAL]',
+            'quantum@universe:~$ uptime',
+            '[  1.283] ⚡ Load average: 0.85, 0.72, 0.68 [PERFECT]',
+            'quantum@universe:~$ free -h | grep Mem',
+            '[  1.295] 💾 Memory: 8.2G used, 55G available [EXCELLENT]',
+            'quantum@universe:~$ df -h / | tail -1',
+            '[  1.307] 💽 Disk: 15% used, 1.7T available [PLENTY OF SPACE]',
+            'quantum@universe:~$ curl -s localhost:8000/metrics | grep http_requests_total',
+            '[  1.329] 📊 API Metrics: Ready to process requests [STANDBY]',
+            
+            // Mensajes finales épicos
+            'quantum@universe:~$ echo "ARCHITECT STATUS"',
+            '[  1.361] 🚀 QUANTUM ARCHITECT SYSTEM: FULLY OPERATIONAL',
+            '[  1.373] 💻 16 AÑOS DE EXPERIENCIA: CARGADOS Y LISTOS',
+            '[  1.385] ⚡ 500+ MICROSERVICIOS: INICIALIZADOS CORRECTAMENTE',
+            '[  1.397] 🎯 UPTIME 99.99%: GARANTÍA DE CALIDAD MÁXIMA',
+            '[  1.409] ☕ NIVEL DE CAFEÍNA: INFINITO Y CRECIENDO',
+            '[  1.421] 🧠 MODO GENIO: ACTIVADO AL 100%',
+            '[  1.433] 🎨 CREATIVIDAD CUÁNTICA: NIVEL MÁXIMO ALCANZADO',
+            '[  1.445] 🔧 SOLUCIONADOR DE IMPOSIBLES: COMPLETAMENTE LISTO',
+            'quantum@universe:~$ whoami',
+            '[  1.467] 👨‍💻 LUIS ALBERTO ORAA GARCÍA - ARCHITECT OF IMPOSSIBLE',
+            'quantum@universe:~$ fortune | cowsay',
+            '[  1.489] 💡 "When others say impossible, I ask how do we make it?"',
+            'quantum@universe:~$ systemctl status mission-impossible-solver',
+            '[  1.511] ✨ MISSION IMPOSSIBLE SOLVER: ARMED AND READY',
+            '[  1.523] 🎮 PORTFOLIO ACCESS: UNLOCKED AND AVAILABLE',
+            'quantum@universe:~$ echo "Ready for new challenges..."',
+            '[  1.545] 🌟 STATUS: WAITING FOR NEXT IMPOSSIBLE MISSION...'
+        ];
+        
+        let currentLine = 0;
+        let isBootComplete = false;
+        
+        // Función para generar timing dinámico realista
+        function getRandomDelay(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        
+        // Función para scroll realista como consola real
+        function addTerminalLine() {
+            if (currentLine < systemLoadLines.length) {
+                const lineDiv = document.createElement('div');
+                lineDiv.className = 'terminal-line boot-line';
                 
-                // Reemplazar textos estáticos con datos JSON
-                this.contentManager.replaceTextContent();
+                const line = systemLoadLines[currentLine];
+                const isSuccess = line.includes('✓');
+                const isWarning = line.includes('🚀') || line.includes('💻') || line.includes('⚡');
+                const isError = line.includes('ERROR') || line.includes('FAILED');
+                const isPrompt = line.startsWith('quantum@universe:~$');
+                const isEpic = line.includes('QUANTUM ARCHITECT') || line.includes('IMPOSSIBLE') || line.includes('🌟');
                 
-                // Generar navegación
-                this.contentManager.generateSection('navigation-menu', '.nav-menu[data-dynamic="navigation-menu"]');
+                let lineClass = '';
+                if (isPrompt) lineClass = 'quantum-prompt';
+                else if (isEpic) lineClass = 'epic';
+                else if (isSuccess) lineClass = 'success';
+                else if (isWarning) lineClass = 'highlight';
+                else if (isError) lineClass = 'error';
                 
-                // Generar indicadores de sistema dinámicamente
-                this.contentManager.generateSection('landing-indicators', '.system-indicators[data-dynamic="landing-indicators"]');
+                lineDiv.innerHTML = `<span class="boot-line ${lineClass}">${line}</span>`;
                 
-                // Inicializar sistema cuántico después del contenido dinámico
-                if (window.QuantumEngine) {
-                    window.quantumEngine = new QuantumEngine();
-                    window.quantumEngine.init();
-                    console.log('✅ QuantumEngine inicializado correctamente');
+                // Scroll dinámico realista - la nueva línea empuja las anteriores hacia arriba
+                terminalContent.appendChild(lineDiv);
+                currentLine++;
+                
+                // Scroll automático realista - nueva línea empuja las anteriores hacia arriba
+                // Simula comportamiento de consola real donde cada nueva línea aparece al final
+                // y las anteriores suben gradualmente
+                setTimeout(() => {
+                    terminalContent.scrollTop = terminalContent.scrollHeight;
+                }, 10); // Micro delay para efecto más natural
+                
+                // Sistema de timing dinámico ultra-realista 
+                let nextDelay;
+                
+                if (line.startsWith('quantum@universe:~$')) {
+                    // Comandos: reducido para carga rápida total 3-4 segundos
+                    nextDelay = getRandomDelay(80, 150);
+                } else if (line.includes('🚀') || line.includes('QUANTUM ARCHITECT') || line.includes('FULLY OPERATIONAL')) {
+                    // Mensajes épicos finales: timing reducido
+                    nextDelay = getRandomDelay(100, 200);
+                } else if (line.includes('Loading') || line.includes('initialization') || line.includes('STATUS')) {
+                    // Procesos de carga: timing muy rápido
+                    nextDelay = getRandomDelay(30, 60);
+                } else if (line.includes('[') && (line.includes('✓') || line.includes('READY') || line.includes('OK'))) {
+                    // Procesos internos del sistema: ultra rápidos
+                    nextDelay = getRandomDelay(5, 15);
+                } else if (line.includes('curl') || line.includes('systemctl') || line.includes('docker') || line.includes('kubectl')) {
+                    // Respuestas de comandos del sistema: muy rápido
+                    nextDelay = getRandomDelay(15, 40);
+                } else if (line.includes('�‍💻') || line.includes('☕') || line.includes('🧠')) {
+                    nextDelay = 600; // Mensajes personales más lentos
+                } else if (line.includes('💡') || line.includes('🎮') || line.includes('🌟')) {
+                    // Mensajes finales dramáticos: timing reducido pero notable
+                    nextDelay = getRandomDelay(60, 120);
                 } else {
-                    console.error('❌ QuantumEngine no disponible');
-                }
-            }
-            
-            async loadPage(pageId) {
-                console.log(`📄 Cargando página: ${pageId}`);
-                
-                // Si es la landing, mostrar página original y ocultar navegación
-                if (pageId === 'landing') {
-                    this.showLandingPage();
-                    return;
+                    // Líneas generales: ultra rápido
+                    nextDelay = getRandomDelay(8, 25);
                 }
                 
-                // Verificar si la página ya está cargada
-                const pageContainer = document.getElementById(`${pageId}-page`);
-                if (!pageContainer) {
-                    console.error(`❌ Container no encontrado para: ${pageId}`);
-                    return;
-                }
+                setTimeout(addTerminalLine, nextDelay);
+            } else {
+                // Terminó la secuencia de boot
+                isBootComplete = true;
                 
-                // Si no tiene contenido, cargar
-                if (!pageContainer.innerHTML.trim()) {
-                    await this.loadPageContent(pageId);
-                }
+                // Agregar cursor parpadeante final para efecto realista de consola
+                setTimeout(() => {
+                    const cursorDiv = document.createElement('div');
+                    cursorDiv.className = 'terminal-line boot-line';
+                    cursorDiv.innerHTML = '<span class="boot-line quantum-prompt">quantum@universe:~$ <span class="cursor-blink">█</span></span>';
+                    terminalContent.appendChild(cursorDiv);
+                    terminalContent.scrollTop = terminalContent.scrollHeight;
+                }, 200);
                 
-                // Mostrar página
-                this.showPage(pageId);
-            }
-            
-            async loadPageContent(pageId) {
-                const pageContainer = document.getElementById(`${pageId}-page`);
-                
-                try {
-                    console.log(`🔄 Iniciando carga de ${pageId}...`);
-                    
-                    // Mostrar loading
-                    pageContainer.innerHTML = `
-                        <div class="page-loading">
-                            <div class="loading-spinner"></div>
-                            <div class="loading-text">Cargando ${pageId}...</div>
-                        </div>
-                    `;
-                    
-                    // Cargar recursos (CSS/JS) con Performance Manager
-                    if (this.performanceManager) {
-                        console.log(`📦 Cargando recursos CSS para ${pageId}...`);
-                        await this.performanceManager.loadPageResources(pageId);
+                // Activar el botón inmediatamente para acceso rápido del reclutador
+                setTimeout(() => {
+                    const initButton = document.getElementById('initButton');
+                    if (initButton) {
+                        initButton.classList.add('pulse-ready');
+                        initButton.style.opacity = '1';
+                        initButton.disabled = false;
                     }
-                    
-                    // Generar contenido HTML específico de la página
-                    console.log(`🎨 Generando HTML para ${pageId}...`);
-                    const html = this.generatePageHTML(pageId);
-                    
-                    if (html && html.length > 100) {
-                        pageContainer.innerHTML = html;
-                        console.log(`✅ HTML de ${pageId} insertado (${html.length} caracteres)`);
-                        
-                        // Pequeña pausa para que el DOM se actualice
-                        setTimeout(() => {
-                            // Generar contenido dinámico específico de la página
-                            this.generatePageContent(pageId);
-                        }, 50);
-                    } else {
-                        throw new Error(`HTML vacío o muy corto para ${pageId}`);
-                    }
-                    
-                    console.log(`✅ Página ${pageId} cargada correctamente`);
-                    
-                } catch (error) {
-                    console.error(`❌ Error cargando página ${pageId}:`, error);
-                    pageContainer.innerHTML = `
-                        <div class="page-loading">
-                            <div class="loading-text">Error cargando ${pageId}: ${error.message}</div>
-                        </div>
-                    `;
-                }
-            }
-            
-            generatePageHTML(pageId) {
-                const pageTemplates = {
-                    portfolio: `
-                        <div class="portfolio-header">
-                            <h1 class="portfolio-title">🎨 Mi Portfolio</h1>
-                            <p class="portfolio-subtitle">Proyectos y creaciones que definen mi experiencia</p>
-                        </div>
-                        
-                        <div class="portfolio-filters">
-                            <button class="filter-btn active" data-filter="all">Todos</button>
-                            <button class="filter-btn" data-filter="web">Web</button>
-                            <button class="filter-btn" data-filter="mobile">Mobile</button>
-                            <button class="filter-btn" data-filter="ai">IA</button>
-                        </div>
-                        
-                        <div class="projects-grid">
-                            <div class="project-card">
-                                <h3 class="project-title">Sistema de Gestión Bancaria</h3>
-                                <p class="project-description">Plataforma integral para Santander con Python, FastAPI y microservicios. Maneja +1M transacciones diarias.</p>
-                                <div class="project-tech">
-                                    <span class="tech-tag">Python</span>
-                                    <span class="tech-tag">FastAPI</span>
-                                    <span class="tech-tag">PostgreSQL</span>
-                                    <span class="tech-tag">Docker</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="#" class="project-link">Ver Demo</a>
-                                    <a href="#" class="project-link">Código</a>
-                                </div>
-                            </div>
-                            
-                            <div class="project-card">
-                                <h3 class="project-title">CV Interactivo Cuántico</h3>
-                                <p class="project-description">Esta misma página. Un CV que desafía las convenciones con animaciones cuánticas y arquitectura modular.</p>
-                                <div class="project-tech">
-                                    <span class="tech-tag">JavaScript</span>
-                                    <span class="tech-tag">CSS3</span>
-                                    <span class="tech-tag">JSON</span>
-                                    <span class="tech-tag">SPA</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="#" class="project-link">Ver Demo</a>
-                                    <a href="#" class="project-link">Código</a>
-                                </div>
-                            </div>
-                            
-                            <div class="project-card">
-                                <h3 class="project-title">IA Predictiva de Mercados</h3>
-                                <p class="project-description">Sistema de ML para predicción de tendencias financieras con 94% de precisión usando TensorFlow.</p>
-                                <div class="project-tech">
-                                    <span class="tech-tag">Python</span>
-                                    <span class="tech-tag">TensorFlow</span>
-                                    <span class="tech-tag">Pandas</span>
-                                    <span class="tech-tag">APIs</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="#" class="project-link">Ver Demo</a>
-                                    <a href="#" class="project-link">Código</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="floating-elements">
-                            <div class="floating-element"></div>
-                            <div class="floating-element"></div>
-                            <div class="floating-element"></div>
-                        </div>
-                    `,
-                    
-                    experience: `
-                        <div class="experience-header">
-                            <h1 class="experience-title">💼 Mi Experiencia</h1>
-                            <p class="experience-subtitle">16 años convirtiendo imposibles en realidades</p>
-                        </div>
-                        
-                        <div class="timeline-container">
-                            <div class="timeline-line"></div>
-                            <div class="timeline-items">
-                                <div class="timeline-item">
-                                    <div class="timeline-content">
-                                        <div class="experience-period">2020 - Presente</div>
-                                        <h3 class="experience-role">Arquitecto Senior de Software</h3>
-                                        <h4 class="experience-company">Santander Digital Services</h4>
-                                        <p class="experience-description">
-                                            Lidero equipos multidisciplinarios en la creación de soluciones fintech innovadoras. 
-                                            Responsable de la arquitectura de microservicios que procesan millones de transacciones diarias.
-                                        </p>
-                                        <div class="experience-skills">
-                                            <span class="skill-tag">Python</span>
-                                            <span class="skill-tag">FastAPI</span>
-                                            <span class="skill-tag">Kubernetes</span>
-                                            <span class="skill-tag">Liderazgo</span>
-                                        </div>
-                                    </div>
-                                    <div class="timeline-dot"></div>
-                                </div>
-                                
-                                <div class="timeline-item">
-                                    <div class="timeline-content">
-                                        <div class="experience-period">2018 - 2020</div>
-                                        <h3 class="experience-role">Lead Developer</h3>
-                                        <h4 class="experience-company">Fintech Innovadora</h4>
-                                        <p class="experience-description">
-                                            Desarrollé desde cero una plataforma de pagos que revolucionó el mercado latinoamericano. 
-                                            Implementé algoritmos de IA para detección de fraudes con 99.7% de efectividad.
-                                        </p>
-                                        <div class="experience-skills">
-                                            <span class="skill-tag">Node.js</span>
-                                            <span class="skill-tag">React</span>
-                                            <span class="skill-tag">ML</span>
-                                            <span class="skill-tag">DevOps</span>
-                                        </div>
-                                    </div>
-                                    <div class="timeline-dot"></div>
-                                </div>
-                                
-                                <div class="timeline-item">
-                                    <div class="timeline-content">
-                                        <div class="experience-period">2015 - 2018</div>
-                                        <h3 class="experience-role">Full Stack Developer</h3>
-                                        <h4 class="experience-company">Startup Tecnológica</h4>
-                                        <p class="experience-description">
-                                            Construí aplicaciones web y móviles que escalaron de 0 a 1M+ usuarios. 
-                                            Especializado en crear experiencias de usuario que convertían visitantes en clientes fanáticos.
-                                        </p>
-                                        <div class="experience-skills">
-                                            <span class="skill-tag">JavaScript</span>
-                                            <span class="skill-tag">PHP</span>
-                                            <span class="skill-tag">MySQL</span>
-                                            <span class="skill-tag">UX/UI</span>
-                                        </div>
-                                    </div>
-                                    <div class="timeline-dot"></div>
-                                </div>
-                            </div>
-                        </div>
-                    `,
-                    
-                    skills: `
-                        <div class="skills-header">
-                            <h1 class="skills-title">🛠️ Mis Habilidades</h1>
-                            <p class="skills-subtitle">Tecnologías que domino para crear lo imposible</p>
-                        </div>
-                        
-                        <div class="skills-container">
-                            <div class="skills-categories">
-                                <div class="skill-category">
-                                    <h3 class="category-title">
-                                        <span class="category-icon">⚡</span>
-                                        Backend & APIs
-                                    </h3>
-                                    <div class="skills-list">
-                                        <div class="skill-item">
-                                            <div class="skill-header">
-                                                <span class="skill-name">Python</span>
-                                                <span class="skill-level expert">Experto</span>
-                                            </div>
-                                            <div class="skill-progress">
-                                                <div class="skill-progress-fill expert"></div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <div class="skill-header">
-                                                <span class="skill-name">FastAPI</span>
-                                                <span class="skill-level expert">Experto</span>
-                                            </div>
-                                            <div class="skill-progress">
-                                                <div class="skill-progress-fill expert"></div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <div class="skill-header">
-                                                <span class="skill-name">Node.js</span>
-                                                <span class="skill-level advanced">Avanzado</span>
-                                            </div>
-                                            <div class="skill-progress">
-                                                <div class="skill-progress-fill advanced"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="skill-category">
-                                    <h3 class="category-title">
-                                        <span class="category-icon">🎨</span>
-                                        Frontend & UX
-                                    </h3>
-                                    <div class="skills-list">
-                                        <div class="skill-item">
-                                            <div class="skill-header">
-                                                <span class="skill-name">JavaScript</span>
-                                                <span class="skill-level expert">Experto</span>
-                                            </div>
-                                            <div class="skill-progress">
-                                                <div class="skill-progress-fill expert"></div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <div class="skill-header">
-                                                <span class="skill-name">React</span>
-                                                <span class="skill-level advanced">Avanzado</span>
-                                            </div>
-                                            <div class="skill-progress">
-                                                <div class="skill-progress-fill advanced"></div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <div class="skill-header">
-                                                <span class="skill-name">CSS3 Avanzado</span>
-                                                <span class="skill-level expert">Experto</span>
-                                            </div>
-                                            <div class="skill-progress">
-                                                <div class="skill-progress-fill expert"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="skill-category">
-                                    <h3 class="category-title">
-                                        <span class="category-icon">🚀</span>
-                                        DevOps & Cloud
-                                    </h3>
-                                    <div class="skills-list">
-                                        <div class="skill-item">
-                                            <div class="skill-header">
-                                                <span class="skill-name">Docker</span>
-                                                <span class="skill-level expert">Experto</span>
-                                            </div>
-                                            <div class="skill-progress">
-                                                <div class="skill-progress-fill expert"></div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <div class="skill-header">
-                                                <span class="skill-name">Kubernetes</span>
-                                                <span class="skill-level advanced">Avanzado</span>
-                                            </div>
-                                            <div class="skill-progress">
-                                                <div class="skill-progress-fill advanced"></div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <div class="skill-header">
-                                                <span class="skill-name">AWS</span>
-                                                <span class="skill-level advanced">Avanzado</span>
-                                            </div>
-                                            <div class="skill-progress">
-                                                <div class="skill-progress-fill advanced"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-particles">
-                            <div class="skill-particle"></div>
-                            <div class="skill-particle"></div>
-                            <div class="skill-particle"></div>
-                            <div class="skill-particle"></div>
-                        </div>
-                    `,
-                    
-                    contact: `
-                        <div class="contact-header">
-                            <h1 class="contact-title">📞 Conectemos</h1>
-                            <p class="contact-subtitle">¿Tienes un proyecto imposible? Perfecto, es mi especialidad</p>
-                        </div>
-                        
-                        <div class="contact-container">
-                            <div class="contact-info">
-                                <h2 class="contact-info-title">Información de Contacto</h2>
-                                <div class="contact-info-list">
-                                    <div class="contact-info-item">
-                                        <div class="contact-icon">📧</div>
-                                        <div class="contact-details">
-                                            <div class="contact-label">Email</div>
-                                            <div class="contact-value">
-                                                <a href="mailto:luaoraa@gmail.com">luaoraa@gmail.com</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="contact-info-item">
-                                        <div class="contact-icon">💼</div>
-                                        <div class="contact-details">
-                                            <div class="contact-label">LinkedIn</div>
-                                            <div class="contact-value">
-                                                <a href="https://linkedin.com/in/luisalberto-oraa" target="_blank">Luis Alberto Oraa</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="contact-info-item">
-                                        <div class="contact-icon">⚡</div>
-                                        <div class="contact-details">
-                                            <div class="contact-label">GitHub</div>
-                                            <div class="contact-value">
-                                                <a href="https://github.com/luisalberto-oraa" target="_blank">@luisalberto-oraa</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="contact-info-item">
-                                        <div class="contact-icon">🌍</div>
-                                        <div class="contact-details">
-                                            <div class="contact-label">Ubicación</div>
-                                            <div class="contact-value">Madrid, España</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-form">
-                                <h2 class="contact-form-title">Envíame un Mensaje</h2>
-                                <div class="form-fields">
-                                    <div class="form-field">
-                                        <label class="form-label">Nombre</label>
-                                        <input type="text" class="form-input" placeholder="Tu nombre completo">
-                                    </div>
-                                    
-                                    <div class="form-field">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" class="form-input" placeholder="tu@email.com">
-                                    </div>
-                                    
-                                    <div class="form-field">
-                                        <label class="form-label">Asunto</label>
-                                        <input type="text" class="form-input" placeholder="¿De qué quieres hablar?">
-                                    </div>
-                                    
-                                    <div class="form-field">
-                                        <label class="form-label">Mensaje</label>
-                                        <textarea class="form-textarea" placeholder="Cuéntame sobre tu proyecto imposible..."></textarea>
-                                    </div>
-                                    
-                                    <button type="submit" class="form-submit">Enviar Mensaje</button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="connection-lines">
-                            <div class="connection-line"></div>
-                            <div class="connection-line"></div>
-                        </div>
-                    `
-                };
-                
-                return pageTemplates[pageId] || '<div>Página no encontrada</div>';
-            }
-            
-            generatePageContent(pageId) {
-                console.log(`🎨 Generando contenido para: ${pageId}`);
-                
-                // El contenido ya está generado en generatePageHTML
-                // Solo necesitamos activar interactividad si es necesario
-                switch(pageId) {
-                    case 'portfolio':
-                        console.log('📁 Activando filtros de portfolio...');
-                        this.activatePortfolioFilters();
-                        break;
-                        
-                    case 'contact':
-                        console.log('📞 Activando formulario de contacto...');
-                        this.activateContactForm();
-                        break;
-                }
-                
-                console.log(`✅ Contenido de ${pageId} listo`);
-            }
-            
-            activatePortfolioFilters() {
-                const filterBtns = document.querySelectorAll('.filter-btn');
-                const projectCards = document.querySelectorAll('.project-card');
-                
-                filterBtns.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        // Remover active de todos
-                        filterBtns.forEach(b => b.classList.remove('active'));
-                        // Activar el clickeado
-                        btn.classList.add('active');
-                        
-                        const filter = btn.getAttribute('data-filter');
-                        console.log(`� Filtrando por: ${filter}`);
-                        
-                        // Por ahora mostrar todos (se puede implementar filtro real después)
-                        projectCards.forEach(card => {
-                            card.style.display = 'block';
-                        });
-                    });
-                });
-            }
-            
-            activateContactForm() {
-                const form = document.querySelector('.form-submit');
-                if (form) {
-                    form.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        alert('¡Gracias por tu interés! El formulario se implementará próximamente.');
-                        console.log('📧 Formulario activado');
-                    });
-                }
-            }
-            
-            showPage(pageId) {
-                // Ocultar todas las páginas
-                document.querySelectorAll('.page-container').forEach(page => {
-                    page.classList.remove('active');
-                });
-                
-                // Mostrar página solicitada
-                const targetPage = document.getElementById(`${pageId}-page`);
-                if (targetPage) {
-                    targetPage.classList.add('active');
-                    
-                    // Mostrar navegación si no es landing
-                    const nav = document.getElementById('main-navigation');
-                    if (pageId !== 'landing') {
-                        nav.style.display = 'block';
-                    } else {
-                        nav.style.display = 'none';
-                    }
-                    
-                    // Actualizar estado de navegación
-                    if (window.cvRouter) {
-                        window.cvRouter.updateNavigationState(pageId);
-                    }
-                    
-                    // Activar animaciones de la página visible
-                    if (this.performanceManager) {
-                        this.performanceManager.activatePageAnimations(`${pageId}-page`);
-                    }
-                }
-                
-                this.currentPage = pageId;
-            }
-            
-            showLandingPage() {
-                // Ocultar todas las páginas
-                document.querySelectorAll('.page-container').forEach(page => {
-                    page.classList.remove('active');
-                });
-                
-                // Mostrar página landing
-                const landingPage = document.getElementById('landing-page');
-                if (landingPage) {
-                    landingPage.classList.add('active');
-                }
-                
-                // Ocultar navegación
-                const nav = document.getElementById('main-navigation');
-                if (nav) {
-                    nav.style.display = 'none';
-                }
-                
-                // Mostrar elementos originales del landing
-                const dashboard = document.querySelector('.quantum-dashboard');
-                const initContainer = document.querySelector('.quantum-init-container');
-                
-                if (dashboard) {
-                    dashboard.style.display = 'block';
-                    dashboard.style.opacity = '1';
-                }
-                
-                this.currentPage = 'landing';
-                console.log('🏠 Regresando al landing original');
-            }
-            
-            transitionToPage(pageName) {
-                console.log(`🔄 Transicionando a: ${pageName}`);
-                this.currentPage = pageName;
-                
-                // Lógica de transición entre páginas
-                const currentPageEl = document.getElementById(`${this.currentPage}-page`);
-                const targetPageEl = document.getElementById(`${pageName}-page`);
-                
-                if (currentPageEl && targetPageEl) {
-                    // Fade out página actual
-                    currentPageEl.style.opacity = '0';
-                    
-                    setTimeout(() => {
-                        currentPageEl.style.display = 'none';
-                        targetPageEl.style.display = 'block';
-                        
-                        // Fade in nueva página
-                        setTimeout(() => {
-                            targetPageEl.style.opacity = '1';
-                        }, 100);
-                    }, 600);
-                }
+                }, 300);
             }
         }
         
-        // Inicializar aplicación cuando el DOM esté listo
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                initializeApp();
+        // Iniciar el boot sequence inmediatamente
+        setTimeout(addTerminalLine, 200);
+        
+        // Sistema reactivo de stats e indicadores
+        let systemProgress = 0;
+        const totalLines = systemLoadLines.length;
+        
+        // Referencias a elementos
+        const experienceValue = document.querySelector('[data-target="16"]');
+        const microservicesValue = document.querySelector('[data-target="500"]');
+        const indicators = document.querySelectorAll('.indicator-light');
+        const statRows = document.querySelectorAll('.stat-row');
+        const systemIndicatorsDiv = document.querySelector('.system-indicators');
+        
+        // Función para actualizar stats dinámicamente
+        function updateSystemStats(progress) {
+            const percentage = (progress / totalLines) * 100;
+            
+            // Actualizar experiencia gradualmente
+            if (experienceValue) {
+                const experienceProgress = Math.floor((percentage / 100) * 16);
+                experienceValue.textContent = experienceProgress;
+            }
+            
+            // Actualizar microservicios gradualmente  
+            if (microservicesValue) {
+                const microservicesProgress = Math.floor((percentage / 100) * 500);
+                microservicesValue.textContent = microservicesProgress;
+            }
+            
+            // Activar indicadores progresivamente
+            indicators.forEach((indicator, index) => {
+                if (percentage > (index + 1) * 25) {
+                    indicator.classList.add('active');
+                    indicator.style.animationDelay = `${index * 0.5}s`;
+                } else {
+                    indicator.classList.remove('active');
+                }
             });
-        } else {
-            initializeApp();
-        }
-        
-        function initializeApp() {
-            // Inicializar Router
-            window.cvRouter = new CVRouter();
             
-            // Inicializar QuantumApp
-            window.quantumApp = new QuantumApp();
+            // Efecto de carga en stat-rows
+            statRows.forEach((row, index) => {
+                if (percentage > index * 20) {
+                    row.style.opacity = '1';
+                    row.style.transform = 'translateX(0)';
+                    row.style.transition = 'all 0.5s ease';
+                } else {
+                    row.style.opacity = '0.3';
+                    row.style.transform = 'translateX(-20px)';
+                }
+            });
             
-            // Conectar Router con QuantumApp
-            window.cvRouter.setQuantumApp(window.quantumApp);
-            
-            console.log('🚀 Sistema completo inicializado');
-        }
-        
-        // Debugging global
-        window.addEventListener('error', (e) => {
-            console.error('❌ Error global capturado:', e.error);
-        });
-        
-        console.log('📋 Sistema modular cargado correctamente');
-        
-        // Debug helper global
-        window.debugCV = {
-            testNavigation: () => {
-                console.log('🧪 Probando navegación simple...');
-                setTimeout(() => window.cvRouter.navigateTo('/portfolio'), 1000);
-                setTimeout(() => window.cvRouter.navigateTo('/experience'), 3000);
-                setTimeout(() => window.cvRouter.navigateTo('/skills'), 5000);
-                setTimeout(() => window.cvRouter.navigateTo('/contact'), 7000);
-                setTimeout(() => window.cvRouter.navigateTo('/'), 9000);
-            },
-            
-            checkPages: () => {
-                const pages = ['landing', 'portfolio', 'experience', 'skills', 'contact'];
-                pages.forEach(page => {
-                    const container = document.getElementById(`${page}-page`);
-                    const hasContent = container && container.innerHTML.trim().length > 0;
-                    console.log(`📋 ${page}: ${container ? 'Existe' : 'No existe'} - Visible: ${container?.classList.contains('active')} - Contenido: ${hasContent ? 'Sí' : 'No'}`);
-                });
-            },
-            
-            forceLoadPortfolio: () => {
-                console.log('🔨 Forzando carga de portfolio...');
-                window.quantumApp.loadPage('portfolio');
+            // Intensidad del sistema según progreso
+            if (systemIndicatorsDiv) {
+                const intensity = Math.min(percentage / 100, 1);
+                systemIndicatorsDiv.style.boxShadow = `
+                    0 0 ${25 * intensity}px rgba(0, 255, 136, ${0.15 * intensity}),
+                    inset 0 0 15px rgba(0, 0, 0, 0.3)
+                `;
+                
+                // Cambiar color de borde según progreso
+                if (percentage < 25) {
+                    systemIndicatorsDiv.style.borderColor = 'rgba(255, 165, 0, 0.3)'; // Naranja - Iniciando
+                } else if (percentage < 50) {
+                    systemIndicatorsDiv.style.borderColor = 'rgba(255, 255, 0, 0.3)'; // Amarillo - Cargando
+                } else if (percentage < 75) {
+                    systemIndicatorsDiv.style.borderColor = 'rgba(79, 195, 247, 0.3)'; // Azul - Progresando
+                } else {
+                    systemIndicatorsDiv.style.borderColor = 'rgba(0, 255, 136, 0.3)'; // Verde - Completando
+                }
             }
+            
+            // Efecto de "overload" al completar
+            if (percentage >= 95) {
+                document.querySelectorAll('.stat-value').forEach(value => {
+                    value.style.color = 'var(--color-neon-green)';
+                    value.style.textShadow = `
+                        0 0 10px rgba(0, 255, 136, 0.8),
+                        0 0 20px rgba(0, 255, 136, 0.6),
+                        0 0 30px rgba(0, 255, 136, 0.4)
+                    `;
+                });
+            }
+        }
+        
+        // Modificar la función addTerminalLine para incluir progreso
+        const originalAddTerminalLine = addTerminalLine;
+        window.addTerminalLine = function() {
+            if (currentLine < systemLoadLines.length) {
+                systemProgress = currentLine + 1;
+                updateSystemStats(systemProgress);
+                
+                // Efecto de actualización en valores
+                if (experienceValue) {
+                    experienceValue.classList.add('updating');
+                    setTimeout(() => experienceValue.classList.remove('updating'), 500);
+                }
+                if (microservicesValue) {
+                    microservicesValue.classList.add('updating');
+                    setTimeout(() => microservicesValue.classList.remove('updating'), 500);
+                }
+            }
+            originalAddTerminalLine();
         };
+        
+        // Llamar a addTerminalLine en lugar de la función anónima
+        addTerminalLine = window.addTerminalLine;
+        
+        // Botón de inicialización
+        const initButton = document.getElementById('initButton');
+        
+        if (initButton) {
+            initButton.addEventListener('click', function() {
+                console.log('🏠 Iniciando transición al sistema...');
+                
+                // Activar overlay negro dramático
+                const blackOverlay = document.getElementById('blackOverlay');
+                if (blackOverlay) {
+                    blackOverlay.classList.add('active');
+                }
+                
+                // Efecto de sonido mental (vibración si está disponible)
+                if (navigator.vibrate) {
+                    navigator.vibrate([100, 50, 100, 50, 200]);
+                }
+                
+                // Navegar después de la transición
+                setTimeout(() => {
+                    window.location.href = '/home';
+                }, 1500); // 1.5 segundos para completar la transición
+            });
+        }
+        
+        // Navegación con data-route
+        document.querySelectorAll('[data-route]').forEach(element => {
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                const route = this.getAttribute('data-route');
+                const href = this.getAttribute('href');
+                
+                if (href && href !== '#') {
+                    console.log(`🔗 Navegando a: ${href}`);
+                    window.location.href = href;
+                }
+            });
+        });
+    });
     </script>
+
 </body>
 </html>

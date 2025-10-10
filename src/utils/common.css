@@ -14,6 +14,30 @@
   --color-space-dark: #0a0a0a;
   --color-deep-space: #1a1a2e;
   
+  /* Colores principales del sistema */
+  --color-neon-blue: #4fc3f7;
+  --color-accent: #ff6b6b;
+  --color-success: #4caf50;
+  --color-warning: #ffa726;
+  --color-error: #f44336;
+  
+  /* Colores de texto */
+  --color-text: #ffffff;
+  --color-text-light: rgba(255, 255, 255, 0.8);
+  --color-text-muted: rgba(255, 255, 255, 0.6);
+  
+  /* Colores de fondo */
+  --color-bg: #0a0a0a;
+  --color-bg-secondary: #1a1a2e;
+  --color-bg-card: rgba(0, 0, 0, 0.3);
+  
+  /* Gradiente principal */
+  --bg-gradient-main: linear-gradient(135deg, 
+    rgba(10, 10, 10, 1) 0%, 
+    rgba(26, 26, 46, 0.95) 35%,
+    rgba(15, 15, 25, 0.98) 70%,
+    rgba(5, 5, 15, 1) 100%);
+  
   /* Gradientes */
   --gradient-space: linear-gradient(135deg, 
     rgba(10, 10, 10, 0.95) 0%, 
@@ -56,6 +80,15 @@
   --font-primary: 'Orbitron', monospace;
   --font-secondary: 'Rajdhani', sans-serif;
   --font-mono: 'Share Tech Mono', monospace;
+  --font-display: 'Orbitron', monospace;
+  --font-body: 'Rajdhani', sans-serif;
+  
+  /* Navegación */
+  --nav-height: 80px;
+  
+  /* Bordes */
+  --border-radius: 8px;
+  --border-radius-lg: 16px;
 }
 
 /* === RESET Y BASE === */
@@ -130,4 +163,16 @@ body {
     transform: translateZ(-35px) rotateX(5deg) scale(0.95);
     opacity: 0.4;
   }
+}
+
+/* === CURSOR PARPADEANTE PARA TERMINAL === */
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: cursor-blink 1s infinite;
+  color: var(--color-neon-green);
+  font-weight: bold;
 }

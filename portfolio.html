@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Luis Alberto Oraa García</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Portfolio de proyectos de Luis Alberto Oraa García - 16 años convirtiendo ideas imposibles en realidades digitales">
+    <meta name="keywords" content="Portfolio, Proyectos, Arquitectura Software, Microservicios, IA, Innovation">
+    <meta name="author" content="Luis Alberto Oraa García">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Preconnections para performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- ESTILOS MODULARES -->
+    <link href="./src/utils/common.css" rel="stylesheet">
+    <link href="./src/assets/css/performance.css" rel="stylesheet">
+    <link href="./src/assets/css/navigation.css" rel="stylesheet">
+    <link href="./src/assets/css/portfolio.css" rel="stylesheet">
+    <link href="./src/css/main.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="quantum-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/home" data-route="home">LA.ORAA</a>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="/home" data-route="home" class="nav-link">INICIO</a>
+                <a href="/portfolio" data-route="portfolio" class="nav-link active">PORTFOLIO</a>
+                <a href="/experience" data-route="experience" class="nav-link">EXPERIENCIA</a>
+                <a href="/skills" data-route="skills" class="nav-link">SKILLS</a>
+                <a href="/contact" data-route="contact" class="nav-link">CONTACTO</a>
+            </div>
+            
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <!-- QUANTUM EFFECTS -->
+            <div class="nav-quantum-effects">
+                <div class="quantum-dot"></div>
+                <div class="quantum-dot"></div>
+                <div class="quantum-dot"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="portfolio-container">
+        
+        <!-- HEADER OPTIMIZADO -->
+        <div class="portfolio-header">
+            <h1 class="portfolio-title">
+                <span class="title-quantum">QUANTUM</span>
+                <span class="title-projects">PROJECTS</span>
+            </h1>
+            <p class="portfolio-subtitle">16 años convirtiendo ideas imposibles en realidades digitales</p>
+            
+            <!-- ELEMENTOS FLOTANTES MINIMALISTAS -->
+            <div class="floating-elements">
+                <div class="float-item" style="--delay: 0s;">⚡</div>
+                <div class="float-item" style="--delay: 1s;">🚀</div>
+                <div class="float-item" style="--delay: 2s;">⭐</div>
+            </div>
+        </div>
+        
+        <!-- FILTROS DE CATEGORÍAS -->
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">TODOS LOS PROYECTOS</button>
+            <button class="filter-btn" data-filter="architecture">ARQUITECTURA</button>
+            <button class="filter-btn" data-filter="ai">INTELIGENCIA ARTIFICIAL</button>
+            <button class="filter-btn" data-filter="microservices">MICROSERVICIOS</button>
+            <button class="filter-btn" data-filter="innovation">INNOVACIÓN</button>
+        </div>
+        
+        <!-- GRID DE PROYECTOS -->
+        <div class="projects-grid">
+            
+            <!-- PROYECTO 1: QUANTUM ARCHITECTURE -->
+            <div class="project-card featured" data-category="architecture innovation">
+                <div class="project-glow"></div>
+                <div class="project-header">
+                    <span class="project-status">🚀 PRODUCCIÓN</span>
+                    <span class="project-type">ARQUITECTURA</span>
+                </div>
+                <h3 class="project-title">Quantum Architecture System</h3>
+                <p class="project-description">Arquitectura de microservicios que procesa +50M transacciones/día con latencia &lt;10ms. El sistema que convirtió lo imposible en rutina.</p>
+                
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">FastAPI</span>
+                    <span class="tech-tag">Kubernetes</span>
+                    <span class="tech-tag">Redis</span>
+                </div>
+                
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">50M+</span>
+                        <span class="metric-label">Transacciones/día</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">&lt;10ms</span>
+                        <span class="metric-label">Latencia</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">99.99%</span>
+                        <span class="metric-label">Uptime</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PROYECTO 2: AI PREDICTOR -->
+            <div class="project-card" data-category="ai innovation">
+                <div class="project-glow"></div>
+                <div class="project-header">
+                    <span class="project-status">🧠 IA ACTIVA</span>
+                    <span class="project-type">INTELIGENCIA ARTIFICIAL</span>
+                </div>
+                <h3 class="project-title">Quantum AI Predictor</h3>
+                <p class="project-description">Motor de IA que predice comportamientos financieros con 94% de precisión. Porque predecir el futuro ya no es ciencia ficción.</p>
+                
+                <div class="project-tech">
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Apache Kafka</span>
+                    <span class="tech-tag">MLflow</span>
+                </div>
+                
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">94%</span>
+                        <span class="metric-label">Precisión</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">2.3s</span>
+                        <span class="metric-label">Procesamiento</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PROYECTO 3: MICROSERVICES ECOSYSTEM -->
+            <div class="project-card" data-category="microservices architecture">
+                <div class="project-glow"></div>
+                <div class="project-header">
+                    <span class="project-status">⚡ ESCALANDO</span>
+                    <span class="project-type">MICROSERVICIOS</span>
+                </div>
+                <h3 class="project-title">Distributed Ecosystem</h3>
+                <p class="project-description">Ecosistema de 47 microservicios orquestados que manejan la complejidad como si fuera simple. Arte en forma de código.</p>
+                
+                <div class="project-tech">
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">Kubernetes</span>
+                    <span class="tech-tag">Istio</span>
+                    <span class="tech-tag">Prometheus</span>
+                </div>
+                
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">47</span>
+                        <span class="metric-label">Microservicios</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">Auto</span>
+                        <span class="metric-label">Scaling</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PROYECTO 4: QUANTUM SECURITY -->
+            <div class="project-card" data-category="innovation">
+                <div class="project-glow"></div>
+                <div class="project-header">
+                    <span class="project-status">🔐 PROTEGIENDO</span>
+                    <span class="project-type">SEGURIDAD</span>
+                </div>
+                <h3 class="project-title">Quantum Security Shield</h3>
+                <p class="project-description">Sistema de seguridad que detecta amenazas antes de que sucedan. Porque en el futuro, la prevención es el nuevo antivirus.</p>
+                
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Redis</span>
+                    <span class="tech-tag">JWT</span>
+                </div>
+                
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">Zero</span>
+                        <span class="metric-label">Brechas</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">Real-time</span>
+                        <span class="metric-label">Detección</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PROYECTO 5: PERFORMANCE ENGINE -->
+            <div class="project-card" data-category="architecture innovation">
+                <div class="project-glow"></div>
+                <div class="project-header">
+                    <span class="project-status">🏃‍♂️ OPTIMIZANDO</span>
+                    <span class="project-type">PERFORMANCE</span>
+                </div>
+                <h3 class="project-title">Quantum Performance Engine</h3>
+                <p class="project-description">Motor que optimiza automáticamente el rendimiento en tiempo real. Cuando la velocidad de la luz ya no es suficiente.</p>
+                
+                <div class="project-tech">
+                    <span class="tech-tag">Go</span>
+                    <span class="tech-tag">Redis</span>
+                    <span class="tech-tag">InfluxDB</span>
+                    <span class="tech-tag">Grafana</span>
+                </div>
+                
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">300%</span>
+                        <span class="metric-label">Mejora</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">Auto</span>
+                        <span class="metric-label">Optimización</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PROYECTO 6: INNOVATION LAB -->
+            <div class="project-card" data-category="innovation ai">
+                <div class="project-glow"></div>
+                <div class="project-header">
+                    <span class="project-status">🔬 EXPERIMENTANDO</span>
+                    <span class="project-type">INNOVACIÓN</span>
+                </div>
+                <h3 class="project-title">Quantum Innovation Lab</h3>
+                <p class="project-description">Laboratorio donde nacen las ideas que cambiarán el mundo. Porque el futuro se construye experimentando con lo imposible.</p>
+                
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">Jupyter</span>
+                </div>
+                
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">∞</span>
+                        <span class="metric-label">Posibilidades</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">24/7</span>
+                        <span class="metric-label">Innovación</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </main>
+
+    <!-- QUANTUM PERFORMANCE MANAGER -->
+    <script src="./src/utils/performance-manager.js"></script>
+    
+    <!-- DYNAMIC CONTENT MANAGER -->
+    <script src="./src/utils/dynamic-content-manager.js"></script>
+    
+    <!-- QUANTUM ENGINE -->
+    <script src="./src/utils/quantum-engine.js"></script>
+    
+    <!-- CV ROUTER -->
+    <script src="./src/utils/cv-router.js"></script>
+    
+    <!-- Simple Router -->
+    <script src="./src/utils/simple-router.js"></script>
+
+    <!-- Scripts específicos de Portfolio -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('📁 Portfolio page loaded');
+        
+        // Activar filtros
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remover active de todos
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Activar el clickeado
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                console.log(`🔍 Filtrando por: ${filter}`);
+                
+                // Mostrar/ocultar proyectos según filtro
+                projectCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const categories = card.getAttribute('data-category') || '';
+                        if (categories.includes(filter)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+        
+        // Navegación con data-route
+        document.querySelectorAll('[data-route]').forEach(element => {
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                const route = this.getAttribute('data-route');
+                const href = this.getAttribute('href');
+                
+                if (href && href !== '#') {
+                    console.log(`🔗 Navegando a: ${href}`);
+                    window.location.href = href;
+                }
+            });
+        });
+    });
+    </script>
+
+</body>
+</html>

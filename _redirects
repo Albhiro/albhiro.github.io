@@ -1,12 +1,17 @@
-# Netlify redirects - URLs bonitas a archivos físicos
+# Netlify redirects - URLs bonitas a archivos físicos (ahora en la raíz)
 
-/portfolio    /src/pages/portfolio.html    200
-/experience   /src/pages/experience.html   200
-/skills       /src/pages/skills.html       200
-/contact      /src/pages/contact.html      200
+# FLUJO PRINCIPAL: Landing → Home
+/             /index.html      200
+/home         /home.html        200
 
-# Fallback a index para rutas no encontradas
-/*            /index.html                  200
+# URLs de páginas específicas
+/portfolio    /portfolio.html    200
+/experience   /experience.html   200
+/skills       /skills.html       200
+/contact      /contact.html      200
+
+# Fallback a landing para rutas no encontradas
+/*            /landing.html      200
 
 # Headers para seguridad y performance
 [[headers]]
