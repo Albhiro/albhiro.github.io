@@ -3,6 +3,37 @@
    Descripción: Estilos específicos para la página de carga cuántica
    =================================================================== */
 
+/* === PANTALLA NEGRA INICIAL === */
+.initial-black-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  z-index: 10000;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease-out;
+}
+
+.initial-black-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Estado cuando la página está oculta */
+body.page-hidden .initial-black-screen {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Forzar estado visible cuando sea necesario */
+body.force-visible .initial-black-screen {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
 /* === OVERLAY DE TRANSICIÓN NEGRA === */
 .black-transition-overlay {
   position: fixed;
@@ -156,26 +187,39 @@
   z-index: var(--z-quantum);
   transition: all var(--timing-legendary) var(--ease-power);
   
-  /* Aparición inicial desde negro */
+  /* Aparición inicial desde negro total */
   opacity: 0;
-  animation: fadeInFromBlack 2s ease-out 0.5s forwards;
+  visibility: hidden;
+  animation: fadeInFromBlack 3s ease-out 1s forwards;
 }
 
 @keyframes fadeInFromBlack {
   0% { 
     opacity: 0;
-    transform: scale(1.1);
-    filter: brightness(0);
+    visibility: hidden;
+    transform: scale(1.2);
+    filter: brightness(0) contrast(0);
+  }
+  25% {
+    visibility: visible;
+    opacity: 0.2;
+    transform: scale(1.15);
+    filter: brightness(0.1) contrast(0.5);
   }
   50% {
-    opacity: 0.5;
-    transform: scale(1.05);
-    filter: brightness(0.3);
+    opacity: 0.6;
+    transform: scale(1.08);
+    filter: brightness(0.4) contrast(0.8);
+  }
+  75% {
+    opacity: 0.85;
+    transform: scale(1.03);
+    filter: brightness(0.7) contrast(0.9);
   }
   100% { 
     opacity: 1;
     transform: scale(1);
-    filter: brightness(1);
+    filter: brightness(1) contrast(1);
   }
 }
 

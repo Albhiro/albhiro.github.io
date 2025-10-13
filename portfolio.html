@@ -288,13 +288,14 @@
     <!-- CV ROUTER -->
     <script src="./src/utils/cv-router.js"></script>
     
-    <!-- Simple Router -->
-    <script src="./src/utils/simple-router.js"></script>
+    <!-- App Controller -->
+    <script src="./src/utils/app-controller.js"></script>
+    <script src="./src/utils/smart-router.js"></script>
 
     <!-- Scripts específicos de Portfolio -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('📁 Portfolio page loaded');
+        console.log('📁 Portfolio page loaded - AppController handles navigation');
         
         // Activar filtros
         const filterBtns = document.querySelectorAll('.filter-btn');

@@ -1,6 +1,6 @@
 {
   "personal": {
-    "name": "Alberto PRUEBA",
+    "name": "Alberto",
     "title": "Arquitecto de Soluciones Bancarias Híbridas",
     "subtitle": "15 años transformando la banca tradicional con tecnologías modernas",
     "tagline": "Del mainframe al cloud: puente entre el legado y la innovación",
@@ -19,7 +19,7 @@
     },
     "author_signature": {
       "label": "ARCHITECT:",
-      "name": "ALBERTO TEST - BANCO SANTANDER"
+      "name": "ALBERTO - BANCO SANTANDER"
     },
     "progress_label": "PROGRESO DEL SISTEMA",
     "button_text": "ACCEDER",

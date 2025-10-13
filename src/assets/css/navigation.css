@@ -15,7 +15,45 @@
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(79, 195, 247, 0.2);
   z-index: 1000;
-  transition: all 0.3s var(--ease-smooth);
+  transition: all 0.3s ease-out;
+  
+  /* Visible por defecto */
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Estado oculto solo para landing page inicialmente */
+body.nav-hidden .quantum-nav {
+  opacity: 0;
+  transform: translateY(-100%);
+  visibility: hidden;
+}
+
+/* Estado visible - sin animaciones complejas */
+body.landing-loaded .quantum-nav {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Forzar visibilidad absoluta cuando sea necesario */
+body.nav-force-visible .quantum-nav {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+  transition: all 0.2s ease-out !important;
+}
+
+@keyframes navSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .nav-container {
