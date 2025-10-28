@@ -1,178 +1,3 @@
-/* ===================================================================
-   LANDING PAGE - QUANTUM INITIALIZATION STYLES
-   Descripción: Estilos específicos para la página de carga cuántica
-   =================================================================== */
-
-/* === PANTALLA NEGRA INICIAL === */
-.initial-black-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #000000;
-  z-index: 10000;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 1s ease-out;
-}
-
-.initial-black-screen.fade-out {
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* Estado cuando la página está oculta */
-body.page-hidden .initial-black-screen {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Forzar estado visible cuando sea necesario */
-body.force-visible .initial-black-screen {
-  opacity: 0 !important;
-  visibility: hidden !important;
-}
-
-/* === OVERLAY DE TRANSICIÓN NEGRA === */
-.black-transition-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: 
-    radial-gradient(circle at center, 
-      rgba(0, 0, 0, 0.8) 0%, 
-      rgba(0, 0, 0, 0.95) 50%,
-      #000000 100%);
-  z-index: 9999;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-  backdrop-filter: blur(0px);
-}
-
-.black-transition-overlay.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all;
-  backdrop-filter: blur(10px);
-  animation: blackOverlayPulse 1.5s ease-in-out;
-}
-
-@keyframes blackOverlayPulse {
-  0% { 
-    opacity: 0;
-    transform: scale(1.5);
-    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
-  }
-  30% {
-    opacity: 0.8;
-    transform: scale(1.2);
-    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);
-  }
-  100% { 
-    opacity: 1;
-    transform: scale(1);
-    background: #000000;
-  }
-}
-
-/* === CONTENIDO DE TRANSICIÓN === */
-.transition-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  opacity: 0;
-  animation: fadeInTransitionContent 1s ease-out 0.8s forwards;
-}
-
-.quantum-loader {
-  width: 80px;
-  height: 80px;
-  position: relative;
-  margin: 0 auto 30px;
-}
-
-.loader-ring {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid transparent;
-  border-top: 2px solid var(--color-neon-blue);
-  border-radius: 50%;
-  animation: quantumSpin 1.5s linear infinite;
-}
-
-.loader-ring:nth-child(2) {
-  width: 60px;
-  height: 60px;
-  top: 10px;
-  left: 10px;
-  border-top-color: var(--color-neon-green);
-  animation-duration: 1s;
-  animation-direction: reverse;
-}
-
-.loader-ring:nth-child(3) {
-  width: 40px;
-  height: 40px;
-  top: 20px;
-  left: 20px;
-  border-top-color: var(--color-neon-pink);
-  animation-duration: 0.8s;
-}
-
-.transition-text {
-  font-family: var(--font-primary);
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--color-neon-blue);
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  text-shadow: 
-    0 0 10px rgba(79, 195, 247, 0.8),
-    0 0 20px rgba(79, 195, 247, 0.4);
-  animation: textPulse 2s ease-in-out infinite;
-}
-
-@keyframes fadeInTransitionContent {
-  from { 
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
-  }
-  to { 
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-@keyframes quantumSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes textPulse {
-  0%, 100% { 
-    opacity: 1;
-    text-shadow: 
-      0 0 10px rgba(79, 195, 247, 0.8),
-      0 0 20px rgba(79, 195, 247, 0.4);
-  }
-  50% { 
-    opacity: 0.7;
-    text-shadow: 
-      0 0 15px rgba(79, 195, 247, 1),
-      0 0 30px rgba(79, 195, 247, 0.6),
-      0 0 45px rgba(79, 195, 247, 0.3);
-  }
-}
 
 /* === QUANTUM INITIALIZATION CONTAINER === */
 .quantum-init-container {
@@ -225,7 +50,7 @@ body.force-visible .initial-black-screen {
 
 /* === SECCIÓN IZQUIERDA: CAMPO DE CRISTALES === */
 .init-left-section {
-  width: 35%;
+  width: 20%; /* Reducido de 25% a 20% para optimizar espacio para texto largo */
   height: 100%;
   display: flex;
   justify-content: center;
@@ -376,7 +201,7 @@ body.force-visible .initial-black-screen {
 
 /* === SECCIÓN DERECHA: PANEL DE CONTROL === */
 .init-right-section {
-  width: 65%;
+  width: 80%; /* Aumentado de 75% a 80% para acomodar texto largo de ~80 caracteres */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -386,31 +211,31 @@ body.force-visible .initial-black-screen {
       rgba(15, 15, 35, 0.9) 100%);
   position: relative;
   overflow: hidden;
-  padding: 0 2% 2% 0; /* 2% abajo y 2% derecha */
+  padding: 0% 0% 0% 0%; /* 2% abajo y 2% derecha */
   box-sizing: border-box;
 }
 
-/* === ÁREA DEL TERMINAL - ARRIBA (70% altura) === */
+/* === ÁREA DEL TERMINAL - AJUSTADA (-10% altura total) === */
 .terminal-area {
   width: 100%;
-  height: 70%;
+  height: 40%; /* Reducido de 65% a 60% (-5% adicional) */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center; /* Centrado vertical */
   align-items: center;
-  padding: 2% 6% 3% 8%; /* Ajustado para el margen derecho */
+  padding: 1% 0.5% 0.5% 1%; /* Padding simétrico para centrar mejor */
   box-sizing: border-box;
 }
 
-/* === ÁREA DE INFORMACIÓN - ABAJO (30% altura) === */
+/* === ÁREA DE INFORMACIÓN - AJUSTADA PARA 3 PANELES IGUALES === */
 .info-area {
   width: 100%;
-  height: 30%;
+  height: 50%; /* Aumentado de 35% a 40% para 3 paneles iguales */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 2% 6% 1% 2%; /* Reducido padding inferior por el margen del contenedor */
+  padding-left: 2%; /* Padding simétrico consistente */
   box-sizing: border-box;
   background: 
     linear-gradient(135deg, 
@@ -423,7 +248,7 @@ body.force-visible .initial-black-screen {
 /* === ESTILOS DEL TERMINAL CUÁNTICO === */
 .quantum-terminal {
   width: 100%;
-  height: 95%; /* Aprovechar casi todo el espacio disponible */
+  height: 100%; /* Aprovechar casi todo el espacio disponible */
   background: 
     linear-gradient(145deg, 
       rgba(0, 0, 0, 0.95) 0%,
@@ -436,11 +261,10 @@ body.force-visible .initial-black-screen {
   backdrop-filter: blur(8px);
   overflow: hidden;
   position: relative;
-  margin-top: 10px; /* Pequeño margen superior para separación */
 }
 
 .terminal-header {
-  height: 40px;
+  height: 20px;
   background: 
     linear-gradient(90deg, 
       rgba(0, 255, 136, 0.15) 0%,
@@ -510,23 +334,23 @@ body.force-visible .initial-black-screen {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
   box-sizing: border-box;
   position: relative;
   gap: 20px;
 }
 
-/* === STATS VITALES MEJORADOS === */
+/* === STATS VITALES - PANEL 1/3 IGUAL === */
 .vital-stats {
   flex: 1;
+  max-width: 33.33%; /* Asegurar distribución igual */
   background: 
     linear-gradient(145deg, 
       rgba(156, 39, 176, 0.15) 0%,
       rgba(79, 195, 247, 0.12) 100%);
   border: 1px solid rgba(79, 195, 247, 0.3);
-  border-radius: 15px;
-  padding: 15px;
-  margin-right: 10px;
+  border-radius: 7px;
+  padding: 7px;
+  margin: 0; /* Sin márgenes individuales, usar gap del contenedor */
   box-shadow: 
     0 0 25px rgba(156, 39, 176, 0.2),
     inset 0 0 15px rgba(0, 0, 0, 0.3);
@@ -538,7 +362,6 @@ body.force-visible .initial-black-screen {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
-  padding: 4px 0;
   border-bottom: 1px solid rgba(79, 195, 247, 0.2);
   opacity: 0.3;
   transform: translateX(-20px);
@@ -602,9 +425,10 @@ body.force-visible .initial-black-screen {
   margin-left: 5px;
 }
 
-/* === INDICADORES DE SISTEMA MEJORADOS === */
+/* === INDICADORES DE SISTEMA - PANEL 2/3 IGUAL === */
 .system-indicators {
   flex: 1;
+  max-width: 33.33%; /* Asegurar distribución igual */
   background: 
     linear-gradient(145deg, 
       rgba(0, 255, 136, 0.08) 0%,
@@ -612,7 +436,7 @@ body.force-visible .initial-black-screen {
   border: 1px solid rgba(0, 255, 136, 0.3);
   border-radius: 15px;
   padding: 15px;
-  margin: 0 10px;
+  margin: 0; /* Sin márgenes individuales, usar gap del contenedor */
   box-shadow: 
     0 0 25px rgba(0, 255, 136, 0.15),
     inset 0 0 15px rgba(0, 0, 0, 0.3);
@@ -642,6 +466,27 @@ body.force-visible .initial-black-screen {
   opacity: 0.3;
 }
 
+/* === ESTADOS DE ROUTER: ROJO → PARPADEO → VERDE === */
+.indicator-light.error {
+  background: #ff4444;
+  box-shadow: 
+    0 0 10px #ff4444,
+    0 0 20px rgba(255, 68, 68, 0.6),
+    inset 0 0 3px rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.indicator-light.connecting {
+  background: #ffaa00;
+  box-shadow: 
+    0 0 12px #ffaa00,
+    0 0 24px rgba(255, 170, 0, 0.6),
+    inset 0 0 4px rgba(255, 255, 255, 0.3);
+  opacity: 1;
+  animation: routerBlink 0.8s ease-in-out infinite;
+}
+
 .indicator-light.active {
   background: var(--color-success);
   box-shadow: 
@@ -661,16 +506,14 @@ body.force-visible .initial-black-screen {
   letter-spacing: 0.05em;
 }
 
-/* === BOTÓN DE ACCESO SÚPER VISUAL === */
+/* === BOTÓN DE ACCESO - PANEL 3/3 IGUAL === */
 .init-button-container {
   flex: 1;
+  max-width: 33.33%; /* Asegurar distribución igual con los otros paneles */
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 15px;
-  margin-right: 20px; /* Más margen derecho para el texto más compacto */
-  margin-bottom: 10px;
-  max-width: 250px; /* Limitar el ancho del contenedor */
+  margin: 0; /* Sin márgenes individuales, usar gap del contenedor */
 }
 
 .quantum-init-btn {
@@ -695,7 +538,8 @@ body.force-visible .initial-black-screen {
   opacity: 0.3;
   transform: scale(0.9);
   filter: blur(1px);
-  max-width: 200px; /* Reducir ancho para texto de 2 líneas */
+  width: 90%; /* Usar 90% del espacio disponible del panel */
+  max-width: none; /* Quitar límite para adaptar al panel igual */
   text-align: center;
   line-height: 1.2; /* Espaciado entre líneas */
 }
@@ -1152,6 +996,30 @@ body.force-visible .initial-black-screen {
 @keyframes pulseIndicator {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.7; transform: scale(1.2); }
+}
+
+@keyframes routerBlink {
+  0% { 
+    opacity: 1; 
+    transform: scale(1);
+    box-shadow: 
+      0 0 12px #ffaa00,
+      0 0 24px rgba(255, 170, 0, 0.6);
+  }
+  50% { 
+    opacity: 0.3; 
+    transform: scale(0.9);
+    box-shadow: 
+      0 0 5px #ffaa00,
+      0 0 10px rgba(255, 170, 0, 0.3);
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1);
+    box-shadow: 
+      0 0 12px #ffaa00,
+      0 0 24px rgba(255, 170, 0, 0.6);
+  }
 }
 
 /* === ESTILOS MEJORADOS PARA TERMINAL BOOT === */

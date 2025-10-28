@@ -30,59 +30,14 @@
     <link href="./src/utils/common.css" rel="stylesheet">
     <link href="./src/assets/css/performance.css" rel="stylesheet">
     <link href="./src/assets/css/navigation.css" rel="stylesheet">
-    <link href="./src/assets/css/landing.css" rel="stylesheet">
     <link href="./src/css/main.css" rel="stylesheet">
+    <link href="./src/assets/css/landing.css" rel="stylesheet">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
 </head>
 <body class="landing-page">
-    <!-- PANTALLA NEGRA INICIAL -->
-    <div class="initial-black-screen" id="initialBlackScreen"></div>
-    
-    <!-- OVERLAY DE TRANSICIÓN NEGRA -->
-    <div class="black-transition-overlay" id="blackOverlay">
-        <div class="transition-content">
-            <div class="quantum-loader">
-                <div class="loader-ring"></div>
-                <div class="loader-ring"></div>
-                <div class="loader-ring"></div>
-            </div>
-            <div class="transition-text">ACCEDIENDO AL SISTEMA...</div>
-        </div>
-    </div>
-    
-    <!-- NAVIGATION -->
-    <nav class="quantum-nav">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <a href="/home" data-route="home">LA.ORAA</a>
-            </div>
-            
-            <div class="nav-menu">
-                <a href="/home" data-route="home" class="nav-link">INICIO</a>
-                <a href="/portfolio" data-route="portfolio" class="nav-link">PORTFOLIO</a>
-                <a href="/experience" data-route="experience" class="nav-link">EXPERIENCIA</a>
-                <a href="/skills" data-route="skills" class="nav-link">SKILLS</a>
-                <a href="/contact" data-route="contact" class="nav-link">CONTACTO</a>
-            </div>
-            
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            
-            <!-- QUANTUM EFFECTS -->
-            <div class="nav-quantum-effects">
-                <div class="quantum-dot"></div>
-                <div class="quantum-dot"></div>
-                <div class="quantum-dot"></div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- MAIN CONTENT -->
+        <!-- MAIN CONTENT -->
     <main class="quantum-init-container">
         
         <!-- SECCIÓN IZQUIERDA: CRISTALES CAÓTICOS -->
@@ -165,9 +120,8 @@
         <!-- SECCIÓN DERECHA: INTERFACE CUÁNTICA -->
         <div class="init-right-section">
             
-            <!-- ÁREA DEL TERMINAL (60%) -->
-            <div class="terminal-area">
-                <div class="quantum-terminal">
+            <!-- TERMINAL CUÁNTICO -->
+            <div class="quantum-terminal">
                 <div class="terminal-header">
                     <div class="terminal-controls">
                         <div class="control-btn close"></div>
@@ -186,13 +140,9 @@
                     </div>
                 </div>
             </div>
-            </div>
             
-            <!-- ÁREA DE INFORMACIÓN MEJORADA (40%) -->
-            <div class="info-area">
-                
-                <!-- PANEL DE INFORMACIÓN CUÁNTICA -->
-                <div class="quantum-info-panel">
+            <!-- PANEL DE INFORMACIÓN CUÁNTICA -->
+            <div class="quantum-info-panel">
                 
                 <!-- STATS VITALES -->
                 <div class="vital-stats">
@@ -240,8 +190,8 @@
                 
                 <!-- BOTÓN DE INICIALIZACIÓN -->
                 <div class="init-button-container">
-                    <button class="quantum-init-btn" id="initButton" data-route="home">
-                        <span class="btn-text">ACCEDER<br>AL SISTEMA</span>
+                    <button class="quantum-init-btn" id="initButton">
+                        <span class="btn-text">INICIALIZAR ARQUITECTO</span>
                         <div class="btn-particles">
                             <div class="particle"></div>
                             <div class="particle"></div>
@@ -251,7 +201,6 @@
                     </button>
                 </div>
                 
-            </div>
             </div>
             
         </div>

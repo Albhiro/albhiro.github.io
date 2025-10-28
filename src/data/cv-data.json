@@ -1,14 +1,14 @@
 {
   "personal": {
-    "name": "Alberto PRUEBA",
+    "name": "Alberto",
     "title": "Arquitecto de Soluciones Bancarias Híbridas",
-    "subtitle": "15 años transformando la banca tradicional con tecnologías modernas",
+    "subtitle": "15 años transformando diseñando soluciones a la vanguardia.",
     "tagline": "Del mainframe al cloud: puente entre el legado y la innovación",
     "company": "Banco Santander",
     "experience_years": 15,
     "location": "Madrid, España",
-    "email": "alberto@example.com",
-    "linkedin": "linkedin.com/in/alberto",
+    "email": "luaoraa@gmail.com",
+    "linkedin": "linkedin.com/in/luaoraa",
     "github": "github.com/albhiro"
   },
   
@@ -18,20 +18,93 @@
       "sub": "INITIALIZATION SEQUENCE"
     },
     "author_signature": {
-      "label": "ARCHITECT:",
-      "name": "ALBERTO TEST - BANCO SANTANDER"
+      "label": "SOLUTIONS DESIGNER:",
+      "name": "ALBHIRO"
     },
     "progress_label": "PROGRESO DEL SISTEMA",
     "button_text": "ACCEDER",
+    "terminal": {
+      "title": "QUANTUM_INIT.exe",
+      "boot_sequence": [
+        "albhiro@quantum-universe:~$ sudo systemctl start architect.service",
+        "Oct 13 23:47:12 🚀 QUANTUM ARCHITECT SYSTEM INITIALIZING...",
+        "Oct 13 23:47:12 ⚡ Loading kernel modules...",
+        "Oct 13 23:47:12 ✓ Core Systems: LOADED",
+        "Oct 13 23:47:12 ✓ Memory allocation: 64GB reserved",
+        "Oct 13 23:47:12 ✓ Banking Experience: 15 YEARS VERIFIED",
+        "Oct 13 23:47:12 📡 Connecting to Banco Santander mainframes...",
+        "Oct 13 23:47:12 ✓ IBM Mainframe Stack: COBOL | JCL | DB2 | CICS",
+        "Oct 13 23:47:12 ✓ Legacy Systems: ONLINE",
+        "Oct 13 23:47:12 ✓ Modern Stack: Angular | Python | FastAPI | Docker",
+        "Oct 13 23:47:12 ✓ Cloud Platform: OpenShift | Kubernetes | DevOps",
+        "Oct 13 23:47:12 ✓ Big Data: Spark | Databricks | ETL Pipelines",
+        "Oct 13 23:47:12 🔄 Starting cognitive services...",
+        "Oct 13 23:47:12 ✓ CREATIVIDAD.service: active (running)",
+        "Oct 13 23:47:12 ✓ INNOVACION.service: active (running)",
+        "Oct 13 23:47:12 ✓ PROBLEM-SOLVER.service: active (running)",
+        "Oct 13 23:47:12 ✓ ARQUITECTURA.service: active (running)",
+        "Oct 13 23:47:12 🧠 Neural pathways: OPTIMIZED",
+        "Oct 13 23:47:12 ☕ Coffee intake monitor: INFINITE",
+        "Oct 13 23:47:12 🔧 All systems operational",
+        "albhiro@quantum-universe:~$ cat ~/.architect_profile",
+        "╔══════════════════════════════════════════════════════════╗",
+        "║  👨‍💻 ALBERTO - BANKING ARCHITECTURE SPECIALIST          ║",
+        "║  🏦 BANCO SANTANDER - HYBRID SYSTEMS ARCHITECT          ║",
+        "║  🔗 BRIDGE: Legacy Mainframe ↔ Modern Cloud             ║",
+        "║  ⚡ MICROSERVICES: 500+ Active Production Systems        ║",
+        "║  🎯 UPTIME: 99.99% - MISSION CRITICAL SYSTEMS           ║",
+        "║  🧠 COGNITIVE MODULES: All systems green                ║",
+        "╚══════════════════════════════════════════════════════════╝",
+        "albhiro@quantum-universe:~$ systemctl list-units --type=service --state=active",
+        "● creatividad.service    loaded active running Creative Problem Solving",
+        "● innovacion.service     loaded active running Innovation Engine v15.0",
+        "● problem-solver.service loaded active running Complex Issue Resolution",
+        "● arquitectura.service   loaded active running System Architecture Design",
+        "albhiro@quantum-universe:~$ systemctl status architect",
+        "● architect.service - Banking Architecture Specialist",
+        "   Loaded: loaded (/etc/systemd/system/architect.service; enabled)",
+        "   Active: active (running) since 2009-01-01; 15 years ago",
+        "   Status: \"Ready for next challenge... Bring it on!\"",
+        "   Memory: 64.0G (Coffee-enhanced)",
+        "   CGroup: /system.slice/architect.service"
+      ],
+      "final_prompt": "albhiro@quantum-universe:~$ ",
+      "service_coordination": {
+        "creatividad": {
+          "terminal_line_index": 13,
+          "start_delay": 1800,
+          "led_phases": { "error": 500, "connecting": 900 },
+          "selector": ".indicator:nth-child(1) .indicator-light"
+        },
+        "innovacion": {
+          "terminal_line_index": 14,
+          "start_delay": 2200,
+          "led_phases": { "error": 600, "connecting": 1100 },
+          "selector": ".indicator:nth-child(2) .indicator-light"
+        },
+        "problem-solver": {
+          "terminal_line_index": 15,
+          "start_delay": 2800,
+          "led_phases": { "error": 700, "connecting": 1300 },
+          "selector": ".indicator:nth-child(3) .indicator-light"
+        },
+        "arquitectura": {
+          "terminal_line_index": 16,
+          "start_delay": 3400,
+          "led_phases": { "error": 800, "connecting": 1500 },
+          "selector": ".indicator:nth-child(4) .indicator-light"
+        }
+      }
+    },
     "loading_messages": [
-      "Inicializando sistemas bancarios híbridos...",
-      "Validando credenciales Banco Santander...",
-      "Sincronizando 15 años de experiencia bancaria...",
+      "Inicializando sistemas híbridos...",
+      "Validando credenciales ...",
+      "Sincronizando 15 años de MEMORIA...",
       "Cargando expertise mainframe + cloud...",
       "Conectando sistemas legacy con arquitecturas modernas...",
       "Activando pipeline DevOps y Big Data...",
       "Preparando stack tecnológico híbrido...",
-      "Calibrando conocimiento sectorial financiero...",
+      "Calibrando conocimiento sectorial...",
       "Sistema híbrido legacy-moderno listo. Acceso habilitado..."
     ],
     "system_indicators": [
@@ -50,6 +123,95 @@
       { "id": "skills", "title": "Habilidades", "icon": "⚡" },
       { "id": "contact", "title": "Contacto", "icon": "📞" }
     ]
+  },
+
+  "home": {
+    "meta": {
+      "title": "Alberto - Arquitecto de Soluciones Híbridas",
+      "description": "15 años transformando legados con tecnologías modernas. Experto en diseño e innovación.",
+      "keywords": "Arquitecto Bancario, Banco Santander, IBM Mainframe, COBOL, Angular, Python, Big Data, DevOps, Sistemas Legacy, Modernización",
+      "og_title": "Alberto - Arquitecto de Soluciones Híbridas",
+      "og_description": "15 años transformando legados con tecnologías modernas. Experto en diseño e innovación.",
+      "twitter_title": "Alberto - Desde el pasado, a la actualidad",
+      "twitter_description": "15 años transformando legados con tecnologías modernas. Experto en diseño e innovación."
+    },
+    "hero": {
+      "title": {
+        "line1": "ALBERTO",
+        "line2": "BANCO SANTANDER"
+      },
+      "subtitle": "ARQUITECTO DE <span class=\"highlight\">SOLUCIONES BANCARIAS HÍBRIDAS</span>",
+      "description": "15 años transformando la banca tradicional con tecnologías modernas.<br>Del mainframe al cloud: puente entre el legado y la innovación.",
+      "stats": [
+        { "value": "15", "label": "Años Banco Santander" },
+        { "value": "24/7", "label": "Sistemas Críticos" },
+        { "value": "99.9%", "label": "Disponibilidad" },
+        { "value": "∞", "label": "Legacy+Modern" }
+      ],
+      "cta_buttons": [
+        { "text": "VER PORTFOLIO", "icon": "fas fa-rocket", "type": "primary", "route": "portfolio" },
+        { "text": "CONTACTAR", "icon": "fas fa-paper-plane", "type": "secondary", "route": "contact" }
+      ],
+      "floating_code": [
+        "class ArchitectoImposible:",
+        "    def resolver_problema(self):",
+        "        while impossible:",
+        "            impossible = False",
+        "        return \"¡HECHO!\""
+      ]
+    },
+    "services": {
+      "section_title": "¿QUÉ PUEDO HACER POR TI?",
+      "section_subtitle": "Especialidades que convierten lo imposible en rutina",
+      "items": [
+        {
+          "icon": "🏛️",
+          "title": "Sistemas Legacy",
+          "description": "15 años dominando IBM Mainframe, COBOL, DB2 y sistemas críticos bancarios"
+        },
+        {
+          "icon": "🚀",
+          "title": "Modernización Tecnológica",
+          "description": "Migración gradual del mainframe al cloud con Angular, Python y FastAPI"
+        },
+        {
+          "icon": "📊",
+          "title": "Big Data & Analytics",
+          "description": "Databricks, Apache Spark, Data Lakes - procesamiento masivo de datos bancarios"
+        },
+        {
+          "icon": "⚖️",
+          "title": "Compliance Bancario",
+          "description": "Experto en regulaciones financieras, procesos críticos y sistemas de alta disponibilidad"
+        }
+      ]
+    },
+    "technologies": {
+      "section_title": "TECNOLOGÍAS HÍBRIDAS",
+      "section_subtitle": "Arsenal de 15 años evolucionando del mainframe al cloud",
+      "categories": [
+        {
+          "title": "Sistemas Legacy",
+          "tags": ["IBM Mainframe", "COBOL", "JCL", "DB2", "CICS", "Control-M"]
+        },
+        {
+          "title": "Tecnologías Modernas", 
+          "tags": ["Angular 19", "Python", "PySpark", "FastAPI", "JavaScript/TypeScript"]
+        },
+        {
+          "title": "DevOps & Cloud",
+          "tags": ["GitHub Actions", "Docker", "OpenShift", "Kubernetes", "Terraform"]
+        },
+        {
+          "title": "Big Data",
+          "tags": ["Databricks", "Apache Spark", "Data Lakes", "ETL/ELT"]
+        },
+        {
+          "title": "Datos & IA",
+          "tags": ["TensorFlow", "PyTorch", "Apache Kafka", "MongoDB"]
+        }
+      ]
+    }
   },
 
   "portfolio": {

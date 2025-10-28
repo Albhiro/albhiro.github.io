@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="dynamic-title"><!-- Cargado dinámicamente --></title>
+    <title>Alberto - Arquitecto de Soluciones Bancarias Híbridas</title>
     
     <!-- Meta Tags Dinámicos (cargados por JavaScript) -->
     <meta id="dynamic-description" name="description" content="">
@@ -30,7 +30,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
-    <!-- Fonts -->
+    <!-- Fonts épicas -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     
     <!-- Icons -->
@@ -118,20 +118,94 @@
                 <p class="section-subtitle" id="servicesSubtitle"><!-- Cargado dinámicamente --></p>
             </div>
             
-            <div class="services-grid" id="servicesGrid">
-                <!-- Cargado dinámicamente -->
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">�️</div>
+                    <h4 class="service-title">Sistemas Legacy</h4>
+                    <p class="service-description">15 años dominando IBM Mainframe, COBOL, DB2 y sistemas críticos bancarios</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h4 class="service-title">Modernización Tecnológica</h4>
+                    <p class="service-description">Migración gradual del mainframe al cloud con Angular, Python y FastAPI</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h4 class="service-title">Big Data & Analytics</h4>
+                    <p class="service-description">Databricks, Apache Spark, Data Lakes - procesamiento masivo de datos bancarios</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h4 class="service-title">Compliance Bancario</h4>
+                    <p class="service-description">Experto en regulaciones financieras, procesos críticos y sistemas de alta disponibilidad</p>
+                </div>
             </div>
         </section>
         
         <!-- TECNOLOGÍAS -->
         <section class="tech-section">
             <div class="section-header">
-                <h3 class="section-title" id="techTitle"><!-- Cargado dinámicamente --></h3>
-                <p class="section-subtitle" id="techSubtitle"><!-- Cargado dinámicamente --></p>
+                <h3 class="section-title">TECNOLOGÍAS HÍBRIDAS</h3>
+                <p class="section-subtitle">Arsenal de 15 años evolucionando del mainframe al cloud</p>
             </div>
             
-            <div class="tech-categories" id="techCategories">
-                <!-- Cargado dinámicamente -->
+            <div class="tech-categories">
+                <div class="tech-category">
+                    <h4 class="tech-category-title">Sistemas Legacy</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">IBM Mainframe</span>
+                        <span class="tech-tag">COBOL</span>
+                        <span class="tech-tag">JCL</span>
+                        <span class="tech-tag">DB2</span>
+                        <span class="tech-tag">CICS</span>
+                        <span class="tech-tag">Control-M</span>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h4 class="tech-category-title">Tecnologías Modernas</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Angular 19</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PySpark</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">JavaScript/TypeScript</span>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h4 class="tech-category-title">DevOps & Cloud</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">GitHub Actions</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">OpenShift</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Terraform</span>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h4 class="tech-category-title">Big Data</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Databricks</span>
+                        <span class="tech-tag">Apache Spark</span>
+                        <span class="tech-tag">Data Lakes</span>
+                        <span class="tech-tag">ETL/ELT</span>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h4 class="tech-category-title">Datos & IA</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Apache Kafka</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -140,126 +214,10 @@
     <script src="./src/utils/app-controller.js"></script>
     <script src="./src/utils/smart-router.js"></script>
     <script>
-    // SISTEMA DE CARGA DINÁMICA DESDE JSON
-    document.addEventListener('DOMContentLoaded', async function() {
-        console.log('🏠 Cargando Homepage desde JSON...');
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🏠 Homepage loaded - AppController handles navigation');
         
-        try {
-            // Cargar datos del JSON
-            const response = await fetch('./src/data/cv-data.json');
-            const data = await response.json();
-            const homeData = data.home;
-            
-            // Cargar meta información
-            loadMetaData(homeData.meta);
-            
-            // Cargar hero section
-            loadHeroSection(homeData.hero);
-            
-            // Cargar servicios
-            loadServicesSection(homeData.services);
-            
-            // Cargar tecnologías
-            loadTechnologiesSection(homeData.technologies);
-            
-            // Inicializar animaciones
-            initializeAnimations();
-            
-            console.log('✅ Homepage cargada exitosamente desde JSON');
-            
-        } catch (error) {
-            console.error('❌ Error cargando datos del JSON:', error);
-            // Fallback básico
-            document.getElementById('heroTitle').innerHTML = `
-                <span class="title-line-1">ALBERTO</span>
-                <span class="title-line-2">BANCO SANTANDER</span>
-            `;
-        }
-    });
-    
-    // Función para cargar meta información
-    function loadMetaData(metaData) {
-        document.title = metaData.title;
-        document.getElementById('dynamic-description').content = metaData.description;
-        document.getElementById('dynamic-keywords').content = metaData.keywords;
-        document.getElementById('og-title').content = metaData.og_title;
-        document.getElementById('og-description').content = metaData.og_description;
-        document.getElementById('twitter-title').content = metaData.twitter_title;
-        document.getElementById('twitter-description').content = metaData.twitter_description;
-    }
-    
-    // Función para cargar hero section
-    function loadHeroSection(heroData) {
-        // Título
-        document.getElementById('heroTitle').innerHTML = `
-            <span class="title-line-1">${heroData.title.line1}</span>
-            <span class="title-line-2">${heroData.title.line2}</span>
-        `;
-        
-        // Subtítulo
-        document.getElementById('heroSubtitle').innerHTML = heroData.subtitle;
-        
-        // Descripción
-        document.getElementById('heroDescription').innerHTML = heroData.description;
-        
-        // Stats
-        const statsHTML = heroData.stats.map(stat => `
-            <div class="stat-item">
-                <div class="stat-value">${stat.value}</div>
-                <div class="stat-label">${stat.label}</div>
-            </div>
-        `).join('');
-        document.getElementById('heroStats').innerHTML = statsHTML;
-        
-        // Botones CTA
-        const buttonsHTML = heroData.cta_buttons.map(button => `
-            <a href="#" data-route="${button.route}" class="cta-button ${button.type}">
-                <span>${button.text}</span>
-                <i class="${button.icon}"></i>
-            </a>
-        `).join('');
-        document.getElementById('heroActions').innerHTML = buttonsHTML;
-        
-        // Código flotante
-        const codeHTML = heroData.floating_code.map(line => `
-            <div class="code-line">${line.replace(/    /g, '&nbsp;&nbsp;&nbsp;&nbsp;')}</div>
-        `).join('');
-        document.getElementById('floatingCode').innerHTML = codeHTML;
-    }
-    
-    // Función para cargar servicios
-    function loadServicesSection(servicesData) {
-        document.getElementById('servicesTitle').textContent = servicesData.section_title;
-        document.getElementById('servicesSubtitle').textContent = servicesData.section_subtitle;
-        
-        const servicesHTML = servicesData.items.map(service => `
-            <div class="service-card">
-                <div class="service-icon">${service.icon}</div>
-                <h4 class="service-title">${service.title}</h4>
-                <p class="service-description">${service.description}</p>
-            </div>
-        `).join('');
-        document.getElementById('servicesGrid').innerHTML = servicesHTML;
-    }
-    
-    // Función para cargar tecnologías
-    function loadTechnologiesSection(techData) {
-        document.getElementById('techTitle').textContent = techData.section_title;
-        document.getElementById('techSubtitle').textContent = techData.section_subtitle;
-        
-        const categoriesHTML = techData.categories.map(category => `
-            <div class="tech-category">
-                <h4 class="tech-category-title">${category.title}</h4>
-                <div class="tech-tags">
-                    ${category.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
-                </div>
-            </div>
-        `).join('');
-        document.getElementById('techCategories').innerHTML = categoriesHTML;
-    }
-    
-    // Función para inicializar animaciones
-    function initializeAnimations() {
+        // Animación de números
         const observerOptions = {
             threshold: 0.5,
             rootMargin: '0px 0px -100px 0px'
@@ -277,10 +235,10 @@
         document.querySelectorAll('.stat-item, .service-card, .tech-category').forEach(el => {
             observer.observe(el);
         });
-    }
+    });
     </script>
 
-    <!-- CSS PARA HOMEPAGE -->
+    <!-- CSS ADICIONAL PARA HOMEPAGE -->
     <style>
     .home-container {
         min-height: 100vh;
